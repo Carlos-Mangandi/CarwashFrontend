@@ -9,11 +9,10 @@ export interface ICreateRol{
 }
 
 export interface IGetRolesResponse extends IBasicResponse{
-    roles: IGetRoles[]
+    rol: IGetRoles[]
 }
 
 export interface IBasicResponse {
-    roles(roles: any): unknown
     ok: true
     status : number
 }

@@ -1,12 +1,14 @@
-import { Routes, Route, BrowserRouter} from "react-router-dom";
-import RolePage from "../components/Rol/TableRol"
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import RolePage from "../components/Rol/TableRol";
 
-function App(){
+function RoutesRol() {
+  return (
     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<RolePage></RolePage>}></Route>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<RolePage></RolePage>}></Route>
+      </Routes>
     </BrowserRouter>
+  );
 }
 
-export default App
+export default RoutesRol;

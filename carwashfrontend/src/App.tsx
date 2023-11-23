@@ -1,12 +1,10 @@
 
 import "./App.css";
-import TableRol from "./components/Rol/TableRol"
+import RolRoutes from "./plugins/rol.routes";
 
 function App(){
   return (
-    <div className="App">
-      <div className="p-5"><TableRol></TableRol></div>
-    </div>
+    <RolRoutes />
   )
 }
 

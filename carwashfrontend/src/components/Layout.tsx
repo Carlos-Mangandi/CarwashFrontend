@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState,ReactElement } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
@@ -8,7 +8,13 @@ import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+// aca
+interface Props{
+  children: ReactElement
+}
+//fin
+
+const Home = (props:Props) => {
   const menus = [
     { name: "dashboard", link: "/", icon: MdOutlineDashboard },
     { name: "user", link: "/", icon: AiOutlineUser },
@@ -61,9 +67,12 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      {/* //aca */}
       <div className="m-3 text-xl text-gray-900 font-semibold">
-        REACT TAILWIND
+        {props.children}
       </div>
+      {/* fin */}
     </section>
   );
 };
