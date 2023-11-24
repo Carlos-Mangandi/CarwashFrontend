@@ -1,34 +1,47 @@
-
-import React, { useState,ReactElement } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
+import React, { useState, ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-// aca
-interface Props{
-  children: ReactElement
-}
-//fin
+import { HiMenuAlt3 } from "react-icons/hi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { RiCarWashingFill} from "react-icons/ri";
+import { TbReportAnalytics } from "react-icons/tb";
+import { AiOutlineUser} from "react-icons/ai";
+import { FiMessageSquare } from "react-icons/fi";
+import { FaCarSide } from "react-icons/fa";
+import { IoIosPerson, IoLogoModelS } from "react-icons/io";
 
-const Home = (props:Props) => {
+interface Props {
+  children: ReactElement;
+}
+
+const Home = (props: Props) => {
   const menus = [
-    { name: "dashboard", link: "/", icon: MdOutlineDashboard },
-    { name: "user", link: "/", icon: AiOutlineUser },
-    { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/", icon: FiFolder },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
-    { name: "Setting", link: "/", icon: RiSettings4Line },
+    { name: "Home", link: "/", icon: MdOutlineDashboard },
+    { name: "User", link: "/user", icon: AiOutlineUser },
+    { name: "Rol", link: "/rol", icon: FiMessageSquare },
+    { name: "Brand", link: "/", icon: TbReportAnalytics, margin: true },
+    { name: "Car", link: "/", icon: FaCarSide },
+    { name: "CarWash", link: "/", icon: RiCarWashingFill },
+    { name: "Client", link: "/", icon: IoIosPerson, margin: true },
+    { name: "Model", link: "/", icon: IoLogoModelS },
   ];
+
   const [open, setOpen] = useState(true);
+
   return (
     <section className="flex gap-6">
-      <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}>
+      <div
+        className={`bg-[#0e0e0e] min-h-screen ${
+          open ? "w-72" : "w-16"
+        } duration-500 text-gray-100 px-4`}
+        style={{
+          position: "fixed",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          zIndex: 1000,
+        }}
+      >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
             size={26}
@@ -68,11 +81,13 @@ const Home = (props:Props) => {
         </div>
       </div>
 
-      {/* //aca */}
-      <div className="m-3 text-xl text-gray-900 font-semibold">
+      <div
+        className={`m-3 text-xl text-gray-900 font-semibold ${
+          open ? "ml-72" : "ml-16"
+        } transition-all duration-500`}
+      >
         {props.children}
       </div>
-      {/* fin */}
     </section>
   );
 };

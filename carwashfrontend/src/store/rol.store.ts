@@ -12,7 +12,7 @@ export const useRoleStore = defineStore('rol', {
             get_roles(name)
             .then(({data}) =>{
                 if(data.ok){
-                    this.rol = data.roles
+                    this.rol = data.rol
                 }
             })
         },

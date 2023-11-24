@@ -5,7 +5,7 @@ function RoutesRol() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RolePage></RolePage>}></Route>
+        <Route path="/rol" element={<RolePage></RolePage>}></Route>
       </Routes>
     </BrowserRouter>
   );
