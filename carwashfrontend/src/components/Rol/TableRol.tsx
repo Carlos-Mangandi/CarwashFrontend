@@ -60,9 +60,9 @@ export default function TableRol() {
                                 <td className="px-6 py-4">{rol.id}</td>
                                 <td className="px-6 py-4">{rol.type}</td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="px-4 py-1 text-sm text-white bg-green-500 rounded-full">See</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" className="px-4 py-1 text-sm text-white bg-blue-300 rounded-full">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" className="px-4 py-1 text-sm text-white bg-red-500 rounded-full">Delete</a>
+                                  <a href="#" className="px-4 py-1 text-sm text-white bg-green-500 rounded-full">See</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <a href="#" className="px-4 py-1 text-sm text-white bg-blue-300 rounded-full">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                 
                                 </td>
                               </tr>
                           ))}
@@ -70,6 +70,7 @@ export default function TableRol() {
                         </table>
                         <PaginationComponent pageCount={pageCount} onPageChange={changePage}/>
                       </div>
+                      
                   </div>
               </div>
           </div>
@@ -78,3 +79,4 @@ export default function TableRol() {
     </>
   );
 }
+

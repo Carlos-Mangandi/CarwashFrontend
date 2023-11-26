@@ -9,3 +9,7 @@ export const get_roles = (type:string ) => {
 export const create_rol = async (type: ICreateRol)=> {
     return axios.post<{ok:boolean, msg: string}>(API_URL +"/rol", type)
 }
+
+export const delete_rol = async (id: number) =>{
+    return axios.delete<{ ok: boolean; msg: string }>(API_URL + "/rol/" + id,);
+};

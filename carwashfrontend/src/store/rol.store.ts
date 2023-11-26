@@ -1,4 +1,4 @@
-import { get_roles, create_rol, } from '../services/rol.service';
+import { get_roles, create_rol, delete_rol } from '../services/rol.service';
 import { IGetRoles, ICreateRol } from '../types/rol.types';
 import {defineStore} from "pinia"
 
@@ -28,6 +28,15 @@ export const useRoleStore = defineStore('rol', {
               )}
         },
 
+        async OnDeleteRol(id: number) {
+            try {
+                const { data } =  await delete_rol(id);
+                if (data.ok) {
+                     this.OnGetRoles();
+                }
+            } catch (error) {
+                console.error('Error deleting role:', error);
+            }
+        },
     }
 })
-

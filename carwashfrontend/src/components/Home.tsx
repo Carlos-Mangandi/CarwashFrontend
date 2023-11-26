@@ -5,14 +5,14 @@ const HelloWorld = ()=> {
 
     return(
         <>
-           <Layout>
-            <>
-                <div>
-                    <h1>Hola mundo</h1>
-                    
-                </div>
-            </>
-           </Layout>
+            <Layout>
+                <>
+                    <div>
+                        <h1>Hola mundo</h1>
+                        
+                    </div>
+                </>
+            </Layout>
         </>
     )
 }

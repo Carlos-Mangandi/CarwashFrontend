@@ -9,20 +9,17 @@ interface PaginationProps{
 
 const PaginationComponent: React.FC<PaginationProps> = ({pageCount, onPageChange})=>(
      <>
-     <div className='flex justify-center mt-4'>
-        <ReactPaginate
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            pageCount={pageCount}
-            onPageChange={onPageChange}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-        />
-    </div>
-     </>
-    
+        <div className='flex justify-center mt-4'>
+            <ReactPaginate
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                pageCount={pageCount}
+                onPageChange={onPageChange}
+                containerClassName={'pagination'}
+                activeClassName={'active'}
+            />
+        </div>
+    </>
 );
 
 export default PaginationComponent;

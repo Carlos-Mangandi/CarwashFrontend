@@ -19,11 +19,11 @@ const Home = (props: Props) => {
     { name: "Home", link: "/", icon: MdOutlineDashboard },
     { name: "User", link: "/user", icon: AiOutlineUser },
     { name: "Rol", link: "/rol", icon: FiMessageSquare },
-    { name: "Brand", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "Car", link: "/", icon: FaCarSide },
-    { name: "CarWash", link: "/", icon: RiCarWashingFill },
-    { name: "Client", link: "/", icon: IoIosPerson, margin: true },
-    { name: "Model", link: "/", icon: IoLogoModelS },
+    { name: "Brand", link: "/brand", icon: TbReportAnalytics, margin: true },
+    { name: "Car", link: "/car", icon: FaCarSide },
+    { name: "CarWash", link: "/carWash", icon: RiCarWashingFill },
+    { name: "Client", link: "/client", icon: IoIosPerson, margin: true },
+    { name: "Model", link: "/model", icon: IoLogoModelS },
   ];
 
   const [open, setOpen] = useState(true);
