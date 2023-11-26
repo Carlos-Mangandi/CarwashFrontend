@@ -1,4 +1,4 @@
-import { get_roles, create_rol} from '../services/rol.service';
+import { get_roles, create_rol, } from '../services/rol.service';
 import { IGetRoles, ICreateRol } from '../types/rol.types';
 import {defineStore} from "pinia"
 
@@ -26,6 +26,8 @@ export const useRoleStore = defineStore('rol', {
                     this.OnGetRoles()
                 }                
               )}
-        }
+        },
+
     }
 })
+

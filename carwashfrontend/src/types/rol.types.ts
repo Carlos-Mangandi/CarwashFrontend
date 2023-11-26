@@ -16,3 +16,7 @@ export interface IBasicResponse {
     ok: true
     status : number
 }
+
+export interface IDeleteRol {
+    id: number;
+  }

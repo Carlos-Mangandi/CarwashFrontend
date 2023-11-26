@@ -1,11 +1,11 @@
 // import { Routes, Route, BrowserRouter } from "react-router-dom";
-// import HomePage from "../components/Home";
+// import Casa from "../components/Home";
 
 // function RoutesHome() {
 //   return (
 //     <BrowserRouter>
 //       <Routes>
-//         <Route path="/" element={<HomePage></HomePage>}></Route>
+//         <Route path="/" element={<Casa></Casa>}></Route>
 //       </Routes>
 //     </BrowserRouter>
 //   );
