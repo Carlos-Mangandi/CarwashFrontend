@@ -1,13 +1,15 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import RolePage from "../components/Rol/TableRol";
-import HomePage from "../components/Home"
+import UserPage from "../components/User/TableUser";
+import Login from "../components/Login/Login"
 
 function RoutesRol() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>        
+        <Route path="/" element={<Login></Login>}></Route>
         <Route path="/rol" element={<RolePage></RolePage>}></Route>
-        <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/user" element={<UserPage></UserPage>}></Route>
       </Routes>
     </BrowserRouter>
   );

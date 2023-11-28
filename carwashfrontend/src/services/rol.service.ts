@@ -1,15 +1,40 @@
+// import { get_roles } from './rol.service';
 import axios from "axios";
 import {API_URL} from "../utils/constants"
-import {  ICreateRol, IGetRolesResponse } from "../types/rol.types";
+import {  IGetRoles } from "../types/rol.types";
 
-export const get_roles = (type:string ) => {
-    return axios.get<IGetRolesResponse>(API_URL + "/rol"+ type)
-}
-
-export const create_rol = async (type: ICreateRol)=> {
-    return axios.post<{ok:boolean, msg: string}>(API_URL +"/rol", type)
-}
-
-export const delete_rol = async (id: number) =>{
-    return axios.delete<{ ok: boolean; msg: string }>(API_URL + "/rol/" + id,);
+export const get_roles = async () => {
+    const { data } = await axios.get<{ rol: IGetRoles[] }>(
+      API_URL + "/rol",
+    );
+    return data;
 };
+
+export const create_rol = async (type: string)=> {
+    const {data} = await axios.post<{ok:boolean, msg: string}>(
+        API_URL + "/rol", {type,}
+    );
+    return data
+}
+
+export const update_rol = async (id: number, type: string) => {
+    const {data} = await axios.put<{ok:boolean, msg: string}>(
+        API_URL + "/rol/" + id, {type, },
+    );
+    return data
+}
+
+export const delete_rol = async (id: number) => {
+    const {data} = await axios.delete<{ok: boolean, msg:string}>(
+        API_URL + "/rol/" + id,
+    );
+    return data
+}
+
+export const get_rol_id = async (id: number) => {
+    const { data } = await axios.get<{ roles: IGetRoles[] }>(
+      API_URL + "/rol" + id,
+     
+    );
+    return data;
+  };
