@@ -24,6 +24,7 @@ export default function TableRol() {
   if(rolDelete){
     OnDeleteRol(rolDelete.id);
     alert("Rol was eliminated")
+    setRolDelete(null);
   }
  }
 
@@ -34,7 +35,7 @@ export default function TableRol() {
     <>
       <Layout>
         <>
-          <div className="container flex justify-center mx-center ml-16 mt-2">
+          <div className="p-10 w-full">
               <div className="flex flex-col">
                   <div className="w-full">
                       <div className="border-b border-gray-200 shadow">
@@ -78,7 +79,7 @@ export default function TableRol() {
           {rolDelete && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
-                <p>¿Are you sure you want to delete the role "{rolDelete.rolName}"?</p>
+                <p>Are you sure you want to delete the role "{rolDelete.rolName}"?</p>
                 <div className="mt-4 flex justify-center">
                   <button onClick={confirmDelete} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
                       Delete

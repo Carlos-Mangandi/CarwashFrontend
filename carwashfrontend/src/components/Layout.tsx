@@ -29,7 +29,7 @@ const Home = (props: Props) => {
   const [open, setOpen] = useState(true);
 
   return (
-    <section className="flex gap-6">
+    <section className="flex gap-6 w-screen h-screen">
       <div
         className={`bg-[#0e0e0e] min-h-screen ${
           open ? "w-72" : "w-16"
@@ -82,7 +82,7 @@ const Home = (props: Props) => {
       </div>
 
       <div
-        className={`m-3 text-xl text-gray-900 font-semibold ${
+        className={`m-3 text-xl text-gray-900  h-screen w-screen font-semibold  ${
           open ? "ml-72" : "ml-16"
         } transition-all duration-500`}
       >

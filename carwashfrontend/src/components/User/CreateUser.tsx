@@ -48,14 +48,14 @@ const CreateUser = () => {
     }
     return(
         <>
-        <div>
+        <div className="p-2 flex justify-center opacity-100">
             <button onClick={openModal} className="bg-green-500 text-white font-bold py-2 px-4 rounded-full flex items-center text-center">
                 <FaPlus></FaPlus>
                 <span>Add</span>
             </button>
             {isOpenModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white rounded-lg shadow-lg p-6">
+                <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
+                    <div className="bg-white w-100 rounded-lg shadow-lg p-6">
                         <h3 className="text-lg font-medium mb-4 text-center">Add Rol</h3>
                         <form >
                             <div className="mb-4">

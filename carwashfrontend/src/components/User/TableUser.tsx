@@ -38,7 +38,7 @@ export default function TableUsers(){
         <>
             <Layout>
                 <>
-                    <div className=" flex justify-center mx-center ml-16 mt-2">            
+                    <div className=" p-10 w-full">            
                             
                         <div className="flex flex-col">
                             <div className="w-full">
