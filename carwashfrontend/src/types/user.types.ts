@@ -1,5 +1,6 @@
 export interface IGetUsers{
     id: number,
+    name: string,
     email: string,
     password: string,
     rolId: number,
@@ -13,6 +14,7 @@ export interface IGetUsers{
 }
 
 export interface ICreateUser{
+    name: string,
     email: string,
     password: string,
     rolId: number
@@ -20,6 +22,7 @@ export interface ICreateUser{
 
 export interface IUpdateUser{
     id: number,
+    name: string,
     email: string,
     password: string,
     rolId: number

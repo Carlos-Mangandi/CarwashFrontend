@@ -39,11 +39,11 @@ const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string
             <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
               <div className="bg-white rounded-lg shadow-lg p-6">
                 <span onClick={closeModal}></span>
-                <h3 className="text-lg font-medium mb-4 text-center">Editar Rol</h3>
+                <h3 className="text-lg font-medium mb-4 text-center">Edit Rol</h3>
                 <form >
                   <div className="mb-4">
                     <label htmlFor="type" className="block text-gray-700 text-sm font-medium">Rol:</label>
-                    <input type="text" value={newRolName} onChange={handleInputChange}  className="w-full h-10 p-4 border rounded-xl" placeholder="Ingrese el rol"/> 
+                    <input type="text" value={newRolName} onChange={handleInputChange}  className="w-full h-10 p-4 border rounded-xl" placeholder="Enter a rol"/> 
                   </div>
                   <div className="flex justify-end">
                     <button onClick={handleSubmit}  className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md">

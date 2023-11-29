@@ -23,7 +23,7 @@ export const create_rol = async (type: string)=> {
             headers: {
                 Authorization: "Bearer"  + GetToken()
             } 
-          }
+        }
     );
     return data
 }

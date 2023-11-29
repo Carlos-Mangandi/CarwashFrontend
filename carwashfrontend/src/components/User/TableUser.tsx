@@ -23,7 +23,7 @@ export default function TableUsers(){
             OnDeleteUser(userDelete.id);
             // toast.success(`The user has been successfully deleted`,{
             //     position: 'top-right',
-            //     autoClose: 1000,
+            //     autoClose: 0,
             // });
 
             setUserDelete(null);
@@ -48,25 +48,28 @@ export default function TableUsers(){
                                         <table className="min-w-full">
                                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                             <tr className="bg-gray-800 text-white">
-                                                <th className="py-2 px-4">email</th>
-                                                <th className="py-2 px-4">rol</th>
+                                                <th className="py-2 px-4">Id</th>
+                                                <th className="py-2 px-4">Name</th>
+                                                <th className="py-2 px-4">Email</th>
+                                                <th className="py-2 px-4">Rol</th>
                                                 <th className="py-2 px-4">Acciones</th>
                                             </tr>
                                             </thead>
                                             <tbody className="bg-white divide-y divide-gray-200">
-                                            {users.map((user) => (
+                                            {users && users.map((user) => (
                                                 <tr key={user.id}>
-                                                <td className="py-2 px-4 whitespace-nowrap text-center">{user.email}</td>
-                                                <td className="py-2 px-4 whitespace-nowrap text-center">{user.rol.type}</td>
-                                                <td className="py-2 px-4 whitespace-nowrap text-center">
-                                                    <div className="flex items-center justify-center space-x-2">
-                                                    
-                                                    <UpdateUser id={user.id} emailUser={user.email} newRolId={user.rolId} />
-                                                    <button onClick={() => handleDelete(user.id, user.email)} className="text-red-500" >
-                                                        <FaTrash size={24}></FaTrash>
-                                                    </button>
-                                                    </div>
-                                                </td>
+                                                    <td className="py-2 px-4 whitespace-nowrap text-center">{user.id}</td>
+                                                    <td className="py-2 px-4 whitespace-nowrap text-center">{user.name}</td>
+                                                    <td className="py-2 px-4 whitespace-nowrap text-center">{user.email}</td>
+                                                    <td className="py-2 px-4 whitespace-nowrap text-center">{user.rol.type}</td>
+                                                    <td className="py-2 px-4 whitespace-nowrap text-center">
+                                                        <div className="flex items-center justify-center space-x-2">
+                                                            <UpdateUser id={user.id} nameUser={user.name} emailUser={user.email} newRolId={user.rolId} />
+                                                            <button onClick={() => handleDelete(user.id, user.email)} className="text-red-500" >
+                                                                <FaTrash size={24}></FaTrash>
+                                                            </button>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             ))}
                                             </tbody>
