@@ -17,7 +17,7 @@ export const get_roles = async () => {
 };
 
 export const create_rol = async (type: string)=> {
-    const {data} = await axios.post<{ok:boolean, msg: string}>(
+    await axios.post<{ok:boolean, msg: string}>(
         API_URL + "/rol", {type,},
         {
             headers: {
@@ -25,7 +25,7 @@ export const create_rol = async (type: string)=> {
             } 
         }
     );
-    return data
+   
 }
 
 export const update_rol = async (id: number, type: string) => {

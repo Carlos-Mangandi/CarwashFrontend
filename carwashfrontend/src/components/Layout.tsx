@@ -2,13 +2,14 @@ import React, { useState, ReactElement } from "react";
 import { Link } from "react-router-dom";
 
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
+// import { MdOutlineDashboard } from "react-icons/md";
 import { RiCarWashingFill} from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser} from "react-icons/ai";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaCarSide } from "react-icons/fa";
 import { IoIosPerson, IoLogoModelS } from "react-icons/io";
+import { PiSignOutBold } from "react-icons/pi";
 
 interface Props {
   children: ReactElement;
@@ -16,7 +17,7 @@ interface Props {
 
 const Home = (props: Props) => {
   const menus = [
-    { name: "Home", link: "/", icon: MdOutlineDashboard },
+    // { name: "Home", link: "/", icon: MdOutlineDashboard },
     { name: "User", link: "/user", icon: AiOutlineUser },
     { name: "Rol", link: "/rol", icon: FiMessageSquare },
     { name: "Brand", link: "/brand", icon: TbReportAnalytics, margin: true },
@@ -24,6 +25,7 @@ const Home = (props: Props) => {
     { name: "CarWash", link: "/carWash", icon: RiCarWashingFill },
     { name: "Client", link: "/client", icon: IoIosPerson, margin: true },
     { name: "Model", link: "/model", icon: IoLogoModelS },
+    {name: "Sign Out", link: "/signOut", icon: PiSignOutBold},
   ];
 
   const [open, setOpen] = useState(true);
