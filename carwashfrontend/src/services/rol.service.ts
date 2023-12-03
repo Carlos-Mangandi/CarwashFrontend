@@ -1,4 +1,3 @@
-// import { get_roles } from './rol.service';
 import axios from "axios";
 import {API_URL} from "../utils/constants"
 import {  IGetRoles } from "../types/rol.types";

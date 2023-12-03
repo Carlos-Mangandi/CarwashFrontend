@@ -7,12 +7,12 @@ import Layout from '../Layout'
 import { FaTrash } from "react-icons/fa";
 
 export default function TableUsers(){
-    const {users, OnGetUsers, OnDeleteUser} = useUserStore();
     const [userDelete, setUserDelete] = useState<{id: number; userEmail: string } | null>(null);
+    const {OnGetUsers, OnDeleteUser, users} = useUserStore()
 
     useEffect(() => {
-        OnGetUsers
-    })
+        OnGetUsers()
+    }, []);
 
     const handleDelete = (id: number, userEmail: string) => {
         setUserDelete({id, userEmail});

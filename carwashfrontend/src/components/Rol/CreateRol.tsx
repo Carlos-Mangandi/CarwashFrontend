@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {useRolStore} from '../../store/rol.store';
+import {useRolesStore} from '../../store/rol.store';
 import { FaPlus } from 'react-icons/fa';
 import { ImCancelCircle } from "react-icons/im";
 import { IoSave } from "react-icons/io5";
 
 export default function CreateRol(){
-  const {OnCreateRol} = useRolStore();
+  const {OnCreateRol} = useRolesStore();
   const[roleName, setRoleName] = useState('');
   const [showModal, setShowModal] = useState(false);
 

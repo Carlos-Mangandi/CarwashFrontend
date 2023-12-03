@@ -4,7 +4,7 @@ export interface IGetUsers{
     email: string,
     password: string,
     rolId: number,
-    state: boolean
+    state: boolean,
 
     rol: {
         id: number,
@@ -26,4 +26,12 @@ export interface IUpdateUser{
     email: string,
     password: string,
     rolId: number
+}
+
+export interface IUserStore {
+    users: IGetUsers[];
+    OnGetUsers: () => Promise<void>;
+    OnCreateUser: (user: ICreateUser) => Promise<void>;
+    OnUpdateUser: (id: number, user: IUpdateUser) => Promise<void>;
+    OnDeleteUser: (id: number) => Promise<void>;
 }

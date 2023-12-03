@@ -13,3 +13,11 @@ export interface IUpdateUser{
     id: number,
     type: string
 }
+
+export interface IRoleStore {
+    roles: IGetRoles[];
+    OnGetRoles: () => Promise<void>;
+    OnCreateRol: (type: string) => Promise<void>;
+    OnUpdateRol: (id: number, type: string) => Promise<void>;
+    OnDeleteRol: (id: number) => Promise<void>;
+}

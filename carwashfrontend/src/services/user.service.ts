@@ -3,6 +3,18 @@ import { ICreateUser, IGetUsers, IUpdateUser } from '../types/user.types'
 import { API_URL } from '../utils/constants'
 import { GetToken } from '../utils/authData'
 
+export const get_users = async () => {
+    const { data } = await axios.get<{ user: IGetUsers[] }>(
+      API_URL + "/user",
+      {
+        headers: {
+            Authorization: "Bearer "  + GetToken()
+        } 
+      }
+    );
+    return data;
+};
+
 export const create_user = async (user: ICreateUser) => {
     const response = await axios.post(`${API_URL}/user`, user,
         {
@@ -13,18 +25,6 @@ export const create_user = async (user: ICreateUser) => {
         }
     )
     return response.data;
-}
-
-export const get_users = async () => {
-    const response = await axios.get<{users: IGetUsers[]}>(`${API_URL}/user`,
-        {
-            headers: 
-            {
-                Authorization: "Bearer "  + GetToken()
-            } 
-        }
-    )
-    return response.data
 }
 
 export const update_user = async (id: number, user: IUpdateUser) => {

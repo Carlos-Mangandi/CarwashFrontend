@@ -2,20 +2,13 @@ import { useEffect, useState } from "react";
 import CreateRol from "./CreateRol";
 import UpdateRol from "./UpdateRol";
 import Layout from "../Layout";
-import useRolStore, { useRolesStore } from "../../store/rol.store";
+import { useRolesStore } from "../../store/rol.store";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-// import { FiEdit } from "react-icons/fi";
-// import { AiFillEye, AiOutlineDelete } from "react-icons/ai";
-
 export default function TableRol() {
-  const { OnDeleteRol } = useRolStore();
-  const [rolDelete, setRolDelete] = useState<{
-    id: number;
-    rolName: string;
-  } | null>(null);
-  const { OnGetRoles, roles } = useRolesStore();
+  const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
+  const { OnGetRoles, OnDeleteRol, roles } = useRolesStore();
 
   useEffect(() => {
     OnGetRoles();
