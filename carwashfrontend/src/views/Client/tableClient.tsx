@@ -1,4 +1,4 @@
-import Layout from "../Layout";
+import Layout from "../../components/Layout";
 import { FaTrash } from "react-icons/fa";
 import useClientStore from "../../store/client.store";
 import { useEffect, useState } from "react";

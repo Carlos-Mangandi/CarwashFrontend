@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CreateBrand from "./createBrand";
-import Layout from "../Layout";
+import Layout from "../../components/Layout";
 import UpdateBrand from "./updateBrand";
 import { FaTrash } from "react-icons/fa";
 import useBrandStore from "../../store/brand.store";

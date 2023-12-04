@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useCarStore from "../../store/car.store";
-import Layout from "../Layout";
+import Layout from "../../components/Layout";
 import CreateCar from "./createCar";
 import UpdateCar from "./updateCar";
 import { FaTrash } from "react-icons/fa";

@@ -11,6 +11,7 @@ export default function CreateRol(){
 
   const closeModal = () => {
     setShowModal(false)
+    setRoleName("");
   }
          
   const openModal = () => {

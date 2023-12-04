@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Layout from "../Layout";
+import Layout from "../../components/Layout";
 import useModelStore from "../../store/model.store";
 import CreateModel from "./createModel";
 import UpdateModel from "./updateModel";
