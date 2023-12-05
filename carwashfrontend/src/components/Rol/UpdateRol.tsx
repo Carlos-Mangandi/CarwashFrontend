@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import useRolStore from "../../store/rol.store";
 import { FaRegEdit } from "react-icons/fa";
 
+<<<<<<< HEAD
 
 const UpdateRol = ({id, nameRol}: {id: number, nameRol: string}) => {
+=======
+const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string}) => {
+>>>>>>> 46a27857981c20ff520f1ee2203124769ac4ca01
     const [showModal, setShowModal] = useState(false);
     const [type, setType] = useState(nameRol);
     const {OnUpdateRol} = useRolStore();

@@ -5,96 +5,106 @@ import CreateCar from "./createCar";
 import UpdateCar from "./updateCar";
 import { FaTrash } from "react-icons/fa";
 
-export default function TableCar() {
-  const { car, OnGetCar, OnDeleteCar } = useCarStore();
-  const [carDelete, setCarDelete] = useState<{
-    id: number;
-    serialnumber: string;
-  } | null>(null);
+export default function TableCar(){
+  const [carDelete,SetCarDelete]= useState<{
+    id:number, colorCar: string
+  }|null>(null);
+  const { OnGetCar, OnDeleteCar, cars } = useCarStore();
 
   useEffect(() => {
-    OnGetCar;
-  });
-  const handleDelete = (id: number, serialnumber: string) => {
-    setCarDelete({ id, serialnumber });
+    OnGetCar();
+  }, []);
+
+  const handleDelete = (id: number, colorCar: string) => {
+    SetCarDelete({ id, colorCar });
   };
 
   const confirmDelete = () => {
     if (carDelete) {
       OnDeleteCar(carDelete.id);
+      // toast.success(`The user has been successfully deleted`,{
+      //     position: 'top-right',
+      //     autoClose: 0,
+      // });
 
-      setCarDelete(null);
+      SetCarDelete(null);
     }
   };
 
   const cancelDelete = () => {
-    setCarDelete(null);
+    SetCarDelete(null);
   };
 
   return (
     <>
       <Layout>
         <>
-          <div className="p-10 w-full">
-            <CreateCar></CreateCar>
-            <table className="w-full text-sm text-center rtl:text-right text-white dark:text-black hover:border-collapse">
-              <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-blue-500 dark:text-white">
-                <tr>
-                  <th scope="col" className="px-6 py-3">
-                    ID
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Marca
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Modelo
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Color
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Numero de Serie
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Acciones
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {car &&
-                  car.map((car) => (
-                    <tr className="bg-white" key={car.id}>
-                      <td className="px-6 py-4">{car.id}</td>
-                      <td className="px-6 py-4">{car.brand.type}</td>
-                      <td className="px-6 py-4">{car.model.typemodel}</td>
-                      <td className="px-6 py-4">{car.color}</td>
-                      <td className="px-6 py-4">{car.serialnumber}</td>
-                      <td className="px-4 py-2 flex items-center justify-around">
-                        <UpdateCar
-                          id={car.id}
-                          newBrandId={car.brandId}
-                          newModelId={car.modelId}
-                          color={car.color}
-                          serialNumber={car.serialnumber}
-                        />
-                        <button
-                          onClick={() => handleDelete(car.id, car.serialnumber)}
-                          className="text-red-500 bg-white"
-                        >
-                          <FaTrash size={22}></FaTrash>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
+          <div className=" p-10 w-full">
+                <CreateCar />
+                <div className="flex justify-center p-8">
+                  <table className="min-w-full">
+                    <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
+                      <tr className="dark:bg-blue-500 text-white">
+                        <th className="py-2 px-4">Id</th>
+                        <th className="py-2 px-4">Marca</th>
+                        <th className="py-2 px-4">Modelo</th>
+                        <th className="py-2 px-4">Color</th>
+                        <th className="py-2 px-4">Numero de Serie</th>
+                        <th className="py-2 px-4">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cars.map((car) => (
+                          <tr key={car.id}>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {car.id}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {car.brand.type}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {car.model.typemodel}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {car.color}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {car.serialnumber}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              <div className="flex items-center justify-center space-x-2">
+                                <UpdateCar
+                                  id={car.id}
+                                  newBrandId={car.brandId}
+                                  newModelId={car.modelId}
+                                  color={car.color}
+                                  serialNumber={car.serialnumber}
+                                />
+                                <button
+                                  onClick={() =>
+                                    handleDelete(car.id, car.brand.type)
+                                  }
+                                  className="text-red-500"
+                                >
+                                  <FaTrash size={24}></FaTrash>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+           
+
+          {/* <ToastContainer /> */}
           {carDelete && (
-            <div className="fixed inset-0 flex items-center justify-center ">
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  Esta seguro de querer eliminar el carro "
-                  {carDelete.serialnumber}"?
+                  Esta seguro de eliminar el carro? "{carDelete.colorCar}
+                  "?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button
