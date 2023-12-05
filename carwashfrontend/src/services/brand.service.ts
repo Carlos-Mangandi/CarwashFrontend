@@ -1,18 +1,27 @@
 import { IGetBrands, BasicResponse } from "./../types/brand.types";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
+import { GetToken } from "../utils/authData";
 
 export const get_brands = async () => {
   const { data } = await axios.get<{ brand: IGetBrands[] }>(
     API_URL + "/brand",
-    {}
+    {
+      headers: {
+        Authorization: "Bearer " + GetToken()
+      }
+    }
   );
   return data;
 };
 export const create_brand = async (type: string) => {
-  const { data } = await axios.post<BasicResponse>(API_URL + "/brand", {
-    type,
-  });
+  const { data } = await axios.post<BasicResponse>(API_URL + "/brand", {type,},
+    {
+      headers: {
+        Authorization: "Bearer " + GetToken()
+      }
+    }
+  );
 
   return data;
 };

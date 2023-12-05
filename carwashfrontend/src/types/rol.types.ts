@@ -9,15 +9,18 @@ export interface CreateRol {
     type : string
 }
 
-export interface IUpdateUser{
+export interface IUpdateRol{
     id: number,
     type: string
 }
 
 export interface IRoleStore {
     roles: IGetRoles[];
+    totalRoles: number;
+    limit: number;
+    page: number;
     OnGetRoles: () => Promise<void>;
-    OnCreateRol: (type: string) => Promise<void>;
-    OnUpdateRol: (id: number, type: string) => Promise<void>;
+    OnCreateRol: (type: CreateRol) => Promise<void>;
+    OnUpdateRol: (id: number, type: IUpdateRol) => Promise<void>;
     OnDeleteRol: (id: number) => Promise<void>;
 }

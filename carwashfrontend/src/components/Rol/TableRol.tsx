@@ -4,15 +4,14 @@ import UpdateRol from "./UpdateRol";
 import Layout from "../Layout";
 import { useRolesStore } from "../../store/rol.store";
 import { FaTrash } from "react-icons/fa";
-import Swal from "sweetalert2";
 
 export default function TableRol() {
   const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
-  const { OnGetRoles, OnDeleteRol, roles } = useRolesStore();
-
+  const { OnGetRoles, OnDeleteRol, roles, totalRoles, limit } = useRolesStore();
+  const [page, setPage] = useState(1);
   useEffect(() => {
     OnGetRoles();
-  }, []);
+  }, [page]);
 
   const handleDelete = (id: number, rolName: string) => {
     setRolDelete({ id, rolName });
@@ -22,12 +21,6 @@ export default function TableRol() {
     if (rolDelete) {
       OnDeleteRol(rolDelete.id);
 
-      Swal.fire({
-        icon: "success",
-        title: "Rol Eliminado",
-        text: `El rol "${rolDelete.rolName}" ha sido eliminado correctamente.`,
-      });
-
       setRolDelete(null);
     }
   };
@@ -35,6 +28,11 @@ export default function TableRol() {
   const cancelDelete = () => {
     setRolDelete(null);
   };
+
+  const handlePage = (newPage: number) => {
+    setPage(newPage)
+  }
+
   return (
     <>
       <Layout>
@@ -111,6 +109,23 @@ export default function TableRol() {
               </div>
             </div>
           )}
+
+          <div className="mt-4 flex justify-center">
+            {Array.from(
+              { length: Math.ceil(totalRoles / limit) },
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handlePage(index + 1)}
+                  className={`mx-2 ${
+                    index + 1 === page ? "bg-blue-500" : "bg-gray-300"
+                  } text-black font-bold py-2 px-4 rounded-full`}
+                >
+                  {index + 1}
+                </button>
+              )
+            )}
+          </div>
         </>
       </Layout>
     </>

@@ -16,13 +16,6 @@ export async function MakeLogin(data_send: GetLoginData) {
     console.log(data);
     if (data.token) {
       CreateToken(data.token);
-      Swal.fire({
-        icon: 'success',
-        title: 'Inicio de sesión exitoso',
-        text: '¡Bienvenido!',
-        showConfirmButton: false,
-        timer: 2000,
-      });
 
       window.location.href = '/rol';
 
