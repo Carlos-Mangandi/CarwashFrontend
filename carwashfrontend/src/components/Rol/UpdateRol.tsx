@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import useRolStore from "../../store/rol.store";
 import { FaRegEdit } from "react-icons/fa";
 
-
 const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string}) => {
     const [showModal, setShowModal] = useState(false);
     const [newRolName, setNewRolName] = useState(rolNameUpdate);

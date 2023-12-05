@@ -1,26 +1,35 @@
-import Layout from "../../components/Layout";
-import { FaTrash } from "react-icons/fa";
+import { useState, useEffect } from "react";
 import useClientStore from "../../store/client.store";
-import { useEffect, useState } from "react";
-import CreateClient from "./createClient";
+// import CreateUser from "../User/CreateUser";
+// import UpdateUser from "../User/UpdateUser";
+import CreateClient from "../Client/createClient";
+import Layout from "../../components/Layout";
 import UpdateClient from "./updateClient";
+import { FaTrash } from "react-icons/fa";
 
-function TableClient() {
-  const { client, OnGetClient, OnDeleteClient } = useClientStore();
+export default function TableUsers() {
   const [clientDelete, setClientDelete] = useState<{
     id: number;
     clientName: string;
   } | null>(null);
+  const { OnGetClient, OnDeleteClient, client } = useClientStore();
 
   useEffect(() => {
     OnGetClient();
   }, []);
+
   const handleDelete = (id: number, clientName: string) => {
     setClientDelete({ id, clientName });
   };
+
   const confirmDelete = () => {
     if (clientDelete) {
       OnDeleteClient(clientDelete.id);
+      // toast.success(`The user has been successfully deleted`,{
+      //     position: 'top-right',
+      //     autoClose: 0,
+      // });
+
       setClientDelete(null);
     }
   };
@@ -33,61 +42,68 @@ function TableClient() {
     <>
       <Layout>
         <>
-          <div className="p-10 w-full">
-            <CreateClient></CreateClient>
-            <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
-              <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-blue-500 dark:text-white">
-                <tr>
-                  <th scope="col" className="px-6 py-3">
-                    ID
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Nombre
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Telefono
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Carro
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Acciones
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {client &&
-                  client.map((client) => (
-                    <tr className="bg-white" key={client.id}>
-                      <td className="px-6 py-4">{client.id}</td>
-                      <td className="px-6 py-4">{client.name}</td>
-                      <td className="px-6 py-4">{client.phone}</td>
-                      <td className="px-6 py-4">{client.car.serialnumber}</td>
-                      <td className="px-4 py-2 flex items-center justify-around">
-                        <UpdateClient
-                          id={client.id}
-                          nameClient={client.name}
-                          phoneClient={client.phone}
-                          newCarId={client.carId}
-                        ></UpdateClient>
-                        <button
-                          onClick={() => handleDelete(client.id, client.name)}
-                          className="text-red-500 bg-white"
-                        >
-                          <FaTrash size={22}></FaTrash>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
+          <div className=" p-10 w-full">
+                <CreateClient />
+                <div className="flex justify-center p-8">
+                  <table className="min-w-full">
+                    <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
+                      <tr className="dark:bg-blue-500 text-white">
+                        <th className="py-2 px-4">Id</th>
+                        <th className="py-2 px-4">Nombre</th>
+                        <th className="py-2 px-4">Telefono</th>
+                        <th className="py-2 px-4">Carro</th>
+                        <th className="py-2 px-4">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {client &&
+                        client.map((client) => (
+                          <tr key={client.id}>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {client.id}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {client.name}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {client.phone}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              {client.car.color}
+                            </td>
+                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                              <div className="flex items-center justify-center space-x-2">
+                                <UpdateClient
+                                  id={client.id}
+                                  nameClient={client.name}
+                                  phoneClient={client.phone}
+                                  newCarId={client.carId}
+                                />
+                                <button
+                                  onClick={() =>
+                                    handleDelete(client.id, client.name)
+                                  }
+                                  className="text-red-500"
+                                >
+                                  <FaTrash size={24}></FaTrash>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+           
+
+          {/* <ToastContainer /> */}
           {clientDelete && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  Estas seguro de eliminar el cliente? "
-                  {clientDelete.clientName}"?
+                  Esta seguro de eliminar el cliente? "{clientDelete.clientName}
+                  "?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button
@@ -111,4 +127,3 @@ function TableClient() {
     </>
   );
 }
-export default TableClient;
