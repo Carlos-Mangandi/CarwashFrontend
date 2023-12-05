@@ -3,14 +3,14 @@ import useRolStore from "../../store/rol.store";
 import { FaRegEdit } from "react-icons/fa";
 
 
-const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string}) => {
+const UpdateRol = ({id, nameRol}: {id: number, nameRol: string}) => {
     const [showModal, setShowModal] = useState(false);
-    const [newRolName, setNewRolName] = useState(rolNameUpdate);
+    const [type, setType] = useState(nameRol);
     const {OnUpdateRol} = useRolStore();
 
     const closeModal = () => {
         setShowModal(false)
-        setNewRolName(rolNameUpdate)
+        setType(nameRol)
     }
             
     const openModal = () => {
@@ -18,12 +18,16 @@ const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewRolName(e.target.value)
+        setType(e.target.value)
     }
 
     const handleSubmit = async () => {
-        if (newRolName.trim() !== ''){
-            await OnUpdateRol(rolId, newRolName);
+        if (type.trim() !== ''){
+          const updateRol ={
+            id: id,
+            type: type,
+          }
+            await OnUpdateRol(id, updateRol);
             closeModal();
         }
     }
@@ -43,7 +47,7 @@ const UpdateRol = ({rolId, rolNameUpdate}: {rolId: number, rolNameUpdate: string
                 <form >
                   <div className="mb-4">
                     <label htmlFor="type" className="block text-gray-700 text-sm font-medium">Rol:</label>
-                    <input type="text" value={newRolName} onChange={handleInputChange}  className="w-full h-10 p-4 border rounded-xl" placeholder="Enter a rol"/> 
+                    <input type="text" value={type} onChange={handleInputChange}  className="w-full h-10 p-4 border rounded-xl" placeholder="Enter a rol"/> 
                   </div>
                   <div className="flex justify-end">
                     <button onClick={handleSubmit}  className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md">

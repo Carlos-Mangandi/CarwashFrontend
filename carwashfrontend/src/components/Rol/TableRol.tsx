@@ -65,8 +65,8 @@ export default function TableRol() {
                             <td className="px-6 py-4">
                               <div className="flex items-center justify-center space-x-5">
                                 <UpdateRol
-                                  rolId={rol.id}
-                                  rolNameUpdate={rol.type}
+                                  id={rol.id}
+                                  nameRol={rol.type}
                                 ></UpdateRol>
                                 <button
                                   onClick={() => handleDelete(rol.id, rol.type)}
