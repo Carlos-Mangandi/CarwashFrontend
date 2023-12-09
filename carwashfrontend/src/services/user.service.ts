@@ -30,12 +30,12 @@ export const create_user = async (user: ICreateUser) => {
 export const update_user = async (id: number, user: IUpdateUser) => {
     const {data} = await axios.put<{ok: boolean, msg: string}>(
         API_URL + '/user/' + id, {user,},
-        {
-            headers: 
-            {
-                Authorization: "Bearer "  + GetToken()
-            } 
-        }
+        // {
+        //     headers: 
+        //     {
+        //         Authorization: "Bearer "  + GetToken()
+        //     } 
+        // }
     );
     return data;
 }

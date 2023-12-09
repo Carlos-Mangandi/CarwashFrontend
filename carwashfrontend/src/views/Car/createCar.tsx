@@ -34,9 +34,7 @@ const CreateCar = () => {
     setOpenModal(false);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setCar({
       ...car,
@@ -45,7 +43,7 @@ const CreateCar = () => {
   };
 
   const handleSubmit = async () => {
-    if (car.brandId || car.modelId || !car.color || !car.serialnumber) {
+    if (!car.brandId || !car.modelId || !car.color || !car.serialnumber) {
       alert("error");
       return;
     }
@@ -68,7 +66,7 @@ const CreateCar = () => {
           <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
             <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
               <div className="bg-white w-96 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-medium mb-4 text-center">Nuevo Cliente</h3>
+                <h3 className="text-lg font-medium mb-4 text-center">Nuevo Carro</h3>
                 <form>
                   <div className="mb-3">
                   <select name="brandId"
@@ -85,7 +83,7 @@ const CreateCar = () => {
                       </option>
                     ))}
                   </select>
-                  <select name="modeldId"
+                  <select name="modelId"
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4"
                     value={car.modelId}
                     onChange={(e) => handleInputChange(e)}

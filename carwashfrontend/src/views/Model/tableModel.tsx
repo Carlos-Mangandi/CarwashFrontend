@@ -12,6 +12,7 @@ function TableModel() {
     modelName: string;
   } | null>(null);
 
+  
   useEffect(() => {
     OnGetModels();
   }, []);
@@ -29,12 +30,25 @@ function TableModel() {
   const cancelDelete = () => {
     setModelDelete(null);
   };
+  
+  // const search = () =>{
+  //   OnGetModels()
+  // }
   return (
     <>
       <Layout>
         <>
           <div className="p-10 w-full">
             <CreateModel></CreateModel>
+            {/* <div className="flex justify-start p-5">
+              <p>Buscar</p>
+              <input placeholder="Buscar"
+                type="text"
+                onChange={(e) =>{
+                  search(e.target.value)
+                }}/>
+
+            </div> */}
             <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black table-auto">
               <thead className="text-xs text-black uppercase bg-blue-500  dark:text-white">
                 <tr>

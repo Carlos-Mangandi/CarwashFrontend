@@ -28,13 +28,23 @@ export const create_brand = async (type: string) => {
 export const update_brand = async (type: IGetBrands) => {
   const { data } = await axios.put<{ ok: boolean; msg: string }>(
     API_URL + "/brand/" + type.id,
-    type
+    type,
+    {
+      headers: {
+          Authorization: "Bearer "  + GetToken()
+      } 
+    }
   );
   return data;
 };
 export const delete_brand = async (id: number) => {
   const { data } = await axios.delete<{ ok: boolean; msg: string }>(
     API_URL + "/brand/" + id,
+    {
+      headers: {
+          Authorization: "Bearer "  + GetToken()
+      } 
+    }
   );
   return data;
 };

@@ -3,7 +3,6 @@ import useUserStore from '../../store/user.store'
 import useRolStore from '../../store/rol.store'
 import { FaRegEdit } from "react-icons/fa";
 
-
 const UpdateUser = ({ id, nameUser, emailUser, newRolId}: {id: number, nameUser:string, emailUser:string, newRolId: number}) => {
     const {roles, OnGetRoles} = useRolStore();
     const {OnUpdateUser} = useUserStore();
@@ -29,9 +28,13 @@ const UpdateUser = ({ id, nameUser, emailUser, newRolId}: {id: number, nameUser:
         setNewPassword('');
     }
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChangeE = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     };
+
+    const handleInputChangeN = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+    }
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setRol(Number(e.target.value));
     };
@@ -70,7 +73,7 @@ const UpdateUser = ({ id, nameUser, emailUser, newRolId}: {id: number, nameUser:
                                 name="nombre"
                                 placeholder="enter name"
                                 value={name}
-                                onChange={handleInputChange}
+                                onChange={handleInputChangeN}
                                 className="w-full h-10 p-4 border rounded-xl"
                             />
                             </div>
@@ -81,7 +84,7 @@ const UpdateUser = ({ id, nameUser, emailUser, newRolId}: {id: number, nameUser:
                                 name="email"
                                 placeholder="email"
                                 value={email}
-                                onChange={handleInputChange}
+                                onChange={handleInputChangeE}
                                 className="w-full h-10 p-4 border rounded-xl"
                             />
                             </div>

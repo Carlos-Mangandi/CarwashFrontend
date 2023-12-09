@@ -9,6 +9,7 @@ export default function TableRol() {
   const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
   const { OnGetRoles, OnDeleteRol, roles, totalRoles, limit } = useRolesStore();
   const [page, setPage] = useState(1);
+
   useEffect(() => {
     OnGetRoles();
   }, [page]);
@@ -110,7 +111,7 @@ export default function TableRol() {
             </div>
           )}
 
-          <div className="mt-4 flex justify-center">
+          {/* <div className="mt-4 flex justify-center">
             {Array.from(
               { length: Math.ceil(totalRoles / limit) },
               (_, index) => (
@@ -125,6 +126,35 @@ export default function TableRol() {
                 </button>
               )
             )}
+          </div> */}
+          <div className="bg-white p-4 flex items-center justify-center">
+            <button
+              onClick={() => handlePage(page - 1)}
+              className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white rounded-l-lg focus:shadow-outline hover:bg-green-100"
+              disabled={page === 1}
+            >
+              Prev
+            </button>
+            {Array.from(
+              { length: Math.ceil(totalRoles / limit) },
+              (_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePage(index + 1)}
+                className={`mx-2 ${
+                  index + 1 === page ? "bg-blue-500" : "bg-gray-300"
+                } text-black font-bold py-2 px-4 rounded-full focus:outline-none`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePage(page + 1)}
+              className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white rounded-r-lg focus:shadow-outline hover:bg-green-100"
+              disabled={page === totalRoles}
+            >
+              Next
+            </button>
           </div>
         </>
       </Layout>
