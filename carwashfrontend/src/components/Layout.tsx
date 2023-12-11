@@ -1,34 +1,48 @@
-import React, { useState, ReactElement } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, ReactElement, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import { HiMenuAlt3 } from "react-icons/hi";
-// import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard } from "react-icons/md";
 import { RiCarWashingFill} from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser} from "react-icons/ai";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaCarSide } from "react-icons/fa";
 import { IoIosPerson, IoLogoModelS } from "react-icons/io";
-import { PiSignOutBold } from "react-icons/pi";
+import { isAuthenticated } from "../utils/authData";
+import AuthComponent from "../store/auth.store";
+
+interface MenuItem {
+  name: string;
+  link: string;
+  icon: React.ElementType;
+  margin?: boolean;
+  requiresAuth?: boolean;
+}
 
 interface Props {
   children: ReactElement;
 }
 
 const Home = (props: Props) => {
-  const menus = [
-    // { name: "Home", link: "/", icon: MdOutlineDashboard },
-    { name: "User", link: "/user", icon: AiOutlineUser },
-    { name: "Rol", link: "/rol", icon: FiMessageSquare },
-    { name: "Brand", link: "/brand", icon: TbReportAnalytics, margin: true },
-    { name: "Car", link: "/car", icon: FaCarSide },
-    { name: "CarWash", link: "/carWash", icon: RiCarWashingFill },
-    { name: "Client", link: "/client", icon: IoIosPerson, margin: true },
-    { name: "Model", link: "/model", icon: IoLogoModelS },
-    {name: "Sign Out", link: "/signOut", icon: PiSignOutBold},
+  const menus: MenuItem[] = [
+    { name: "Home", link: "/", icon: MdOutlineDashboard, requiresAuth: true },
+    { name: "User", link: "/user", icon: AiOutlineUser, requiresAuth: true },
+    { name: "Rol", link: "/rol", icon: FiMessageSquare, requiresAuth: true },
+    { name: "Brand", link: "/brand", icon: TbReportAnalytics, margin: true, requiresAuth: true },
+    { name: "Car", link: "/car", icon: FaCarSide, requiresAuth: true },
+    { name: "CarWash", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },
+    { name: "Client", link: "/client", icon: IoIosPerson, margin: true, requiresAuth: true },
+    { name: "Model", link: "/model", icon: IoLogoModelS, requiresAuth: true },
   ];
 
   const [open, setOpen] = useState(true);
+  const location = useLocation();
+  const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+  useEffect(() => {
+    setAuthenticated(isAuthenticated());
+  }, [location]);
 
   return (
     <section className="flex gap-6 w-screen h-screen">
@@ -52,34 +66,39 @@ const Home = (props: Props) => {
           />
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
-          {menus?.map((menu, i) => (
-            <Link
-              to={menu?.link}
-              key={i}
-              className={` ${
-                menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
-            >
-              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
-              <h2
-                style={{
-                  transitionDelay: `${i + 3}00ms`,
-                }}
-                className={`whitespace-pre duration-500 ${
-                  !open && "opacity-0 translate-x-28 overflow-hidden"
-                }`}
+          {menus
+            .filter(menu => !menu.requiresAuth || authenticated)
+            .map((menu, i) => (
+              <Link
+                to={menu.link}
+                key={i}
+                className={` ${
+                  menu.margin && "mt-5"
+                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
               >
-                {menu?.name}
-              </h2>
-              <h2
-                className={`${
-                  open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
-              >
-                {menu?.name}
-              </h2>
-            </Link>
-          ))}
+                <div>{React.createElement(menu.icon, { size: "20" })}</div>
+                <h2
+                  style={{
+                    transitionDelay: `${i + 3}00ms`,
+                  }}
+                  className={`whitespace-pre duration-500 ${
+                    !open && "opacity-0 translate-x-28 overflow-hidden"
+                  }`}
+                >
+                  {menu.name}
+                </h2>
+                <h2
+                  className={`${
+                    open && "hidden"
+                  } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+                >
+                  {menu.name}
+                </h2>
+              </Link>
+            ))}
+            <div>
+              <AuthComponent></AuthComponent>
+            </div>
         </div>
       </div>
 
@@ -93,5 +112,6 @@ const Home = (props: Props) => {
     </section>
   );
 };
+
 
 export default Home;

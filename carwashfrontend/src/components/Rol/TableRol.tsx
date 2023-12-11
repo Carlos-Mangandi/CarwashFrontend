@@ -4,16 +4,23 @@ import UpdateRol from "./UpdateRol";
 import Layout from "../Layout";
 import { useRolesStore } from "../../store/rol.store";
 import { FaTrash } from "react-icons/fa";
+import { isAuthenticated } from "../../utils/authData";
+import { useNavigate } from "react-router-dom";
 
 export default function TableRol() {
   const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
   const { OnGetRoles, OnDeleteRol, roles, totalRoles, limit } = useRolesStore();
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    OnGetRoles();
-  }, [page]);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate("/");
+    } else {
+      OnGetRoles();
+    }
+  }, [page, navigate]);
   const handleDelete = (id: number, rolName: string) => {
     setRolDelete({ id, rolName });
   };
