@@ -48,14 +48,7 @@ export async function MakeLogin(data_send: GetLoginData) {
 function AuthComponent() {
   function MakeLogout() {
     DeleteToken();
-    Swal.fire({
-      icon: "info",
-      title: "Cierre de sesión",
-      text: "¡Ha cerrado sesión correctamente!",
-      showConfirmButton: false,
-      timer: 2000,
-      
-    });
+    
     window.location.href = "/login";
   }
 
