@@ -6,7 +6,14 @@ export default function Home(){
         <>
             <Layout>
                 <>
-                    <p>Hola Bienvenido al sistema de Carwash</p>
+                    <div className=" p-10 w-full">            
+                                
+                        <div className="flex flex-col">
+                            <div className="w-full">
+                                <p>Hola Bienvenido al sistema de Carwash</p>
+                            </div>
+                        </div>
+                    </div>
                 </>
             </Layout>
         </>

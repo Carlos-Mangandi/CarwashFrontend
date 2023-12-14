@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MakeLogin } from "../../store/auth.store";
-import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -8,14 +9,7 @@ function Login() {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "El email y la contraseña son requeridos",
-        customClass: {
-          container: "responsive-alert-container",
-        },
-      });
+      toast.error("El email y la contraseña son requeridos");
       return;
     }
 
@@ -27,16 +21,9 @@ function Login() {
     const loginSuccessful = await MakeLogin(data_send);
 
     if (loginSuccessful) {
-      return {};
+      toast.success("Inicio de sesión exitoso");
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Email o contraseña es incorrecta",
-        customClass: {
-          container: "responsive-alert-container",
-        },
-      });
+      toast.error("Email o contraseña incorrecta");
     }
   };
 
@@ -77,7 +64,7 @@ function Login() {
 
         <div className="text-center md:text-left flex justify-center mt-3">
           <button
-            type="submit"
+            type="button"
             onClick={handleLogin}
             className="px-6 py-3.5 text-base font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
@@ -85,6 +72,8 @@ function Login() {
           </button>
         </div>
       </div>
+
+      <ToastContainer />
     </section>
   );
 }
