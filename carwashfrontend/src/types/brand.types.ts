@@ -4,7 +4,7 @@ export interface IGetBrands {
     state: boolean
   }
   export interface BrandState{
-    brand: IGetBrands[]
+    brands: IGetBrands[]
     OnGetBrands: ()=> Promise<void>
     OnCreateBrand: (type:string)=>Promise<void>
     OnUpdateBrand: (type: IGetBrands)=>Promise<void> 

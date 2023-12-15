@@ -5,6 +5,8 @@ import useRolStore from "../../store/rol.store";
 import { FaPlus } from "react-icons/fa";
 import { BsSave2Fill } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateUser = () => {
   const { roles, OnGetRoles } = useRolStore();
@@ -30,9 +32,7 @@ const CreateUser = () => {
     setOpenModal(false);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -42,7 +42,7 @@ const CreateUser = () => {
 
   const handleSubmit = async () => {
     if (!user.name || !user.email || !user.password || user.rolId === 0) {
-      alert("error");
+      toast.error("Todos los campos son requeridos");
       return;
     }
 
@@ -64,7 +64,7 @@ const CreateUser = () => {
           <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
             <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
               <div className="bg-white w-96 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-medium mb-4 text-center">Add User</h3>
+                <h3 className="text-lg font-medium mb-4 text-center">Crear Usuario</h3>
                 <form>
                   <div className="mb-4">
                   <input
@@ -91,7 +91,7 @@ const CreateUser = () => {
                     onChange={handleInputChange}
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4"
                   />
-                  <p className="justify-center">Select rol</p>
+                  <p className="justify-center">Seleccionar un rol</p>
                   <select name="rolId"
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4"
                     value={user.rolId}
@@ -108,10 +108,10 @@ const CreateUser = () => {
                   </select>
                 </div>
                   <div className="flex justify-center">
-                    <button onClick={handleSubmit} className="px- py-2 text-blue-600">
+                    <button onClick={handleSubmit} type="button" className="px- py-2 text-blue-600  rounded-full">
                       <BsSave2Fill size={40} />
                     </button>
-                    <button onClick={closeModal} type="button" className="px-4 py-2 text-red-800">
+                    <button onClick={closeModal} type="button" className="px-4 py-2 text-red-600 h rounded-full">
                       <MdCancel size={50} />
                     </button>
                   </div>
@@ -121,7 +121,9 @@ const CreateUser = () => {
           </div>
         )}
       </div>
+      <ToastContainer/>
     </>
+    
   );
 };
 

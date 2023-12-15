@@ -64,63 +64,66 @@ const UpdateUser = ({ id, nameUser, emailUser, newRolId}: {id: number, nameUser:
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                     <div className="bg-white rounded-lg shadow-lg p-6 w-96"> 
                         <span onClick={closeModal}></span>
-                        <h3 className="text-xl font-semibold mb-4">Edit User</h3>
+                        <h3 className="text-xl font-semibold mb-4">Actualizar</h3>
                         <form className="space-y-4"> 
                             <div>
-                            <input
-                                type="text"
-                                id="name"
-                                name="nombre"
-                                placeholder="enter name"
-                                value={name}
-                                onChange={handleInputChangeN}
-                                className="w-full h-10 p-4 border rounded-xl"
-                            />
+                                <label htmlFor="user" className="block font-semibold text-start mb-2">User</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="nombre"
+                                    placeholder="enter name"
+                                    value={name}
+                                    onChange={handleInputChangeN}
+                                    className="w-full h-10 p-4 border rounded-xl"
+                                />
                             </div>
                             <div>
-                            <input
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={email}
-                                onChange={handleInputChangeE}
-                                className="w-full h-10 p-4 border rounded-xl"
-                            />
+                                <label htmlFor="email" className='block font-semibold text-start mb-2'>Email</label>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={email}
+                                    onChange={handleInputChangeE}
+                                    className="w-full h-10 p-4 border rounded-xl"
+                                />
                             </div>
                             <div>
-                            <label htmlFor="rolId" className="block font-semibold mb-2">Select a Rol:</label>
-                            <select
-                                id="rolId"
-                                name="rolId"
-                                onChange={(e) => handleSelectChange(e)}
-                                value={rol}
-                                className="w-full border-gray-300 rounded-lg px-3 py-2 mb-4"
-                            >
-                                <option value="" disabled>
-                                Select a rol
-                                </option>
-                                {roles.map((rol) => (
-                                <option key={rol.id} value={rol.id}>
-                                    {rol.type}
-                                </option>
-                                ))}
-                            </select>
+                                <label htmlFor="rolId" className="block font-semibold mb-2">Selecciona un Rol:</label>
+                                <select
+                                    id="rolId"
+                                    name="rolId"
+                                    onChange={(e) => handleSelectChange(e)}
+                                    value={rol}
+                                    className="w-full border-gray-300 rounded-lg px-3 py-2 mb-4"
+                                >
+                                    <option value="" disabled>
+                                    Selecciona un rol
+                                    </option>
+                                    {roles.map((rol) => (
+                                    <option key={rol.id} value={rol.id}>
+                                        {rol.type}
+                                    </option>
+                                    ))}
+                                </select>
                             </div>
-                            <div className="flex justify-end">
-                            <button
-                                onClick={handleSubmit}
-                                className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"
-                            >
-                                Save
-                            </button>
-                            <button
-                                onClick={closeModal}
-                                type="button"
-                                className="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md ml-2"
-                            >
-                                Cancel
-                            </button>
+                            <div className="flex justify-center">
+                                <button
+                                    onClick={handleSubmit}
+                                    className="bg-green-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
+                                    // className="px-4 py-2 text-white bg-green-600 text-sm font-medium rounded-md"
+                                >
+                                    Si
+                                </button>&nbsp;&nbsp;
+                                <button
+                                    onClick={closeModal}
+                                    type="button"
+                                    className="bg-red-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
+                                >
+                                    No
+                                </button>
                             </div>
                         </form>
                     </div>

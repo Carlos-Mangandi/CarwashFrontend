@@ -6,7 +6,7 @@ import { FaTrash } from "react-icons/fa";
 import useBrandStore from "../../store/brand.store";
 
 function TableBrand() {
-  const { brand, OnGetBrands, OnDeleteBrand } = useBrandStore();
+  const { brands, OnGetBrands, OnDeleteBrand } = useBrandStore();
   const [brandDelete, setBrandDelete] = useState<{
     id: number;
     brandName: string;
@@ -50,17 +50,17 @@ function TableBrand() {
                 </tr>
               </thead>
               <tbody>
-                {brand.map((brand) => (
-                  <tr className="bg-white" key={brand.id}>
-                    <td className="px-6 py-4">{brand.id}</td>
-                    <td className="px-6 py-4">{brand.type}</td>
+                {brands.map((brands) => (
+                  <tr className="bg-white" key={brands.id}>
+                    <td className="px-6 py-4">{brands.id}</td>
+                    <td className="px-6 py-4">{brands.type}</td>
                     <td className="px-4 py-2 flex items-center justify-around">
                       <UpdateBrand
-                        brandId={brand.id}
-                        brandNameUpdate={brand.type}
+                        brandId={brands.id}
+                        brandNameUpdate={brands.type}
                       ></UpdateBrand>
                       <button
-                        onClick={() => handleDelete(brand.id, brand.type)}
+                        onClick={() => handleDelete(brands.id, brands.type)}
                         className="text-red-500 bg-white"
                       >
                         <FaTrash size={22}></FaTrash>

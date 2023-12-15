@@ -50,6 +50,7 @@ function Login() {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={(e) => e.key === "Enter" && handleLogin()}
           placeholder="email"
         />
 
@@ -59,6 +60,7 @@ function Login() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={(e) => e.key === "Enter" && handleLogin()}
           placeholder="password"
         />
 

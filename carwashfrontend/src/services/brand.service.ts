@@ -15,7 +15,8 @@ export const get_brands = async () => {
   return data;
 };
 export const create_brand = async (type: string) => {
-  const { data } = await axios.post<BasicResponse>(API_URL + "/brand", {type,},
+  const { data } = await axios.post<BasicResponse>(
+    API_URL + "/brand", {type,},
     {
       headers: {
         Authorization: "Bearer " + GetToken()

@@ -84,19 +84,19 @@ export default function TableUsers(){
                         {userDelete && (
                             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                                 <div className="bg-white p-4 rounded-lg shadow-lg">
-                                    <p>Are you sure you want to delete the role "{userDelete.userEmail}"?</p>
+                                    <p>¿Estás seguro de que desea eliminar a "{userDelete.userEmail}"?</p>
                                     <div className="mt-4 flex justify-center">
                                         <button
                                             onClick={confirmDelete}
-                                            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
+                                            className="bg-green-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
                                         >
-                                            Delete
+                                            Si
                                         </button>
                                         <button
                                             onClick={cancelDelete}
-                                            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full ml-4"
+                                            className="bg-red-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full ml-4"
                                         >
-                                            Cancel
+                                            No
                                         </button>
                                     </div>
                                 </div>
