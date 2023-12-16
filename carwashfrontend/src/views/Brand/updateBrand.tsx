@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useBrandStore from "../../store/brand.store";
-import { FaRegEdit } from "react-icons/fa";
+import { FaMarker } from "react-icons/fa6";
 
 const UpdateBrand = ({
   brandId,
@@ -36,9 +36,9 @@ const UpdateBrand = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white"
+        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-2xl"
       >
-        <FaRegEdit size={22}></FaRegEdit>
+        <FaMarker size={22}></FaMarker>
       </button>
 
       {showModal && (

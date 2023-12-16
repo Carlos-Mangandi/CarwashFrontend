@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useModelStore from "../../store/model.store";
-import { FaRegEdit } from "react-icons/fa";
+import { FaMarker } from "react-icons/fa6";
 
 const UpdateModel = ({
   modelId,
@@ -40,9 +40,9 @@ const UpdateModel = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white"
+        className="flex justify-center py-2 px-2 text-green-600 border border-green-500 rounded-2xl"
       >
-        <FaRegEdit size={22}></FaRegEdit>
+        <FaMarker size={22}></FaMarker>
       </button>
 
       {showModal && (

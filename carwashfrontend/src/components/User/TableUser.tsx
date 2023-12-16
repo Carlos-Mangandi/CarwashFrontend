@@ -47,7 +47,7 @@ export default function TableUsers(){
                                     <div className="flex justify-center p-8">
                                         <table className="min-w-full">
                                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                            <tr className="bg-gray-800 text-white">
+                                            <tr className="bg-[#0e0e0e] text-white">
                                                 <th className="py-2 px-4">Id</th>
                                                 <th className="py-2 px-4">Name</th>
                                                 <th className="py-2 px-4">Email</th>

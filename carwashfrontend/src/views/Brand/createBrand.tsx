@@ -32,7 +32,7 @@ export default function CreateBrand() {
     <div className=" p-2  opacity-100">
       <button
         onClick={openModal}
-        className="flex justify-center m-5  py-4 px-4   rounded-full bg-blue-500 text-white"
+        className="flex justify-center m-5  py-4 px-4   rounded-full bg-green-500 text-white"
       >
         <FaPlus></FaPlus>
       </button>
@@ -62,7 +62,7 @@ export default function CreateBrand() {
               <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
-                  className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"
+                  className="px-4 py-2 text-white bg-blue-600 text-sm font-medium rounded-md"
                 >
                   <BsSave2Fill /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <span>Guardar</span>
@@ -71,7 +71,7 @@ export default function CreateBrand() {
                 <button
                   onClick={closeModal}
                   type="button"
-                  className="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md ml-2"
+                  className="px-4 py-2 bg-red-600 text-white   text-sm font-medium rounded-md ml-2"
                 >
                   <MdCancel /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <span>Cancelar</span>

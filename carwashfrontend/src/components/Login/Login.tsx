@@ -28,55 +28,57 @@ function Login() {
   };
 
   return (
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-      <div className="md:w-1/3 max-w-sm">
-        <img
-          src="https://image.shutterstock.com/image-vector/cartoon-car-wash-logo-perfect-260nw-1689808834.jpg"
-          alt="Sample image"
-        />
-      </div>
-
-      <div className="md:w-1/3 max-w-sm">
-        <div className="text-center md:text-left"></div>
-        <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-          <p className="mx-4 mb-0 text-center font-semibold text-slate-500">
-            Login
+    <div
+    className="text-white h-[100vh] flex items-center justify-center bg-cover"
+    style={{ backgroundImage: "url(../src/assets/Carwash.jpg)" }}
+  >
+    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my- ">
+        <div className="bg-trasnparent rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-30 relative">
+        <p className="mx-4 mb-0 text-center font-bold text-white">
+            Iniciar Sesión
           </p>
-        </div>
+        <form action="">
+          <div className="relative my-4">
+        
+            <input
+              className="block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-black focus:outline-none focus:ring-0 focus:text-white focus:border-black peer placeholder:text-white font-bold "
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Usuario"
+            />
 
-        <input
-          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleLogin()}
-          placeholder="email"
-        />
+          </div>
+          <div className="relative my-4">
+            <input
+              className="block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-black focus:outline-none focus:ring-0 focus:text-white focus:border-black peer placeholder:text-white font-bold"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Contraseña"
+              
+            />
 
-        <input
-          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleLogin()}
-          placeholder="password"
-        />
+          </div>
+          
+        </form>
 
         <div className="text-center md:text-left flex justify-center mt-3">
           <button
             type="button"
             onClick={handleLogin}
-            className="px-6 py-3.5 text-base font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="px-6 py-3.5 text-base font-medium text-black inline-flex items-center bg-white hover:bg-white focus:ring-4  focus:ring-black rounded-lg text-center dark:bg-white dark:hover:bg-white dark:focus:ring-white"
           >
-            Submit
+            Acceder
           </button>
         </div>
       </div>
-
+      
       <ToastContainer />
     </section>
+  </div>
   );
 }
 

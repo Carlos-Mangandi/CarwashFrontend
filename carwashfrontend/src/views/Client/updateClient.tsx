@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useClientStore from "../../store/client.store";
 import useCarStore from "../../store/car.store";
-import { FaRegEdit } from "react-icons/fa";
+import { FaMarker } from "react-icons/fa6";
 
 const UpdateClient = ({
   id,
@@ -14,15 +14,15 @@ const UpdateClient = ({
   phoneClient: string;
   newCarId: number;
 }) => {
-  const { car, OnGetCar } = useCarStore();
+  const { cars, OnGetCar } = useCarStore();
   const { OnUpdateClient } = useClientStore();
   const [name, setName] = useState(nameClient);
   const [phone, setPhone] = useState(phoneClient);
-  const [cars, setCar] = useState(newCarId);
+  const [car, setCar] = useState(newCarId);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetCar();
+    OnGetCar('');
   }, []);
 
   const openModal = () => {
@@ -39,6 +39,11 @@ const UpdateClient = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
+  const handleInputChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+  };
+
+
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCar(Number(e.target.value));
   };
@@ -49,7 +54,7 @@ const UpdateClient = ({
         id: id,
         name: name,
         phone: phone,
-        carId: cars,
+        carId: car,
       };
 
       await OnUpdateClient(id, updateclient);
@@ -60,9 +65,9 @@ const UpdateClient = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white"
+        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-2xl"
       >
-        <FaRegEdit size={22}></FaRegEdit>
+        <FaMarker size={22}></FaMarker>
       </button>
 
       {isOpenModal && (
@@ -80,7 +85,7 @@ const UpdateClient = ({
                   id="name"
                   name="name"
                   placeholder="Nombre"
-                  value={nameClient}
+                  value={name}
                   onChange={handleInputChange}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
@@ -92,8 +97,8 @@ const UpdateClient = ({
                   id="phone"
                   name="phone"
                   placeholder="Telefono"
-                  value={phoneClient}
-                  onChange={handleInputChange}
+                  value={phone}
+                  onChange={handleInputChangePhone}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
                 <label htmlFor="carId" className="block font-semibold mb-2">
@@ -103,11 +108,11 @@ const UpdateClient = ({
                   id="carId"
                   name="carId"
                   onChange={handleSelectChange}
-                  value={cars}
+                  value={car}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 >
-                  <option value="">Seleccione un Carro</option>
-                  {car.map((car) => (
+                  <option value="" disabled>Seleccione un Carro</option>
+                  {cars.map((car) => (
                     <option key={car.id} value={car.id}>
                       {car.serialnumber}
                     </option>
@@ -124,7 +129,7 @@ const UpdateClient = ({
                 <button
                   onClick={closeModal}
                   type="button"
-                  className="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md ml-2"
+                  className="px-4 py-2 bg-red-600 text-black text-sm font-medium rounded-md ml-2"
                 >
                   Cancelar
                 </button>

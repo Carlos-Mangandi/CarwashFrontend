@@ -51,7 +51,7 @@ export default function TableRol() {
                 <div className="border-b border-gray-200 shadow">
                   <CreateRol></CreateRol>
                   <table className="w-full p-2 text-sm text-center rtl:text-right text-gray-500 dark:text-black">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-xs text-white uppercase  bg-[#0e0e0e] dark:text-white">
                       <tr>
                         <th scope="col" className="px-6 py-3">
                           Id

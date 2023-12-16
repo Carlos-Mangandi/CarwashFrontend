@@ -14,19 +14,19 @@ export interface IGetClients {
   }
 }
 export interface ICreateClient{
-  name: string,
-  phone: string,
-  carId: number
+  name: string;
+  phone: string;
+  carId: number;
 }
 export interface IUpdateClient{
-  id:number,
-  name:string,
-  phone:string,
-  carId: number
+  id:number;
+  name:string;
+  phone:string;
+  carId: number;
 }
 export interface ClientState{
   client: IGetClients[];
-  OnGetClient: () => Promise<void>;
+  OnGetClient: (name:string) => Promise<void>;
   OnCreateClient: (client: ICreateClient) => Promise<void>;
   OnUpdateClient: (id: number, client: IUpdateClient) => Promise<void>;
   OnDeleteClient: (id: number) => Promise<void>;

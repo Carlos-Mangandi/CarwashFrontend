@@ -3,32 +3,24 @@ import { create_brand, get_brands, update_brand, delete_brand } from "../service
 import { BrandState} from "../types/brand.types";
 import { create } from "zustand";
 
- const useBrandStore = create<BrandState>((set, get) => ({
+const useBrandStore = create<BrandState>((set, get) => ({
   brands: [],
-  async OnGetBrands() {
-    try{
-      const data = await get_brands();
-      set({
+   OnGetBrands : async(name="")=>{
+    const data = await get_brands(name);
+    if (data.brand) {
+      set((state) => ({
+        ...state,
         brands: data.brand,
-      })
+        
+      }));
+    } else {
+      data.brand = [];
     }
-    catch (error){
-      console.log("error")
-    }
-    // const data = await get_brands();
-    // if (data.brand) {
-    //   set((state) => ({
-    //     ...state,
-    //     brand: data.brand,
-    //   }));
-    // } else {
-    //   data.brand = [];
-    // }
   },
-  async OnCreateBrand(type: string) {
+   OnCreateBrand: async(type:string)=> {
     const data = await create_brand(type);
     if (data.ok) {
-      get().OnGetBrands();
+      get().OnGetBrands('');
     }
     
   },
@@ -36,15 +28,16 @@ import { create } from "zustand";
   async OnUpdateBrand(type: IGetBrands) {
     const data = await update_brand(type);
     if (data.ok) {
-      get().OnGetBrands();
+      get().OnGetBrands('');
     } 
   },
   async OnDeleteBrand(id: number) {
     const data = await delete_brand(id);
     if (data.ok) {
-      get().OnGetBrands();
+      get().OnGetBrands('');
     }
   },
+  
 })
 )
 export default useBrandStore

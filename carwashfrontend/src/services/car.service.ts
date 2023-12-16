@@ -4,9 +4,9 @@ import { API_URL } from '../utils/constants';
 import { GetToken } from '../utils/authData';
 
 
-export const get_car = async () => {
+export const get_car = async (color="") => {
     const { data } = await axios.get<{ car: IGetCars[] }>(
-      API_URL + "/car",
+      `${API_URL}/car?color=${color}`,
       {
         headers: {
             Authorization: "Bearer "  + GetToken()

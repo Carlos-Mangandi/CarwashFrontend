@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useCarStore from "../../store/car.store";
 import useBrandStore from "../../store/brand.store";
 import useModelStore from "../../store/model.store";
-import { FaRegEdit } from "react-icons/fa";
+import { FaMarker } from "react-icons/fa6";
 
 const UpdateCar = ({
   id,
@@ -17,20 +17,21 @@ const UpdateCar = ({
   color: string;
   serialNumber: string;
 }) => {
-  const { brand, OnGetBrands } = useBrandStore();
-  const { model, OnGetModels } = useModelStore();
+  const { brands, OnGetBrands } = useBrandStore();
+  const { models, OnGetModels } = useModelStore();
   const { OnUpdateCar } = useCarStore();
   const [serialnumber, setSerialNumber] = useState(serialNumber);
-  const [brands, setBrand] = useState(newBrandId);
-  const [models, setModel] = useState(newModelId);
+  const [colors, setColors]= useState(color);
+  const [brand, setBrand] = useState(newBrandId);
+  const [model, setModel] = useState(newModelId);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetBrands();
+    OnGetBrands('');
+    OnGetModels('');
+
   }, []);
-  React.useEffect(() => {
-    OnGetModels();
-  }, []);
+ 
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -46,8 +47,13 @@ const UpdateCar = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSerialNumber(e.target.value);
   };
+  const handleInputChangeC = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setColors(e.target.value)
+  };
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setBrand(Number(e.target.value));
+  };
+  const handleSelectChangeM = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setModel(Number(e.target.value));
   };
 
@@ -55,13 +61,13 @@ const UpdateCar = ({
     if (serialnumber.trim() !== "") {
       const updateCar = {
         id: id,
-        brandId: brands,
-        modelId: models,
+        brandId: brand,
+        modelId: model,
         color: color,
         serialnumber: serialnumber,
       };
 
-      await OnUpdateCar(id, updateCar);
+      await OnUpdateCar(id,updateCar);
       closeModal();
     }
   };
@@ -69,9 +75,9 @@ const UpdateCar = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-1 px-1 text-green-600 bg-white"
+        className="flex justify-center py-1 px-1 text-green-600 bg-white border border-green-500 rounded-2xl"
       >
-        <FaRegEdit size={22}></FaRegEdit>
+        <FaMarker size={26}></FaMarker>
       </button>
 
       {isOpenModal && (
@@ -81,61 +87,50 @@ const UpdateCar = ({
             <h3 className="text-xl font-semibold mb-4">Actualizar Carro</h3>
             <form>
               <div className="mb-4">
-                <label htmlFor="email" className="block font-semibold mb-2">
-                  Marca
-                </label>
-
                 <select
                   id="brandId"
                   name="brandId"
                   onChange={handleSelectChange}
-                  value={brands}
+                  value={brand}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 >
                   <option value="" disabled>
                     Seleccione una Marca
                   </option>
-                  {brand.map((brands) => (
-                    <option key={brands.id} value={brands.id}>
-                      {brands.type}
+                  {brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>
+                      {brand.type}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="email" className="block font-semibold mb-2">
-                  Modelo
-                </label>
-
+                <div className="mb-4">
                 <select
                   id="modelId"
                   name="modelId"
-                  onChange={handleSelectChange}
-                  value={models}
+                  onChange={handleSelectChangeM}
+                  value={model}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 >
                   <option value="" disabled>
                     Seleccione un Modelo
                   </option>
-                  {model.map((models) => (
-                    <option key={models.id} value={models.id}>
-                      {models.typemodel}
+                  {models.map((model) => (
+                    <option key={model.id} value={model.id}>
+                      {model.typemodel}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="email" className="block font-semibold mb-2">
-                  Color
-                </label>
+                </div>
                 <input
                   type="text"
                   id="color"
                   name="color"
                   placeholder="Color de Carro"
-                  value={color}
-                  onChange={handleInputChange}
+                  value={colors}
+                  onChange={handleInputChangeC}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 />
-                <label htmlFor="email" className="block font-semibold mb-2">
-                  Numero de Serie
-                </label>
+                <div className="mb-5">
                 <input
                   type="text"
                   id="serialnumber"
@@ -145,6 +140,7 @@ const UpdateCar = ({
                   onChange={handleInputChange}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 />
+                </div>
               </div>
               <div className="flex justify-end">
                 <button

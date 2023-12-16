@@ -3,7 +3,9 @@ import useCarStore from "../../store/car.store";
 import Layout from "../../components/Layout";
 import CreateCar from "./createCar";
 import UpdateCar from "./updateCar";
-import { FaTrash } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { AiOutlineZoomIn } from "react-icons/ai";
+
 
 export default function TableCar(){
   const [carDelete,SetCarDelete]= useState<{
@@ -12,7 +14,7 @@ export default function TableCar(){
   const { OnGetCar, OnDeleteCar, cars } = useCarStore();
 
   useEffect(() => {
-    OnGetCar();
+    OnGetCar('');
   }, []);
 
   const handleDelete = (id: number, colorCar: string) => {
@@ -34,6 +36,10 @@ export default function TableCar(){
   const cancelDelete = () => {
     SetCarDelete(null);
   };
+  const handleSearch = (color="")=>{
+    OnGetCar(color)
+  }
+
 
   return (
     <>
@@ -41,10 +47,20 @@ export default function TableCar(){
         <>
           <div className=" p-10 w-full">
                 <CreateCar />
-                <div className="flex justify-center p-8">
+                <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+            <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
+          <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+            type="text"
+            placeholder="Buscar...."
+            onChange={(e)=>{
+              handleSearch(e.target.value)
+            }}
+            />
+            </div>
+                <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
                   <table className="min-w-full">
                     <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
-                      <tr className="dark:bg-blue-500 text-white">
+                      <tr className="bg-[#0e0e0e] text-white">
                         <th className="py-2 px-4">Id</th>
                         <th className="py-2 px-4">Marca</th>
                         <th className="py-2 px-4">Modelo</th>
@@ -54,9 +70,9 @@ export default function TableCar(){
                       </tr>
                     </thead>
                     <tbody>
-                      {cars.map((car) => (
-                          <tr key={car.id}>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                      {cars&&cars.map((car) => (
+                          <tr className="bg-white" key={car.id}>
+                            <td className="py-2 px-4  text-center">
                               {car.id}
                             </td>
                             <td className="py-2 px-4 whitespace-nowrap text-center">
@@ -71,7 +87,7 @@ export default function TableCar(){
                             <td className="py-2 px-4 whitespace-nowrap text-center">
                               {car.serialnumber}
                             </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                            <td className="px-4 py-2 flex items-center justify-around">
                               <div className="flex items-center justify-center space-x-2">
                                 <UpdateCar
                                   id={car.id}
@@ -84,9 +100,9 @@ export default function TableCar(){
                                   onClick={() =>
                                     handleDelete(car.id, car.brand.type)
                                   }
-                                  className="text-red-500"
+                                  className="text-red-500 border border-red-600 rounded-2xl"
                                 >
-                                  <FaTrash size={24}></FaTrash>
+                                  <MdDelete size={34}></MdDelete>
                                 </button>
                               </div>
                             </td>

@@ -4,13 +4,13 @@ import { create } from 'zustand';
 import { IGetModels } from '../types/model.types';
 
 const useModelStore = create<ModelState>((set, get) => ({
-  model: [],
-  async OnGetModels() {
-    const data = await get_models();
+  models: [],
+   OnGetModels: async (typemodel="")=> {
+    const data = await get_models(typemodel);
     if (data.model) {
       set((state) => ({
         ...state,
-        model: data.model,
+        models: data.model,
       }));
     } else {
       data.model = [];
@@ -19,7 +19,7 @@ const useModelStore = create<ModelState>((set, get) => ({
   async OnCreateModel(typemodel: string) {
     const data = await create_model(typemodel);
     if (data.ok) {
-      get().OnGetModels();
+      get().OnGetModels('');
     }
     
   },
@@ -27,13 +27,13 @@ const useModelStore = create<ModelState>((set, get) => ({
   async OnUpdateModel(typemodel: IGetModels) {
     const data = await update_model(typemodel);
     if (data.ok) {
-      get().OnGetModels();
+      get().OnGetModels('');
     } 
   },
   async OnDeleteModel(id: number) {
     const data = await delete_model(id);
     if (data.ok) {
-      get().OnGetModels();
+      get().OnGetModels('');
     }
   },
 })

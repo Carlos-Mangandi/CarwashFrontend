@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import CreateBrand from "./createBrand";
 import Layout from "../../components/Layout";
 import UpdateBrand from "./updateBrand";
-import { FaTrash } from "react-icons/fa";
 import useBrandStore from "../../store/brand.store";
+import { AiOutlineZoomIn } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
+
 
 function TableBrand() {
   const { brands, OnGetBrands, OnDeleteBrand } = useBrandStore();
@@ -13,7 +15,7 @@ function TableBrand() {
   } | null>(null);
 
   useEffect(() => {
-    OnGetBrands();
+    OnGetBrands('');
   }, []);
   const handleDelete = (id: number, brandName: string) => {
     setBrandDelete({ id, brandName });
@@ -24,10 +26,13 @@ function TableBrand() {
       setBrandDelete(null);
     }
   };
-
   const cancelDelete = () => {
     setBrandDelete(null);
   };
+
+  const handleSearch = (name="")=>{
+    OnGetBrands(name)
+  }
 
   return (
     <>
@@ -35,8 +40,21 @@ function TableBrand() {
         <>
           <div className="p-10 w-full">
             <CreateBrand></CreateBrand>
+
+            <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+            <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
+          <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+            type="text"
+            placeholder="Buscar...."
+            onChange={(e)=>{
+              handleSearch(e.target.value)
+            }}
+            />
+            </div>
+
+            
             <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
-              <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-blue-500 dark:text-white">
+              <thead className="text-xs text-black uppercase  bg-[#0e0e0e] dark:text-white">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     Id
@@ -50,21 +68,22 @@ function TableBrand() {
                 </tr>
               </thead>
               <tbody>
-                {brands.map((brands) => (
-                  <tr className="bg-white" key={brands.id}>
-                    <td className="px-6 py-4">{brands.id}</td>
-                    <td className="px-6 py-4">{brands.type}</td>
+                {brands.map((brand) => (
+                  <tr className="bg-white" key={brand.id}>
+                    <td className="px-6 py-4">{brand.id}</td>
+                    <td className="px-6 py-4">{brand.type}</td>
                     <td className="px-4 py-2 flex items-center justify-around">
                       <UpdateBrand
-                        brandId={brands.id}
-                        brandNameUpdate={brands.type}
+                        brandId={brand.id}
+                        brandNameUpdate={brand.type}
                       ></UpdateBrand>
                       <button
-                        onClick={() => handleDelete(brands.id, brands.type)}
-                        className="text-red-500 bg-white"
+                        onClick={() => handleDelete(brand.id, brand.type)}
+                        className="text-red-500 bg-white border border-red-600 rounded-2xl"
                       >
-                        <FaTrash size={22}></FaTrash>
+                        <MdDelete size={35}></MdDelete>
                       </button>
+                      
                     </td>
                   </tr>
                 ))}
@@ -75,7 +94,7 @@ function TableBrand() {
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  Are you sure you want to delete the brand "
+                Estas Seguro de Querer Eliminar La Marca "
                   {brandDelete.brandName}"?
                 </p>
                 <div className="mt-4 flex justify-center">

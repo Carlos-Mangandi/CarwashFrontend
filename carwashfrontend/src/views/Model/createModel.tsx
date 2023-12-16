@@ -32,7 +32,7 @@ export default function CreateModel() {
     <div className=" p-2  opacity-100">
       <button
         onClick={openModal}
-        className="flex justify-center m-3  py-4 px-4   rounded-full bg-blue-500 text-white"
+        className="flex justify-center m-3  py-4 px-4   rounded-full bg-green-500 text-white"
       >
         <FaPlus></FaPlus>
       </button>

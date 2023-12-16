@@ -10,7 +10,7 @@ export interface IGetCars {
     id: number;
     type: string;
     state: boolean;
-  };
+  },
   model: {
     id: number;
     typemodel: string;
@@ -31,8 +31,8 @@ export interface IUpdateCar{
 }
 export interface CarState{
   cars: IGetCars[]
-  OnGetCar: ()=> Promise<void>
+  OnGetCar: (color:string)=> Promise<void>
   OnCreateCar: (car:ICreateCar)=>Promise<void>
-  OnUpdateCar: (id:number, car: IUpdateCar)=>Promise<void>
+  OnUpdateCar: (id:number,car: IUpdateCar)=>Promise<void>
   OnDeleteCar: (id: number)=>Promise<void>
 }
