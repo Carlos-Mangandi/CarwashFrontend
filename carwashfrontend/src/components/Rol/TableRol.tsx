@@ -6,6 +6,7 @@ import { useRolesStore } from "../../store/rol.store";
 import { FaTrash } from "react-icons/fa";
 import { isAuthenticated } from "../../utils/authData";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineZoomIn } from "react-icons/ai";
 
 export default function TableRol() {
   const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
@@ -18,7 +19,7 @@ export default function TableRol() {
     if (!isAuthenticated()) {
       navigate("/");
     } else {
-      OnGetRoles();
+      OnGetRoles('');
     }
   }, [page, navigate]);
   const handleDelete = (id: number, rolName: string) => {
@@ -41,6 +42,10 @@ export default function TableRol() {
     setPage(newPage)
   }
 
+  const handleSearch = (type = "") =>{
+    OnGetRoles(type);
+  }
+
   return (
     <>
       <Layout>
@@ -50,6 +55,17 @@ export default function TableRol() {
               <div className="w-full">
                 <div className="border-b border-gray-200 shadow">
                   <CreateRol></CreateRol>
+                  <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+                <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
+                <input
+                  className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+                  type="text"
+                  placeholder="Buscar...."
+                  onChange={(e) => {
+                    handleSearch(e.target.value);
+                  }}
+                />
+              </div>
                   <table className="w-full p-2 text-sm text-center rtl:text-right text-gray-500 dark:text-black">
                     <thead className="text-xs text-white uppercase  bg-[#0e0e0e] dark:text-white">
                       <tr>

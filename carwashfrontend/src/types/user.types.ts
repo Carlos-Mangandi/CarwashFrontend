@@ -30,7 +30,7 @@ export interface IUpdateUser{
 
 export interface IUserStore {
     users: IGetUsers[];
-    OnGetUsers: () => Promise<void>;
+    OnGetUsers: (name:string) => Promise<void>;
     OnCreateUser: (user: ICreateUser) => Promise<void>;
     OnUpdateUser: (id: number, user: IUpdateUser) => Promise<void>;
     OnDeleteUser: (id: number) => Promise<void>;

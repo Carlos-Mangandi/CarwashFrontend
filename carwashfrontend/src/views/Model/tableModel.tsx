@@ -17,11 +17,13 @@ import { useEffect, useState } from "react";
     } | null>(null);
 
     useEffect(() => {
-      OnGetModels('');
+      OnGetModels("");
     }, []);
+
     const handleDelete = (id: number, modelName: string) => {
       setModelDelete({ id, modelName });
     };
+
     const confirmDelete = () => {
       if (modelDelete) {
         OnDeleteModel(modelDelete.id);
@@ -33,9 +35,9 @@ import { useEffect, useState } from "react";
     const cancelDelete = () => {
       setModelDelete(null);
     };
-    const handleSearch = (typemodel="")=>{
-      OnGetModels(typemodel)
-    }
+    const handleSearch = (typemodel = "") => {
+      OnGetModels(typemodel);
+    };
 
     return (
       <>
@@ -44,14 +46,15 @@ import { useEffect, useState } from "react";
             <div className="p-10 w-full">
               <CreateModel></CreateModel>
               <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
-              <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
-            <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
-              type="text"
-              placeholder="Buscar...."
-              onChange={(e)=>{
-                handleSearch(e.target.value)
-              }}
-              />
+                <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
+                <input
+                  className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+                  type="text"
+                  placeholder="Buscar...."
+                  onChange={(e) => {
+                    handleSearch(e.target.value);
+                  }}
+                />
               </div>
               <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black table-auto">
                 <thead className="hover:table-fixed text-xs text-black uppercase bg-[#0e0e0e] dark:text-white">
@@ -78,7 +81,9 @@ import { useEffect, useState } from "react";
                           modelNameUpdate={model.typemodel}
                         ></UpdateModel>
                         <button
-                          onClick={() => handleDelete(model.id, model.typemodel)}
+                          onClick={() =>
+                            handleDelete(model.id, model.typemodel)
+                          }
                           className="text-red-500 border border-red-600 rounded-2xl"
                         >
                           <MdDelete size={35}></MdDelete>

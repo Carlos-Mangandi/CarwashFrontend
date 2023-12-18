@@ -5,11 +5,11 @@ import { create } from "zustand";
 export const useRolesStore = create<IRoleStore>((set, get) => ({
   roles: [],
   totalRoles: 0,
-  limit: 5,
+  limit: 30,
   page: 1,
-  OnGetRoles: async () => {
+  OnGetRoles: async (type="") => {
     try {
-      const data = await get_roles();
+      const data = await get_roles(type);
       set({
         roles: data.rol,
       });
@@ -21,7 +21,7 @@ export const useRolesStore = create<IRoleStore>((set, get) => ({
     try {
       const data = await create_rol(type);
       if(data.ok){
-        get().OnGetRoles();
+        get().OnGetRoles('');
       }
        
     } catch (error) {
@@ -32,7 +32,7 @@ export const useRolesStore = create<IRoleStore>((set, get) => ({
     try {
       const data = await update_rol(id, type);
       if (data.ok) {
-        await get().OnGetRoles();
+        await get().OnGetRoles('');
       }
     } catch (error) {
       console.log("error");
@@ -42,7 +42,7 @@ export const useRolesStore = create<IRoleStore>((set, get) => ({
     try {
       const data = await delete_rol(id);
       if (data.ok) {
-        await get().OnGetRoles();
+        await get().OnGetRoles('');
       }
     } catch (error) {
       console.log("error");

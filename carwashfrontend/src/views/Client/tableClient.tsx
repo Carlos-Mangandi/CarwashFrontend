@@ -8,16 +8,15 @@ import UpdateClient from "./updateClient";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineZoomIn } from "react-icons/ai";
 
-
 export default function TableUsers() {
   const [clientDelete, setClientDelete] = useState<{
     id: number;
     clientName: string;
   } | null>(null);
-  const { OnGetClient, OnDeleteClient, client} = useClientStore();
+  const { OnGetClient, OnDeleteClient, client } = useClientStore();
 
   useEffect(() => {
-    OnGetClient('');
+    OnGetClient("");
   }, []);
 
   const handleDelete = (id: number, clientName: string) => {
@@ -39,77 +38,78 @@ export default function TableUsers() {
   const cancelDelete = () => {
     setClientDelete(null);
   };
-  const handleSearch = (name="")=>{
-    OnGetClient(name)
-  }
+  const handleSearch = (name = "") => {
+    OnGetClient(name);
+  };
 
   return (
     <>
       <Layout>
         <>
           <div className=" p-10 w-full">
-                <CreateClient />
-                <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
-            <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
-          <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
-            type="text"
-            placeholder="Buscar...."
-            onChange={(e)=>{
-              handleSearch(e.target.value)
-            }}
-            />
+            <CreateClient />
+            <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+              <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
+              <input
+                className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+                type="text"
+                placeholder="Buscar...."
+                onChange={(e) => {
+                  handleSearch(e.target.value);
+                }}
+              />
             </div>
-                <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
-                  <table className="min-w-full">
-                    <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
-                      <tr className="bg-[#0e0e0e] text-white">
-                        <th className="py-2 px-4">Id</th>
-                        <th className="py-2 px-4">Nombre</th>
-                        <th className="py-2 px-4">Telefono</th>
-                        <th className="py-2 px-4">Carro</th>
-                        <th className="py-2 px-4">Acciones</th>
+            <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
+              <table className="min-w-full">
+                <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
+                  <tr className="bg-[#0e0e0e] text-white">
+                    <th className="py-2 px-4">Id</th>
+                    <th className="py-2 px-4">Nombre</th>
+                    <th className="py-2 px-4">Telefono</th>
+                    <th className="py-2 px-4">Carro</th>
+                    <th className="py-2 px-4">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {client &&
+                    client.map((client) => (
+                      <tr key={client.id}>
+                        <td className="py-2 px-4 whitespace-nowrap text-center">
+                          {client.id}
+                        </td>
+                        <td className="py-2 px-4 whitespace-nowrap text-center">
+                          {client.name}
+                        </td>
+                        <td className="py-2 px-4 whitespace-nowrap text-center">
+                          {client.phone}
+                        </td>
+                        <td className="py-2 px-4 whitespace-nowrap text-center">
+                          {client.car.serialnumber}
+                        </td>
+                        <td className="py-2 px-4 whitespace-nowrap text-center">
+                          <div className="flex items-center justify-center space-x-2">
+                            <UpdateClient
+                              id={client.id}
+                              nameClient={client.name}
+                              phoneClient={client.phone}
+                              newCarId={client.carId}
+                            />
+                            <button
+                              onClick={() =>
+                                handleDelete(client.id, client.name)
+                              }
+                              className="text-red-500 border border-red-600 rounded-2xl"
+                            >
+                              <MdDelete size={37}></MdDelete>
+                            </button>
+                          </div>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {client && client.map((client) => (
-                          <tr key={client.id}>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
-                              {client.id}
-                            </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
-                              {client.name}
-                            </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
-                              {client.phone}
-                            </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
-                              {client.car.serialnumber}
-                            </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
-                              <div className="flex items-center justify-center space-x-2">
-                                <UpdateClient
-                                  id={client.id}
-                                  nameClient={client.name}
-                                  phoneClient={client.phone}
-                                  newCarId={client.carId}
-                                />
-                                <button
-                                  onClick={() =>
-                                    handleDelete(client.id, client.name)
-                                  }
-                                  className="text-red-500 border border-red-600 rounded-2xl"
-                                >
-                                  <MdDelete size={37}></MdDelete>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-           
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
 
           {/* <ToastContainer /> */}
           {clientDelete && (
