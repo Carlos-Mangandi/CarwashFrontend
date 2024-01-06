@@ -52,9 +52,9 @@ const UpdateBrand = ({
               <div className="mb-4">
                 <label
                   htmlFor="type"
-                  className="block text-black text-sm font-medium"
+                  className="block text-black text-start font-normal "
                 >
-                  Marca:
+                  Nombre:
                 </label>
                 <input
                   type="text"
@@ -64,7 +64,7 @@ const UpdateBrand = ({
                   placeholder="Ingrese el rol"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"

@@ -3,9 +3,9 @@ import {API_URL} from "../utils/constants"
 import {  CreateRol, IGetRoles, IUpdateRol } from "../types/rol.types";
 import { GetToken } from "../utils/authData";
 
-export const get_roles = async (type="") => {
-    const { data } = await axios.get<{ rol: IGetRoles[] }>(
-      `${API_URL}/rol?type=${type}`,
+export const get_roles = async (name="") => {
+    const { data } = await axios.get<{ roles: IGetRoles[] }>(
+      `${API_URL}/rol?name=${name}`,
       {
         headers: {
             Authorization: "Bearer "  + GetToken()

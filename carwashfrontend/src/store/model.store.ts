@@ -5,17 +5,19 @@ import { IGetModels } from '../types/model.types';
 
 const useModelStore = create<ModelState>((set, get) => ({
   models: [],
-   OnGetModels: async (typemodel="")=> {
-    const data = await get_models(typemodel);
-    if (data.model) {
-      set((state) => ({
-        ...state,
-        models: data.model,
-      }));
-    } else {
-      data.model = [];
+   OnGetModels: async (typemodel: string)=> {
+    try{
+      const data = await get_models(typemodel);
+
+      set({
+        models: data.models,
+      });
+    } 
+    catch (error){
+      console.log("error")
     }
   },
+  
   async OnCreateModel(typemodel: string) {
     const data = await create_model(typemodel);
     if (data.ok) {

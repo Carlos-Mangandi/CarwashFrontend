@@ -58,7 +58,7 @@ function AuthComponent() {
     <>
       <div>
       <SlLogout className="absolute mt-11" />
-        <button  className="ml-6 mt-10" onClick={MakeLogout}>Cerrar Sesión </button>
+        <button  className="ml-6 mt-10" onClick={MakeLogout}>Signin</button>
       </div>
     </>
   );

@@ -5,16 +5,16 @@ import { create } from "zustand";
 
 const useBrandStore = create<BrandState>((set, get) => ({
   brands: [],
-   OnGetBrands : async(name="")=>{
-    const data = await get_brands(name);
-    if (data.brand) {
-      set((state) => ({
-        ...state,
-        brands: data.brand,
+   OnGetBrands : async(name: string)=>{
+    try{
+      const data = await get_brands(name);
+      set({
+        brands: data.brands,
         
-      }));
-    } else {
-      data.brand = [];
+      });
+    } 
+    catch(error){
+      console.log("error")
     }
   },
    OnCreateBrand: async(type:string)=> {

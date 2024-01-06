@@ -50,7 +50,7 @@ const UpdateCar = ({
   const handleInputChangeC = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColors(e.target.value)
   };
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChangeB = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setBrand(Number(e.target.value));
   };
   const handleSelectChangeM = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -75,22 +75,25 @@ const UpdateCar = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-1 px-1 text-green-600 bg-white border border-green-500 rounded-2xl"
+        className="flex justify-center py-1 px-1 text-green-600"
       >
         <FaMarker size={26}></FaMarker>
       </button>
 
       {isOpenModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
             <span onClick={closeModal}></span>
             <h3 className="text-xl font-semibold mb-4">Actualizar Carro</h3>
             <form>
+              <label className="block font-normal text-start mb-2">
+                Marca
+              </label>
               <div className="mb-4">
                 <select
                   id="brandId"
                   name="brandId"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChangeB}
                   value={brand}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 >
@@ -104,6 +107,9 @@ const UpdateCar = ({
                   ))}
                 </select>
                 <div className="mb-4">
+                  <label className="block font-normal text-start">
+                    Modelo
+                  </label>
                 <select
                   id="modelId"
                   name="modelId"
@@ -121,28 +127,33 @@ const UpdateCar = ({
                   ))}
                 </select>
                 </div>
+
+                <label className="block font-normal text-start">
+                  Color
+                </label>
                 <input
                   type="text"
                   id="color"
                   name="color"
-                  placeholder="Color de Carro"
                   value={colors}
                   onChange={handleInputChangeC}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 />
                 <div className="mb-5">
+                  <label className="block font-normal text-start">
+                    Número de Serie
+                  </label>
                 <input
                   type="text"
                   id="serialnumber"
                   name="serialnumber"
-                  placeholder="Number of serie"
                   value={serialnumber}
                   onChange={handleInputChange}
                   className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
                 />
                 </div>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"

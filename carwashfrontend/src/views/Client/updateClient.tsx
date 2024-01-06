@@ -50,14 +50,14 @@ const UpdateClient = ({
 
   const handleSubmit = async () => {
     if (name.trim() !== "") {
-      const updateclient = {
+      const updateClient = {
         id: id,
         name: name,
         phone: phone,
         carId: car,
       };
 
-      await OnUpdateClient(id, updateclient);
+      await OnUpdateClient(id, updateClient);
       closeModal();
     }
   };
@@ -65,43 +65,41 @@ const UpdateClient = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-2xl"
+        className="flex justify-center py-2 px-2 text-green-600"
       >
-        <FaMarker size={22}></FaMarker>
+        <FaMarker size={26}></FaMarker>
       </button>
 
       {isOpenModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
             <span onClick={closeModal}></span>
             <h3 className="text-xl font-semibold mb-4">Actualizar Cliente</h3>
             <form>
               <div className="mb-4">
-                <label htmlFor="name" className="block font-semibold mb-2">
+                <label htmlFor="name" className="block font-normal  text-start mb-2">
                   Nombre:
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Nombre"
                   value={name}
                   onChange={handleInputChange}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                <label htmlFor="phone" className="block font-semibold mb-2">
-                  Telelfono:
+                <label htmlFor="phone" className="block font-normal text-start mb-2">
+                  Teléfono:
                 </label>
                 <input
                   type="text"
                   id="phone"
                   name="phone"
-                  placeholder="Telefono"
                   value={phone}
                   onChange={handleInputChangePhone}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                <label htmlFor="carId" className="block font-semibold mb-2">
+                <label htmlFor="carId" className="block font-normal text-start mb-2">
                   Carro:
                 </label>
                 <select
@@ -114,12 +112,12 @@ const UpdateClient = ({
                   <option value="" disabled>Seleccione un Carro</option>
                   {cars.map((car) => (
                     <option key={car.id} value={car.id}>
-                      {car.serialnumber}
+                      {car.brandId}, {car.modelId}, {car.color}, {car.serialnumber}
                     </option>
                   ))}
                 </select>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"

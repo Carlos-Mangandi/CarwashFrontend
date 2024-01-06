@@ -10,6 +10,11 @@ export interface ModelState{
   OnUpdateModel: (typemodel: IGetModels)=>Promise<void> 
   OnDeleteModel: (id: number)=>Promise<void>
 }
+
+export interface IGetModelsResponse extends BasicResponse{
+  models: IGetModels
+}
+
 export interface BasicResponse {
   ok: boolean;
   msg: string;

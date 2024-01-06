@@ -4,6 +4,8 @@ import useBrandStore from "../../store/brand.store";
 import useModelStore from "../../store/model.store";
 import { FaPlus } from "react-icons/fa";
 import { ICreateCar } from "../../types/car.types";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateCar = () => {
   const { brands, OnGetBrands } = useBrandStore();
@@ -12,10 +14,9 @@ const CreateCar = () => {
   const [isOpenModal, setOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetBrands('');
-    OnGetModels('');
+    OnGetBrands("");
+    OnGetModels("");
   }, [OnGetBrands, OnGetModels]);
- 
 
   const [car, setCar] = useState<ICreateCar>({
     brandId: 0,
@@ -49,7 +50,7 @@ const CreateCar = () => {
       !car.color ||
       !car.serialnumber
     ) {
-      alert("error");
+      toast.error("Todos los campos son requeridos");
       return;
     }
 
@@ -75,55 +76,60 @@ const CreateCar = () => {
             <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
               <div className="bg-white w-96 rounded-lg shadow-lg p-6">
                 <h3 className="text-lg font-medium mb-4 text-center">
-                  Nuevo Cliente
+                  Nueva Marca
                 </h3>
                 <form>
                   <div className="mb-3">
+                    <label className="text-black font-normal justify-start">
+                      Seleccionar Marca
+                    </label>
                     <select
                       name="brandId"
                       className="w-full border border-black rounded-lg px-3 py-2 mb-4"
                       value={car.brandId}
                       onChange={(e) => handleInputChange(e)}
                     >
-                      <option value="">Selecciona Marca</option>
+                      <option value="">Todas las Marcas</option>
                       {brands.map((brand) => (
                         <option key={brand.id} value={brand.id}>
                           {brand.type}
                         </option>
                       ))}
                     </select>
+
+                    <label className="text-black font-normal justify-start">
+                      Seleccionar Modelo
+                    </label>
                     <select
                       name="modelId"
                       className="w-full border border-black rounded-lg px-3 py-2 mb-4"
                       value={car.modelId}
                       onChange={(e) => handleInputChange(e)}
                     >
-                      <option value="">Seleccione Modelo</option>
+                      <option value="">Todos los modelos</option>
                       {models.map((model) => (
                         <option key={model.id} value={model.id}>
                           {model.typemodel}
                         </option>
                       ))}
                     </select>
-                    <label className="text-black font-semibold flex justify-center">
+
+                    <label className="text-black font-normal flex justify-start">
                       Color
                     </label>
                     <input
                       type="text"
                       name="color"
-                      placeholder="Color"
                       value={car.color}
                       onChange={handleInputChange}
                       className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                     />
-                    <label className="text-black font-semibold flex justify-center">
+                    <label className="text-black font-normal flex justify-start">
                       Numero de Serie
                     </label>
-
                     <input
                       type="text"
                       name="serialnumber"
-                      placeholder="Numero de Serie"
                       value={car.serialnumber}
                       onChange={handleInputChange}
                       className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
@@ -150,6 +156,7 @@ const CreateCar = () => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

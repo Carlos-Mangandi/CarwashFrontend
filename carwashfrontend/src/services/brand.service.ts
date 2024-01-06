@@ -4,8 +4,8 @@ import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
 
 export const get_brands = async (name ="") => {
-  const { data } = await axios.get<{ brand: IGetBrands[] }>(
-    `${API_URL}/brand?type=${name}`,
+  const { data } = await axios.get<{ brands: IGetBrands[] }>(
+    `${API_URL}/brand?name=${name}`,
     {
       headers: {
         Authorization: "Bearer " + GetToken()

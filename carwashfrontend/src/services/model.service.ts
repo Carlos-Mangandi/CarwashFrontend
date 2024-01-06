@@ -4,8 +4,8 @@ import { IGetModels, BasicResponse } from "../types/model.types";
 import { GetToken } from "../utils/authData";
 
 export const get_models = async (typemodel="") => {
-  const { data } = await axios.get<{ model: IGetModels[] }>(
-    `${API_URL}/model?typemodel=${typemodel}`,
+  const { data } = await axios.get<{ models: IGetModels[] }>(
+    `${API_URL}/model?name=${typemodel}`,
     {
       headers: {
           Authorization: "Bearer "  + GetToken()

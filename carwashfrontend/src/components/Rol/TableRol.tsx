@@ -4,24 +4,19 @@ import UpdateRol from "./UpdateRol";
 import Layout from "../Layout";
 import { useRolesStore } from "../../store/rol.store";
 import { FaTrash } from "react-icons/fa";
-import { isAuthenticated } from "../../utils/authData";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineZoomIn } from "react-icons/ai";
 
 export default function TableRol() {
-  const [rolDelete, setRolDelete] = useState<{ id: number; rolName: string;} | null>(null);
+  const [rolDelete, setRolDelete] = useState<{
+    id: number;
+    rolName: string;
+  } | null>(null);
   const { OnGetRoles, OnDeleteRol, roles, totalRoles, limit } = useRolesStore();
   const [page, setPage] = useState(1);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate("/");
-    } else {
-      OnGetRoles('');
-    }
-  }, [page, navigate]);
+      OnGetRoles("");
+  }, [page]);
+
   const handleDelete = (id: number, rolName: string) => {
     setRolDelete({ id, rolName });
   };
@@ -29,7 +24,6 @@ export default function TableRol() {
   const confirmDelete = () => {
     if (rolDelete) {
       OnDeleteRol(rolDelete.id);
-
       setRolDelete(null);
     }
   };
@@ -39,12 +33,12 @@ export default function TableRol() {
   };
 
   const handlePage = (newPage: number) => {
-    setPage(newPage)
-  }
+    setPage(newPage);
+  };
 
-  const handleSearch = (type = "") =>{
+  const handleSearch = (type: string) => {
     OnGetRoles(type);
-  }
+  };
 
   return (
     <>
@@ -56,16 +50,15 @@ export default function TableRol() {
                 <div className="border-b border-gray-200 shadow">
                   <CreateRol></CreateRol>
                   <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
-                <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
-                <input
-                  className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
-                  type="text"
-                  placeholder="Buscar...."
-                  onChange={(e) => {
-                    handleSearch(e.target.value);
-                  }}
-                />
-              </div>
+                    <input
+                      className="pr-3 pl-10 py-2 font-normal placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+                      type="text"
+                      placeholder="Buscar...."
+                      onChange={(e) => {
+                        handleSearch(e.target.value);
+                      }}
+                    />
+                  </div>
                   <table className="w-full p-2 text-sm text-center rtl:text-right text-gray-500 dark:text-black">
                     <thead className="text-xs text-white uppercase  bg-[#0e0e0e] dark:text-white">
                       <tr>
@@ -83,9 +76,9 @@ export default function TableRol() {
                     <tbody>
                       {roles &&
                         roles.map((rol) => (
-                          <tr className="odd:bg-white" key={rol.id}>
-                            <td className="px-6 py-4">{rol.id}</td>
-                            <td className="px-6 py-4">{rol.type}</td>
+                          <tr key={rol.id}>
+                            <td className="px-6 py-4 font-normal">{rol.id}</td>
+                            <td className="px-6 py-4 font-normal">{rol.type}</td>
                             <td className="px-6 py-4">
                               <div className="flex items-center justify-center space-x-5">
                                 <UpdateRol
@@ -134,7 +127,7 @@ export default function TableRol() {
             </div>
           )}
 
-          {/* <div className="mt-4 flex justify-center">
+          <div className="mt-4 flex justify-center">
             {Array.from(
               { length: Math.ceil(totalRoles / limit) },
               (_, index) => (
@@ -149,7 +142,7 @@ export default function TableRol() {
                 </button>
               )
             )}
-          </div> */}
+          </div>
           <div className="bg-white p-4 flex items-center justify-center">
             <button
               onClick={() => handlePage(page - 1)}
@@ -161,16 +154,17 @@ export default function TableRol() {
             {Array.from(
               { length: Math.ceil(totalRoles / limit) },
               (_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePage(index + 1)}
-                className={`mx-2 ${
-                  index + 1 === page ? "bg-blue-500" : "bg-gray-300"
-                } text-black font-bold py-2 px-4 rounded-full focus:outline-none`}
-              >
-                {index + 1}
-              </button>
-            ))}
+                <button
+                  key={index}
+                  onClick={() => handlePage(index + 1)}
+                  className={`mx-2 ${
+                    index + 1 === page ? "bg-blue-500" : "bg-gray-300"
+                  } text-black font-bold py-2 px-4 rounded-full focus:outline-none`}
+                >
+                  {index + 1}
+                </button>
+              )
+            )}
             <button
               onClick={() => handlePage(page + 1)}
               className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white rounded-r-lg focus:shadow-outline hover:bg-green-100"

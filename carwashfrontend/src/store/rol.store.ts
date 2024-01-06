@@ -7,11 +7,11 @@ export const useRolesStore = create<IRoleStore>((set, get) => ({
   totalRoles: 0,
   limit: 30,
   page: 1,
-  OnGetRoles: async (type="") => {
+  OnGetRoles: async (type: string) => {
     try {
       const data = await get_roles(type);
       set({
-        roles: data.rol,
+        roles: data.roles,
       });
     } catch (error) {
       console.log("error");

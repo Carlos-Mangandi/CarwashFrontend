@@ -62,49 +62,52 @@ const CreateClient = () => {
           <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
             <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
               <div className="bg-white w-96 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-medium mb-4 text-center">Nuevo Cliente</h3>
+                <h3 className="text-lg font-bold mb-4 text-center">Nuevo Cliente</h3>
                 <form>
                   <div className="mb-3">
-                    <label className="text-black font-semibold flex justify-center">Nombre</label>
+                    <label className="text-black font-normal flex justify-start">Nombre</label>
                   <input
                     type="text"
                     name="name"
-                    placeholder="Nombre"
                     value={client.name}
                     onChange={handleInputChange}
                     className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                   />
-                 <label className="text-black font-semibold flex justify-center">Telefono</label>
+                 <label className="text-black font-normal flex justify-start">Teléfono</label>
                   <input
                     type="text"
                     name="phone"
-                    placeholder="Telefono"
                     value={client.phone}
                     onChange={handleInputChange}
                     className="w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
                   />
+
+                  <label className="text-black font-normal flex justify-start">
+                    Seleccionar un Carro
+                  </label>
+
                   <select name="carId"
                     className="w-full border border-black rounded-lg px-3 py-2 mb-4"
                     value={client.carId}
                     onChange={(e) => handleInputChange(e)}
                   >
                     <option value="" >
-                      Seleccione un Carro 
+                      Todos los Carros
                     </option>
                     {cars.map((car) => (
                       <option key={car.id} value={car.id}>
-                        {car.color}, {car.serialnumber}
+                        {car.brandId}, {car.modelId},{car.serialnumber}, {car.color}
                       </option>
                     ))}
                   </select>
                 </div>
                   <div className="flex justify-center">
                     <button onClick={handleSubmit} className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md">
-                    Guardar
+                    GUARDAR
                     </button>
 
                     <button onClick={closeModal} type="button"  className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2">
-                    Cancelar
+                    CANCELAR
                     </button>
                   </div>
                 </form>

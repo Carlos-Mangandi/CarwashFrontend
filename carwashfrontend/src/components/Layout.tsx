@@ -27,13 +27,14 @@ interface Props {
 const Home = (props: Props) => {
   const menus: MenuItem[] = [
     { name: "Home", link: "/", icon: MdOutlineDashboard, requiresAuth: true },
-    { name: "User", link: "/user", icon: AiOutlineUser, requiresAuth: true },
+    { name: "Usuario", link: "/user", icon: AiOutlineUser, requiresAuth: true },
     { name: "Rol", link: "/rol", icon: FiMessageSquare, requiresAuth: true },
-    { name: "Brand", link: "/brand", icon: TbReportAnalytics, margin: true, requiresAuth: true },
-    { name: "Car", link: "/car", icon: FaCarSide, requiresAuth: true },
-    { name: "CarWash", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },
-    { name: "Client", link: "/client", icon: IoIosPerson, margin: true, requiresAuth: true },
-    { name: "Model", link: "/model", icon: IoLogoModelS, requiresAuth: true },
+    { name: "Marca", link: "/brand", icon: TbReportAnalytics, margin: false, requiresAuth: true },
+    { name: "Carro", link: "/car", icon: FaCarSide, requiresAuth: true },
+    { name: "Lavado de Carro", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },
+    { name: "Cliente", link: "/client", icon: IoIosPerson, margin: false, requiresAuth: true },
+    { name: "Modelo", link: "/model", icon: IoLogoModelS, requiresAuth: true },
+    
   ];
 
   const [open, setOpen] = useState(true);
@@ -49,7 +50,7 @@ const Home = (props: Props) => {
       <div
         className={`bg-[#0e0e0e] min-h-screen ${
           open ? "w-72" : "w-16"
-        } duration-500 text-gray-100 px-4`}
+        } duration-400 text-gray-100 px-4`}
         style={{
           position: "fixed",
           left: 0,
@@ -79,7 +80,7 @@ const Home = (props: Props) => {
                 <div>{React.createElement(menu.icon, { size: "20" })}</div>
                 <h2
                   style={{
-                    transitionDelay: `${i + 3}00ms`,
+                    transitionDelay: `${i + 10}00ms`,
                   }}
                   className={`whitespace-pre duration-500 ${
                     !open && "opacity-0 translate-x-28 overflow-hidden"

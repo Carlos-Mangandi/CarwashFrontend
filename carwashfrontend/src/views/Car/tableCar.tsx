@@ -4,8 +4,6 @@ import Layout from "../../components/Layout";
 import CreateCar from "./createCar";
 import UpdateCar from "./updateCar";
 import { MdDelete } from "react-icons/md";
-import { AiOutlineZoomIn } from "react-icons/ai";
-
 
 export default function TableCar(){
   const [carDelete,SetCarDelete]= useState<{
@@ -24,11 +22,6 @@ export default function TableCar(){
   const confirmDelete = () => {
     if (carDelete) {
       OnDeleteCar(carDelete.id);
-      // toast.success(`The user has been successfully deleted`,{
-      //     position: 'top-right',
-      //     autoClose: 0,
-      // });
-
       SetCarDelete(null);
     }
   };
@@ -48,8 +41,7 @@ export default function TableCar(){
           <div className=" p-10 w-full">
                 <CreateCar />
                 <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
-            <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
-          <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+          <input className="pr-3 pl-10 py-2 font-normal placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
             type="text"
             placeholder="Buscar...."
             onChange={(e)=>{
@@ -75,16 +67,16 @@ export default function TableCar(){
                             <td className="py-2 px-4  text-center">
                               {car.id}
                             </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                            <td className="py-2 px-4 font-normal text-center">
                               {car.brand.type}
                             </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                            <td className="py-2 px-4 font-normal text-center">
                               {car.model.typemodel}
                             </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                            <td className="py-2 px-4 font-normal text-center">
                               {car.color}
                             </td>
-                            <td className="py-2 px-4 whitespace-nowrap text-center">
+                            <td className="py-2 px-4 font-normal text-center">
                               {car.serialnumber}
                             </td>
                             <td className="px-4 py-2 flex items-center justify-around">

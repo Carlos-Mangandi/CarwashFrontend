@@ -10,7 +10,7 @@ export interface IGetClients {
     brandId:number,
     modelId:number,
     color: string,
-    serialnumber: string
+    serialNumber: string
   }
 }
 export interface ICreateClient{
