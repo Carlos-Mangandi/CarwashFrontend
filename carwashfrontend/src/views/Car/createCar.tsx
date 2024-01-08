@@ -72,10 +72,11 @@ const CreateCar = () => {
           <FaPlus></FaPlus>
         </button>
         {isOpenModal && (
-          <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
-            <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
-              <div className="bg-white w-96 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-medium mb-4 text-center">
+           <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
+           <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
+             <br />
+             <br />
+                <h3 className="text-lg font-semibold mb-4 text-center">
                   Nueva Marca
                 </h3>
                 <form>
@@ -85,7 +86,7 @@ const CreateCar = () => {
                     </label>
                     <select
                       name="brandId"
-                      className="w-full border border-black rounded-lg px-3 py-2 mb-4"
+                      className="font-normal w-full border border-black rounded-lg px-3 py-2 mb-4"
                       value={car.brandId}
                       onChange={(e) => handleInputChange(e)}
                     >
@@ -102,7 +103,7 @@ const CreateCar = () => {
                     </label>
                     <select
                       name="modelId"
-                      className="w-full border border-black rounded-lg px-3 py-2 mb-4"
+                      className="font-normal w-full border border-black rounded-lg px-3 py-2 mb-4"
                       value={car.modelId}
                       onChange={(e) => handleInputChange(e)}
                     >
@@ -122,7 +123,7 @@ const CreateCar = () => {
                       name="color"
                       value={car.color}
                       onChange={handleInputChange}
-                      className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
+                      className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                     />
                     <label className="text-black font-normal flex justify-start">
                       Numero de Serie
@@ -132,7 +133,7 @@ const CreateCar = () => {
                       name="serialnumber"
                       value={car.serialnumber}
                       onChange={handleInputChange}
-                      className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
+                      className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                     />
                   </div>
                   <div className="flex justify-center">
@@ -153,7 +154,6 @@ const CreateCar = () => {
                 </form>
               </div>
             </div>
-          </div>
         )}
       </div>
       <ToastContainer />

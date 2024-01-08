@@ -1,5 +1,5 @@
 import { get_roles, create_rol, delete_rol, update_rol } from "../services/rol.service";
-import { CreateRol, IRoleStore, IUpdateRol } from "../types/rol.types";
+import { IRoleStore, IUpdateRol } from "../types/rol.types";
 import { create } from "zustand";
 
 export const useRolesStore = create<IRoleStore>((set, get) => ({
@@ -17,7 +17,7 @@ export const useRolesStore = create<IRoleStore>((set, get) => ({
       console.log("error");
     }
   },
-  OnCreateRol: async (type: CreateRol) => {
+  OnCreateRol: async (type: string) => {
     try {
       const data = await create_rol(type);
       if(data.ok){

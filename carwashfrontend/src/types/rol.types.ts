@@ -20,7 +20,7 @@ export interface IRoleStore {
     limit: number;
     page: number;
     OnGetRoles: (name: string) => Promise<void>;
-    OnCreateRol: (type: CreateRol) => Promise<void>;
+    OnCreateRol: (type: string) => Promise<void>;
     OnUpdateRol: (id: number, type: IUpdateRol) => Promise<void>;
     OnDeleteRol: (id: number) => Promise<void>;
 }

@@ -1,53 +1,78 @@
-import React, { useState } from 'react';
-import {useRolesStore} from '../../store/rol.store';
-import { FaPlus } from 'react-icons/fa';
-import { ImCancelCircle } from "react-icons/im";
-import { IoSave } from "react-icons/io5";
+import React, { useState } from "react";
+import { useRolesStore } from "../../store/rol.store";
+import { FaPlus } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function CreateRol(){
-  const {OnCreateRol} = useRolesStore();
-  const[roleName, setRoleName] = useState('');
+const CreateRol = () => {
+  const { OnCreateRol } = useRolesStore();
+  const [rol, setRol] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => {
-    setShowModal(false)
-    setRoleName("");
-  }
-         
-  const openModal = () => {
-      setShowModal(true);
-  }
+    setShowModal(false);
+    setRol("")
+  };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-    setRoleName(e.target.value)
-  }
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRol(e.target.value);
+  };
 
   const handleSubmit = async () => {
-    if(roleName.trim() !== ''){
-      await OnCreateRol(roleName);
+    if ( rol.trim() !== "" ) {
+      await OnCreateRol(rol);
+      toast.error("El campo es requerido")
       closeModal()
     }
-  }
+  };
 
   return (
+    <>
     <div className="bg-white p-2  opacity-100">
-      <button onClick={openModal}  className="flex justify-center m-5  py-4 px-4   rounded-full bg-green-500 text-white">
+      <button
+        title="AGREGAR"
+        onClick={openModal}
+        className="flex justify-center m-5  py-4 px-4 rounded-full bg-green-500 text-white"
+      >
         <FaPlus></FaPlus>
       </button>
 
-      {showModal &&(
+      {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <form >
+            <form>
               <div className="mb-4">
-                <input  type="text" value={roleName} onChange={handleInputChange} className="w-full h-10 p-4 border rounded-xl" placeholder="Ingrese un rol"/> 
+                <label
+                 htmlFor="type"
+                 className="block text-start font-normal"
+                >
+                  Nombre
+                </label>
+                <input
+                    type="text"
+                    name="type"
+                    value={rol}
+                    onChange={handleInputChange}
+                    className="w-full font-normal border border-black rounded-lg px-3 py-2 mb-4"
+                  />
               </div>
               <div className="flex justify-center">
-                <button onClick={handleSubmit} className="text-blue-500">
-                <IoSave size={30}/> 
-                </button> 
-                <button onClick={closeModal} type="button" className="text-red-500">
-                  <ImCancelCircle size={30}/> 
+                <button 
+                  onClick={handleSubmit} 
+                  className="px-4 py-2 text-white bg-blue-600 text-sm font-medium rounded-md"
+                >
+                  GUARDAR
+                </button>
+                <button
+                  onClick={closeModal}
+                  type="button"
+                  className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md ml-2"
+                >
+                  CANCELAR
                 </button>
               </div>
             </form>
@@ -55,6 +80,10 @@ export default function CreateRol(){
         </div>
       )}
     </div>
+
+    <ToastContainer/>
+    </>
   );
 }
- 
+
+export default CreateRol;

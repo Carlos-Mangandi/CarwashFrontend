@@ -27,14 +27,13 @@ interface Props {
 const Home = (props: Props) => {
   const menus: MenuItem[] = [
     { name: "Home", link: "/", icon: MdOutlineDashboard, requiresAuth: true },
-    { name: "Usuario", link: "/user", icon: AiOutlineUser, requiresAuth: true },
     { name: "Rol", link: "/rol", icon: FiMessageSquare, requiresAuth: true },
+    { name: "Usuario", link: "/user", icon: AiOutlineUser, requiresAuth: true },
     { name: "Marca", link: "/brand", icon: TbReportAnalytics, margin: false, requiresAuth: true },
-    { name: "Carro", link: "/car", icon: FaCarSide, requiresAuth: true },
-    { name: "Lavado de Carro", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },
-    { name: "Cliente", link: "/client", icon: IoIosPerson, margin: false, requiresAuth: true },
     { name: "Modelo", link: "/model", icon: IoLogoModelS, requiresAuth: true },
-    
+    { name: "Carro", link: "/car", icon: FaCarSide, requiresAuth: true },
+    { name: "Cliente", link: "/client", icon: IoIosPerson, margin: false, requiresAuth: true },
+    { name: "Lavado de Carro", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },    
   ];
 
   const [open, setOpen] = useState(true);

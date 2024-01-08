@@ -28,7 +28,8 @@ export const create_client = async (client: ICreateClient) => {
 }
 
 export const update_client = async (id: number, client: IUpdateClient) => {
-    const {data} = await axios.put<{ok: boolean}>(API_URL + '/client' + id, client,
+    const {data} = await axios.put<{ok: boolean, msg: string}>(
+        API_URL + '/client/' + id,  client,
     {
         headers: {
             Authorization: "Bearer "  + GetToken()

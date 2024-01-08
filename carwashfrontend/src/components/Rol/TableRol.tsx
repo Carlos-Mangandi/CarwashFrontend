@@ -49,7 +49,7 @@ export default function TableRol() {
               <div className="w-full">
                 <div className="border-b border-gray-200 shadow">
                   <CreateRol></CreateRol>
-                  <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+                  <div className="flex justify-start p-5 items-center text-black focus-within:text-gray-600">
                     <input
                       className="pr-3 pl-10 py-2 font-normal placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
                       type="text"
@@ -60,7 +60,7 @@ export default function TableRol() {
                     />
                   </div>
                   <table className="w-full p-2 text-sm text-center rtl:text-right text-gray-500 dark:text-black">
-                    <thead className="text-xs text-white uppercase  bg-[#0e0e0e] dark:text-white">
+                    <thead className="text-xs text-black uppercase  bg-[#0e0e0e] dark:text-white">
                       <tr>
                         <th scope="col" className="px-6 py-3">
                           Id

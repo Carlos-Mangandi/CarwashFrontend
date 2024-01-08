@@ -60,8 +60,7 @@ const UpdateBrand = ({
                   type="text"
                   value={newBrandName}
                   onChange={handleInputChange}
-                  className="w-full h-10 p-4 border border-black rounded-xl bg-white"
-                  placeholder="Ingrese el rol"
+                  className="font-normal w-full h-10 p-4 border border-black rounded-xl bg-white"
                 />
               </div>
               <div className="flex justify-center">

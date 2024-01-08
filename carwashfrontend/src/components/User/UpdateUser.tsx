@@ -76,6 +76,9 @@ const UpdateUser = ({
       {isOpenModal && (
         <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
+            <br />
+            <br />
+            <br />
             <span onClick={closeModal}></span>
             <h3 className="text-xl font-semibold mb-4">Actualizar</h3>
             <form>
@@ -92,9 +95,10 @@ const UpdateUser = ({
                   name="nombre"
                   value={name}
                   onChange={handleInputChangeN}
-                  className="w-full h-10 p-4 border rounded-xl"
+                  className="w-full h-10 p-4 border border-black rounded-xl"
                 />
               </div>
+              <br />
               <div>
                 <label
                   htmlFor="email"
@@ -108,11 +112,15 @@ const UpdateUser = ({
                   name="email"
                   value={email}
                   onChange={handleInputChangeE}
-                  className="w-full h-10 p-4 border rounded-xl"
+                  className="w-full h-10 p-4 border border-black rounded-xl"
                 />
               </div>
+              <br />
               <div>
-                <label htmlFor="rolId" className="block font-normal text-start mb-2">
+                <label 
+                htmlFor="rolId" 
+                className="block font-normal text-start mb-2"
+                >
                   Selecciona un Rol:
                 </label>
                 <select
@@ -120,7 +128,7 @@ const UpdateUser = ({
                   name="rolId"
                   onChange={(e) => handleSelectChange(e)}
                   value={rol}
-                  className="w-full border-gray-300 rounded-lg px-3 py-2 mb-4"
+                  className="w-full border border-black rounded-lg px-3 py-2 mb-4"
                 >
                   <option value="" disabled>
                     Selecciona un rol

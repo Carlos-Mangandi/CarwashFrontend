@@ -59,85 +59,97 @@ const CreateCarWash = () => {
 
   return (
     <>
-      <div className="flex justify-start opacity-100">
+      <div>
         <button
           onClick={openModal}
-          className="flex justify-items-start m-5  py-4 px-4   rounded-full bg-green-500 text-white"
+          title="AGREGAR"
+          className="flex justify-items-end m-5 py-4 px-4 rounded-full bg-green-500 text-white"
         >
           <FaPlus></FaPlus>
         </button>
         {isOpenModal && (
-          <div className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50">
-            <div className="bg-white w-full h-full fixed top-0 left-0 flex items-center justify-center">
-              <div className="bg-white w-96 rounded-lg shadow-lg p-6">
-                <h3 className="text-lg font-medium mb-4 text-center">
-                  Nuevo Servicio
-                </h3>
-                <form>
-                  <div className="mb-3">
-                    <label className="text-black font-semibold flex justify-center">
-                      Servicio
-                    </label>
-                    <input
-                      type="text"
-                      name="type"
-                      placeholder="Servicio"
-                      value={carwash.type}
-                      onChange={handleInputChange}
-                      className="w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
-                    />
-                    <label className="text-black font-semibold flex justify-center">
-                      Precio
-                    </label>
-                    <input
-                      type="number"
-                      name="price"
-                      value={carwash.price}
-                      onChange={handleInputChange}
-                      className="w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                    />
-                    <label className="text-black font-semibold flex justify-center">
-                      Cantidad
-                    </label>
-                    <input
-                      type="number"
-                      name="amount"
-                      value={carwash.amount}
-                      onChange={handleInputChange}
-                      className="w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                    />
-                    <select
-                      name="clientId"
-                      className="w-full border border-black rounded-lg px-3 py-2 mb-4"
-                      value={carwash.clientId}
-                      onChange={(e) => handleInputChange(e)}
-                    >
-                      <option value="">Seleccione un Cliente</option>
-                      {client.map((client) => (
-                        <option key={client.id} value={client.id}>
-                          {client.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex justify-center">
-                    <button
-                      onClick={handleSubmit}
-                      className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md"
-                    >
-                      Guardar
-                    </button>
+          <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
+            <div className="justify-middle bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
+              <br />
+              <br />
+              <h3 className="text-lg font-semibold mb-4 text-center">
+                Nuevo Servicio
+              </h3>
+              <form>
+                <div className="mb-3">
+                  <label className="text-black font-normal flex justify-start">
+                    Servicio
+                  </label>
+                  <input
+                    type="text"
+                    name="type"
+                    value={carwash.type}
+                    onChange={handleInputChange}
+                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
+                  />
 
-                    <button
-                      onClick={closeModal}
-                      type="button"
-                      className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2"
-                    >
-                      Cancelar
-                    </button>
-                  </div>
-                </form>
-              </div>
+                  <label 
+                    className="text-black font-normal flex justify-start"
+                  >
+                    Precio
+                  </label>
+                  <input
+                    type="number"
+                    name="price"
+                    value={carwash.price}
+                    onChange={handleInputChange}
+                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
+                  />
+
+                  <label 
+                    className="text-black font-normal flex justify-start"
+                  >
+                    Cantidad
+                  </label>
+                  <input
+                    type="number"
+                    name="amount"
+                    value={carwash.amount}
+                    onChange={handleInputChange}
+                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
+                  />
+
+                  <label 
+                    className="text-black font-normal flex justify-start"
+                  >
+                    Cliente
+                  </label>
+                  <select
+                    name="clientId"
+                    className="font-normal w-full border border-black rounded-lg px-3 py-2 mb-4"
+                    value={carwash.clientId}
+                    onChange={(e) => handleInputChange(e)}
+                  >
+                    <option value="">Seleccione un Cliente</option>
+                    {client.map((client) => (
+                      <option key={client.id} value={client.id}>
+                        {client.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleSubmit}
+                    className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md"
+                  >
+                    Guardar
+                  </button>
+
+                  <button
+                    onClick={closeModal}
+                    type="button"
+                    className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}

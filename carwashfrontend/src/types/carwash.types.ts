@@ -5,7 +5,7 @@ export interface IGetCarWash{
     amount: number;
     total: number;
     clientId: number,
-
+    
     client:{
         id:number,
         name:string,

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {API_URL} from "../utils/constants"
-import {  CreateRol, IGetRoles, IUpdateRol } from "../types/rol.types";
+import { IGetRoles, IUpdateRol } from "../types/rol.types";
 import { GetToken } from "../utils/authData";
 
 export const get_roles = async (name="") => {
@@ -15,9 +15,9 @@ export const get_roles = async (name="") => {
     return data;
 };
 
-export const create_rol = async (type: CreateRol)=> {
+export const create_rol = async (type: string)=> {
     const response = await axios.post<{ok:boolean, msg: string}>(
-        API_URL + "/rol", {type,},
+        API_URL + "/rol", {type},
         {
             headers: {
                 Authorization: "Bearer "  + GetToken()
@@ -30,7 +30,7 @@ export const create_rol = async (type: CreateRol)=> {
 
 export const update_rol = async (id: number, type: IUpdateRol) => {
     const {data} = await axios.put<{ok:boolean, msg: string}>(
-        API_URL + "/rol/" + id, {type, },
+        API_URL + "/rol/" + id, type,
         {
             headers: {
                 Authorization: "Bearer "  + GetToken()

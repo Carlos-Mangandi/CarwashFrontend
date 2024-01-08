@@ -4,8 +4,6 @@ import useCarWashStore from "../../store/carwash.store";
 import CreateCarWash from "./createCarWash";
 import { MdDelete } from "react-icons/md";
 import UpdateCarWash from "./updateCarWash";
-import { AiOutlineZoomIn } from "react-icons/ai";
-
 
 function TableCarWash() {
   const [carwashDelete, setCarWashDelete] = useState<{
@@ -16,7 +14,7 @@ function TableCarWash() {
   const { OnGetCarWash, OnDeleteCarWash, carWash } = useCarWashStore();
 
   useEffect(() => {
-    OnGetCarWash('');
+    OnGetCarWash("");
   }, []);
 
   const handleDelete = (id: number, typeCarwash: string) => {
@@ -35,9 +33,9 @@ function TableCarWash() {
     setCarWashDelete(null);
   };
 
-  const handleSearch = (carwash="")=>{
-    OnGetCarWash(carwash)
-  }
+  const handleSearch = (carwash = "") => {
+    OnGetCarWash(carwash);
+  };
 
   return (
     <>
@@ -45,54 +43,54 @@ function TableCarWash() {
         <>
           <div className=" p-9 w-full">
             <CreateCarWash />
-            <div className="flex justify-start p-2 items-center text-gray-400 focus-within:text-gray-400">
-            <AiOutlineZoomIn className="w-5 h-5 absolute ml-3" />
-          <input className="pr-3 pl-10 py-2 font-semibold placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
-            type="text"
-            placeholder="Buscar...."
-            onChange={(e)=>{
-              handleSearch(e.target.value)
-            }}
-            />
+            <div className="flex justify-start p-2 items-center text-black">
+              <input
+                className="pr-3 pl-10 py-2 font-normal placeholder-gray-400  rounded-2xl border-none ring-2 ring-gray-400 focus:ring-gray-600 focus:ring-2 "
+                type="text"
+                placeholder="Buscar...."
+                onChange={(e) => {
+                  handleSearch(e.target.value);
+                }}
+              />
             </div>
-            <div className="flex justify-center p-8">
+            <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
               <table className="min-w-full">
                 <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
                   <tr className="bg-[#0e0e0e] text-white">
                     <th className="py-2 px-4">Id</th>
+                    <th className="py-2 px-4">Cliente</th>
                     <th className="py-2 px-4">Servicio</th>
                     <th className="py-2 px-4">Precio</th>
                     <th className="py-2 px-4">Cantidad</th>
-                    <th className="py-2 px-4">Cliente</th>
                     <th className="py-2 px-4">Total</th>
                     <th className="py-2 px-4">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   {carWash.map((carwash) => (
-                      <tr key={carwash.id}>
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.id}
-                        </td>
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.type}
-                        </td>
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.price}
-                        </td>
+                    <tr key={carwash.id}>
+                      <td className="py-2 px-4 whitespace-nowrap text-center">
+                        {carwash.id}
+                      </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        {carwash.client.name}
+                      </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        {carwash.type}
+                      </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        {carwash.price}
+                      </td>
 
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.amount}
-                        </td>
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.client.name}
-                        </td>
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          {carwash.total}
-                        </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        {carwash.amount}
+                      </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        {carwash.total}
+                      </td>
 
-                        <td className="py-2 px-4 whitespace-nowrap text-center">
-                          <div className="flex items-center justify-center space-x-2">
+                      <td className="py-2 px-4font-normal text-center">
+                        <div className="flex items-center justify-center space-x-2">
                           <UpdateCarWash
                             id={carwash.id}
                             newClientId={carwash.clientId}
@@ -109,11 +107,10 @@ function TableCarWash() {
                           >
                             <MdDelete size={37}></MdDelete>
                           </button>
-                          </div>
-                        
-                        </td>
-                      </tr>
-                    ))}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -123,9 +120,8 @@ function TableCarWash() {
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  Esta seguro de eliminar el servicio? "
-                  {carwashDelete.typeCarwash}
-                  "?
+                  ¿Estás seguro de eliminar el servicio 
+                  "{carwashDelete.typeCarwash}" de este registro?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button

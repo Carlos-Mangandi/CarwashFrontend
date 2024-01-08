@@ -15,15 +15,18 @@ function TableBrand() {
   useEffect(() => {
     OnGetBrands("");
   }, []);
+
   const handleDelete = (id: number, brandName: string) => {
     setBrandDelete({ id, brandName });
   };
+
   const confirmDelete = () => {
     if (brandDelete) {
       OnDeleteBrand(brandDelete.id);
       setBrandDelete(null);
     }
   };
+
   const cancelDelete = () => {
     setBrandDelete(null);
   };
@@ -67,9 +70,9 @@ function TableBrand() {
               <tbody>
                 {brands.map((brand) => (
                   <tr className="bg-white" key={brand.id}>
-                    <td className="px-6 py-4">{brand.id}</td>
-                    <td className="px-6 py-4">{brand.type}</td>
-                    <td className="px-4 py-2 flex items-center justify-around">
+                    <td className="px-6 py-4 font-normal">{brand.id}</td>
+                    <td className="px-6 py-4 font-normal">{brand.type}</td>
+                    <td className="flex items-center justify-center space-x-5">
                       <UpdateBrand
                         brandId={brand.id}
                         brandNameUpdate={brand.type}
@@ -90,8 +93,8 @@ function TableBrand() {
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  ¿ Estas Seguro de Querer Eliminar La Marca "
-                  {brandDelete.brandName}"?
+                  ¿Estás seguro de eliminar la marca  : 
+                   {brandDelete.brandName} ?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button

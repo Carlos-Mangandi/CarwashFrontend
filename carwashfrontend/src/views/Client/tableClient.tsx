@@ -69,7 +69,7 @@ export default function TableUsers() {
                   {client &&
                     client.map((client) => (
                       <tr key={client.id}>
-                        <td className="py-2 px-4 font-normal text-center">
+                        <td className="py-2 px-4 font-semibold text-center">
                           {client.id}
                         </td>
                         <td className="py-2 px-4 font-normal text-center">

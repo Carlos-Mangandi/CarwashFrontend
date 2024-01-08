@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaMarker } from "react-icons/fa6";
 import useCarWashStore from "../../store/carwash.store";
 import useClientStore from "../../store/client.store";
+import { FaRegEdit } from "react-icons/fa";
 
 const UpdateCarWash = ({
   id,
@@ -43,12 +43,12 @@ const UpdateCarWash = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setType(e.target.value);
   };
- 
-  const handleInputChangePrice = (e:React.ChangeEvent<HTMLInputElement>)=>{
-    setPrice(Number(e.target.value))
+
+  const handleInputChangePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(Number(e.target.value));
   };
-  const handleInputChangeAmount = (e:React.ChangeEvent<HTMLInputElement>)=>{
-    setAmount(Number(e.target.value))
+  const handleInputChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(e.target.value));
   };
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setClients(Number(e.target.value));
@@ -73,20 +73,28 @@ const UpdateCarWash = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-2xl"
+        className="flex justify-center py-2 px-2 text-green-500"
       >
-        <FaMarker size={22}></FaMarker>
+        <FaRegEdit size={26}></FaRegEdit>
       </button>
 
       {isOpenModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
+            <br />
+            <br />
+            <br />
             <span onClick={closeModal}></span>
-            <h3 className="text-xl font-semibold mb-4">Actualizar Servicio</h3>
+            <h3 className="text-xl font-semibold mb-4">
+              Actualizar Servicio
+            </h3>
             <form>
               <div className="mb-4">
-                <label htmlFor="clientId" className="block font-semibold mb-2">
-                  Cliente:
+                <label 
+                  htmlFor="clientId" 
+                  className="text-start block font-normal mb-2"
+                >
+                  Cliente
                 </label>
                 <select
                   id="clientId"
@@ -96,7 +104,7 @@ const UpdateCarWash = ({
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 >
                   <option value="" disabled>
-                    Seleccione un Carro
+                    Seleccione un Cliente
                   </option>
                   {client.map((client) => (
                     <option key={client.id} value={client.id}>
@@ -104,8 +112,12 @@ const UpdateCarWash = ({
                     </option>
                   ))}
                 </select>
-                <label htmlFor="name" className="block font-semibold mb-2">
-                  Servicio:
+
+                <label 
+                  htmlFor="type" 
+                  className="text-start block font-normal mb-2"
+                >
+                  Servicio
                 </label>
                 <input
                   type="text"
@@ -115,8 +127,12 @@ const UpdateCarWash = ({
                   onChange={handleInputChange}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                <label htmlFor="phone" className="block font-semibold mb-2">
-                  Precio:
+
+                <label 
+                  htmlFor="price" 
+                  className="text-start block font-normal mb-2"
+                >
+                  Precio
                 </label>
                 <input
                   type="number"
@@ -126,10 +142,14 @@ const UpdateCarWash = ({
                   onChange={handleInputChangePrice}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                 <label htmlFor="phone" className="block font-semibold mb-2">
-                  Cantidad:
+
+                <label 
+                  htmlFor="amount" 
+                  className="text-start block font-normal mb-2"
+                >
+                  Cantidad
                 </label>
-                 <input
+                <input
                   type="number"
                   id="amount"
                   name="amount"
@@ -138,7 +158,7 @@ const UpdateCarWash = ({
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"
