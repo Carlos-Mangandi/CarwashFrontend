@@ -10,29 +10,32 @@ export interface IGetCars {
     id: number;
     type: string;
     state: boolean;
-  },
+  };
   model: {
     id: number;
     typemodel: string;
     state: boolean;
   };
 }
-export interface ICreateCar{
-  brandId: number,
-  modelId: number,
-  color:string,
-  serialnumber: string
+
+export interface ICreateCar {
+  brandId: number;
+  modelId: number;
+  color: string;
+  serialnumber: string;
 }
-export interface IUpdateCar{
-  id: number,
-  brandId: number,
-  modelId: number,
-  serialnumber: string
+
+export interface IUpdateCar {
+  id: number;
+  brandId: number;
+  modelId: number;
+  serialnumber: string;
 }
-export interface CarState{
-  cars: IGetCars[]
-  OnGetCar: (color:string)=> Promise<void>
-  OnCreateCar: (car:ICreateCar)=>Promise<void>
-  OnUpdateCar: (id:number,car: IUpdateCar)=>Promise<void>
-  OnDeleteCar: (id: number)=>Promise<void>
+
+export interface CarState {
+  cars: IGetCars[];
+  OnGetCar: (color: string) => Promise<void>;
+  OnCreateCar: (car: ICreateCar) => Promise<void>;
+  OnUpdateCar: (id: number, car: IUpdateCar) => Promise<void>;
+  OnDeleteCar: (id: number) => Promise<void>;
 }

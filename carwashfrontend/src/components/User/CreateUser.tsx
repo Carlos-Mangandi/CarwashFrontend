@@ -13,7 +13,7 @@ const CreateUser = () => {
   const [isOpenModal, setOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetRoles("");
+    OnGetRoles(1, 5, "");
   }, []);
 
   const [user, setUser] = useState({
@@ -67,6 +67,7 @@ const CreateUser = () => {
         >
           <FaPlus></FaPlus>
         </button>
+
         {isOpenModal && (
           <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">

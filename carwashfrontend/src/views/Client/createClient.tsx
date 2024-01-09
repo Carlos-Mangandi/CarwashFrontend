@@ -4,7 +4,7 @@ import useClientStore from "../../store/client.store";
 import useCarStore from "../../store/car.store";
 import { ICreateClient } from "../../types/client.types";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateClient = () => {
   const { cars, OnGetCar } = useCarStore();
@@ -41,17 +41,17 @@ const CreateClient = () => {
 
   const handleSubmit = async () => {
     if (!client.name || !client.phone || client.carId === 0) {
-      toast.error("Todos los campos son requeridos")
+      toast.error("Todos los campos son requeridos");
       return;
     }
 
     try {
       await OnCreateClient(client);
       closeModal();
-      toast.success("Cliente creado exitosamente")
+      toast.success("Cliente creado exitosamente");
     } catch (error) {
       console.error("Error al crear el cliente: ", error);
-      toast.error("Error al crear cliente")
+      toast.error("Error al crear cliente");
     }
   };
 
@@ -75,9 +75,10 @@ const CreateClient = () => {
 
               <form>
                 <div className="mb-3">
-                  <label 
+                  <label
                     htmlFor="name"
-                    className="text-black font-normal flex justify-start">
+                    className="text-black font-normal flex justify-start"
+                  >
                     Nombre
                   </label>
                   <input
@@ -88,9 +89,10 @@ const CreateClient = () => {
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                   />
 
-                  <label 
+                  <label
                     htmlFor="phone"
-                    className="text-black font-normal flex justify-start">
+                    className="text-black font-normal flex justify-start"
+                  >
                     Teléfono
                   </label>
                   <input
@@ -101,9 +103,10 @@ const CreateClient = () => {
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
                   />
 
-                  <label 
+                  <label
                     htmlFor="carId"
-                    className="text-black font-normal flex justify-start">
+                    className="text-black font-normal flex justify-start"
+                  >
                     Seleccionar un Carro
                   </label>
 

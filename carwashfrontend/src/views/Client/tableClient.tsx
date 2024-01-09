@@ -16,7 +16,6 @@ export default function TableUsers() {
 
   useEffect(() => {
     OnGetClient("");
-
   }, []);
 
   const handleDelete = (id: number, clientName: string) => {
@@ -65,7 +64,7 @@ export default function TableUsers() {
                     <th className="py-2 px-4">Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-300">
                   {client &&
                     client.map((client) => (
                       <tr key={client.id}>
@@ -79,7 +78,8 @@ export default function TableUsers() {
                           {client.phone}
                         </td>
                         <td className="py-2 px-4 font-normal text-center">
-                        {client.car.color}, {client.car.brandId}, {client.car.modelId}
+                          {client.car.color}, {client.car.brandId},{" "}
+                          {client.car.modelId}
                         </td>
                         <td className="py-2 px-4 font-normal text-center">
                           <div className="flex items-center justify-center space-x-2">

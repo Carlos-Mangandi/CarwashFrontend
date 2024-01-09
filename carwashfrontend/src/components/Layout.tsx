@@ -1,11 +1,10 @@
 import React, { useState, ReactElement, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
-import { RiCarWashingFill} from "react-icons/ri";
+import { RiCarWashingFill } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser} from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaCarSide } from "react-icons/fa";
 import { IoIosPerson, IoLogoModelS } from "react-icons/io";
@@ -29,11 +28,11 @@ const Home = (props: Props) => {
     { name: "Home", link: "/", icon: MdOutlineDashboard, requiresAuth: true },
     { name: "Rol", link: "/rol", icon: FiMessageSquare, requiresAuth: true },
     { name: "Usuario", link: "/user", icon: AiOutlineUser, requiresAuth: true },
-    { name: "Marca", link: "/brand", icon: TbReportAnalytics, margin: false, requiresAuth: true },
+    { name: "Marca", link: "/brand", icon: TbReportAnalytics, requiresAuth: true },
     { name: "Modelo", link: "/model", icon: IoLogoModelS, requiresAuth: true },
     { name: "Carro", link: "/car", icon: FaCarSide, requiresAuth: true },
-    { name: "Cliente", link: "/client", icon: IoIosPerson, margin: false, requiresAuth: true },
-    { name: "Lavado de Carro", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },    
+    { name: "Cliente", link: "/client", icon: IoIosPerson, requiresAuth: true },
+    { name: "Lavado de Carro", link: "/carWash", icon: RiCarWashingFill, requiresAuth: true },
   ];
 
   const [open, setOpen] = useState(true);
@@ -67,7 +66,7 @@ const Home = (props: Props) => {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
           {menus
-            .filter(menu => !menu.requiresAuth || authenticated)
+            .filter((menu) => !menu.requiresAuth || authenticated)
             .map((menu, i) => (
               <Link
                 to={menu.link}
@@ -96,9 +95,9 @@ const Home = (props: Props) => {
                 </h2>
               </Link>
             ))}
-            <div>
-              <AuthComponent></AuthComponent>
-            </div>
+          <div>
+            <AuthComponent></AuthComponent>
+          </div>
         </div>
       </div>
 
@@ -112,6 +111,5 @@ const Home = (props: Props) => {
     </section>
   );
 };
-
 
 export default Home;

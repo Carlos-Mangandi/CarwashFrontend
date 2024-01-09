@@ -66,7 +66,7 @@ function TableCarWash() {
                     <th className="py-2 px-4">Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-300">
                   {carWash.map((carwash) => (
                     <tr key={carwash.id}>
                       <td className="py-2 px-4 whitespace-nowrap text-center">
@@ -119,8 +119,8 @@ function TableCarWash() {
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  ¿Estás seguro de eliminar el servicio 
-                  "{carwashDelete.typeCarwash}" de este registro?
+                  ¿Estás seguro de eliminar el servicio "
+                  {carwashDelete.typeCarwash}" de este registro?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button

@@ -30,9 +30,9 @@ const CreateCar = () => {
 
   const closeModal = () => {
     car.color = "";
-    car.serialnumber = ""
-    car.brandId = 0
-    car.modelId = 0
+    car.serialnumber = "";
+    car.brandId = 0;
+    car.modelId = 0;
     setOpenModal(false);
   };
 
@@ -47,7 +47,12 @@ const CreateCar = () => {
   };
 
   const handleSubmit = async () => {
-    if (!car.color || !car.serialnumber || car.brandId === 0 || car.modelId === 0) {
+    if (
+      !car.color ||
+      !car.serialnumber ||
+      car.brandId === 0 ||
+      car.modelId === 0
+    ) {
       toast.error("Todos los campos son requeridos");
       return;
     }

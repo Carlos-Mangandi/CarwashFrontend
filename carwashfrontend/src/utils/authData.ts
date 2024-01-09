@@ -1,19 +1,19 @@
-export const CreateToken = (token: string) =>{
-    localStorage.setItem('token', token);
-}
+export const CreateToken = (token: string) => {
+  localStorage.setItem("token", token);
+};
 
 export const DeleteToken = () => {
-    localStorage.removeItem('token');
-}
+  localStorage.removeItem("token");
+};
 
 export const GetToken = () => {
-    return localStorage.getItem('token');
-}
+  return localStorage.getItem("token");
+};
 
-export const IsAuth = () => { 
-    return GetToken()? true : false;
-}
+export const IsAuth = () => {
+  return GetToken() ? true : false;
+};
 
 export function isAuthenticated() {
-    return !!localStorage.getItem('token');
-  }
+  return !!localStorage.getItem("token");
+}

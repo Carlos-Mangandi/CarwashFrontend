@@ -26,11 +26,11 @@ const CreateCarWash = () => {
   };
 
   const closeModal = () => {
-    carwash.amount = 0,
-    carwash.price = 0,
-    carwash.type = "",
-    carwash.clientId = 0,
-    setOpenModal(false);
+    (carwash.amount = 0),
+      (carwash.price = 0),
+      (carwash.type = ""),
+      (carwash.clientId = 0),
+      setOpenModal(false);
   };
 
   const handleInputChange = (
@@ -44,18 +44,23 @@ const CreateCarWash = () => {
   };
 
   const handleSubmit = async () => {
-    if (!carwash.type || carwash.price === 0 || carwash.amount === 0 || carwash.clientId === 0) {
-      toast.error("Todos los campos son requeridos")
+    if (
+      !carwash.type ||
+      carwash.price === 0 ||
+      carwash.amount === 0 ||
+      carwash.clientId === 0
+    ) {
+      toast.error("Todos los campos son requeridos");
       return;
     }
 
     try {
       await OnCreateCarWash(carwash);
       closeModal();
-      toast.success("El servicio se creo exitosamente")
+      toast.success("El servicio se creo exitosamente");
     } catch (error) {
       console.error("Error al crear el servicio: ", error);
-      toast.error("Error al crear el servicio")
+      toast.error("Error al crear el servicio");
     }
   };
 
@@ -79,9 +84,10 @@ const CreateCarWash = () => {
               </h3>
               <form>
                 <div className="mb-3">
-                  <label 
+                  <label
                     htmlFor="type"
-                    className="text-black font-normal flex justify-start">
+                    className="text-black font-normal flex justify-start"
+                  >
                     Servicio
                   </label>
                   <input
@@ -92,7 +98,7 @@ const CreateCarWash = () => {
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                   />
 
-                  <label 
+                  <label
                     htmlFor="price"
                     className="text-black font-normal flex justify-start"
                   >
@@ -104,9 +110,9 @@ const CreateCarWash = () => {
                     value={carwash.price}
                     onChange={handleInputChange}
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                   />
+                  />
 
-                  <label 
+                  <label
                     htmlFor="amount"
                     className="text-black font-normal flex justify-start"
                   >
@@ -120,7 +126,7 @@ const CreateCarWash = () => {
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
                   />
 
-                  <label 
+                  <label
                     htmlFor="clientId"
                     className="text-black font-normal flex justify-start"
                   >

@@ -1,32 +1,34 @@
-
 export interface IGetClients {
-  id: number
-  name: string
-  phone: string
-  carId: number
-  state: boolean
+  id: number;
+  name: string;
+  phone: string;
+  carId: number;
+  state: boolean;
 
-  car:{
-    brandId:number,
-    modelId:number,
-    color: string,
-    serialNumber: string
-  }
+  car: {
+    brandId: number;
+    modelId: number;
+    color: string;
+    serialNumber: string;
+  };
 }
-export interface ICreateClient{
+
+export interface ICreateClient {
   name: string;
   phone: string;
   carId: number;
 }
-export interface IUpdateClient{
-  id:number;
-  name:string;
-  phone:string;
+
+export interface IUpdateClient {
+  id: number;
+  name: string;
+  phone: string;
   carId: number;
 }
-export interface ClientState{
+
+export interface ClientState {
   client: IGetClients[];
-  OnGetClient: (name:string) => Promise<void>;
+  OnGetClient: (name: string) => Promise<void>;
   OnCreateClient: (client: ICreateClient) => Promise<void>;
   OnUpdateClient: (id: number, client: IUpdateClient) => Promise<void>;
   OnDeleteClient: (id: number) => Promise<void>;

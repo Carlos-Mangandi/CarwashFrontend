@@ -22,7 +22,7 @@ const UpdateClient = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetCar('');
+    OnGetCar("");
   }, []);
 
   const openModal = () => {
@@ -42,7 +42,6 @@ const UpdateClient = ({
   const handleInputChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value);
   };
-
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCar(Number(e.target.value));
@@ -77,7 +76,10 @@ const UpdateClient = ({
             <h3 className="text-xl font-semibold mb-4">Actualizar Cliente</h3>
             <form>
               <div className="mb-4">
-                <label htmlFor="name" className="block font-normal  text-start mb-2">
+                <label
+                  htmlFor="name"
+                  className="block font-normal  text-start mb-2"
+                >
                   Nombre:
                 </label>
                 <input
@@ -88,7 +90,10 @@ const UpdateClient = ({
                   onChange={handleInputChange}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                <label htmlFor="phone" className="block font-normal text-start mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block font-normal text-start mb-2"
+                >
                   Teléfono:
                 </label>
                 <input
@@ -99,7 +104,10 @@ const UpdateClient = ({
                   onChange={handleInputChangePhone}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
-                <label htmlFor="carId" className="block font-normal text-start mb-2">
+                <label
+                  htmlFor="carId"
+                  className="block font-normal text-start mb-2"
+                >
                   Carro:
                 </label>
                 <select
@@ -109,10 +117,13 @@ const UpdateClient = ({
                   value={car}
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 >
-                  <option value="" disabled>Seleccione un Carro</option>
+                  <option value="" disabled>
+                    Seleccione un Carro
+                  </option>
                   {cars.map((car) => (
                     <option key={car.id} value={car.id}>
-                      {car.brandId}, {car.modelId}, {car.color}, {car.serialnumber}
+                      {car.brandId}, {car.modelId}, {car.color},{" "}
+                      {car.serialnumber}
                     </option>
                   ))}
                 </select>

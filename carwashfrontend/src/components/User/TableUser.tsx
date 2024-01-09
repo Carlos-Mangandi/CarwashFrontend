@@ -63,7 +63,7 @@ export default function TableUsers() {
                     <th className="py-3 px-6">Acciones</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-300">
                   {users &&
                     users.map((user) => (
                       <tr key={user.id}>

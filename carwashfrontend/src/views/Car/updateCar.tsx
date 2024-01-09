@@ -21,17 +21,15 @@ const UpdateCar = ({
   const { models, OnGetModels } = useModelStore();
   const { OnUpdateCar } = useCarStore();
   const [serialnumber, setSerialNumber] = useState(serialNumber);
-  const [colors, setColors]= useState(color);
+  const [colors, setColors] = useState(color);
   const [brand, setBrand] = useState(newBrandId);
   const [model, setModel] = useState(newModelId);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetBrands('');
-    OnGetModels('');
-
+    OnGetBrands("");
+    OnGetModels("");
   }, []);
- 
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -48,7 +46,7 @@ const UpdateCar = ({
     setSerialNumber(e.target.value);
   };
   const handleInputChangeC = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColors(e.target.value)
+    setColors(e.target.value);
   };
   const handleSelectChangeB = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setBrand(Number(e.target.value));
@@ -67,7 +65,7 @@ const UpdateCar = ({
         serialnumber: serialnumber,
       };
 
-      await OnUpdateCar(id,updateCar);
+      await OnUpdateCar(id, updateCar);
       closeModal();
     }
   };
@@ -86,9 +84,7 @@ const UpdateCar = ({
             <span onClick={closeModal}></span>
             <h3 className="text-xl font-semibold mb-4">Actualizar Carro</h3>
             <form>
-              <label className="block font-normal text-start mb-2">
-                Marca
-              </label>
+              <label className="block font-normal text-start mb-2">Marca</label>
               <div className="mb-4">
                 <select
                   id="brandId"
@@ -107,30 +103,26 @@ const UpdateCar = ({
                   ))}
                 </select>
                 <div className="mb-4">
-                  <label className="block font-normal text-start">
-                    Modelo
-                  </label>
-                <select
-                  id="modelId"
-                  name="modelId"
-                  onChange={handleSelectChangeM}
-                  value={model}
-                  className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
-                >
-                  <option value="" disabled>
-                    Seleccione un Modelo
-                  </option>
-                  {models.map((model) => (
-                    <option key={model.id} value={model.id}>
-                      {model.typemodel}
+                  <label className="block font-normal text-start">Modelo</label>
+                  <select
+                    id="modelId"
+                    name="modelId"
+                    onChange={handleSelectChangeM}
+                    value={model}
+                    className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
+                  >
+                    <option value="" disabled>
+                      Seleccione un Modelo
                     </option>
-                  ))}
-                </select>
+                    {models.map((model) => (
+                      <option key={model.id} value={model.id}>
+                        {model.typemodel}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
-                <label className="block font-normal text-start">
-                  Color
-                </label>
+                <label className="block font-normal text-start">Color</label>
                 <input
                   type="text"
                   id="color"
@@ -143,14 +135,14 @@ const UpdateCar = ({
                   <label className="block font-normal text-start">
                     Número de Serie
                   </label>
-                <input
-                  type="text"
-                  id="serialnumber"
-                  name="serialnumber"
-                  value={serialnumber}
-                  onChange={handleInputChange}
-                  className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
-                />
+                  <input
+                    type="text"
+                    id="serialnumber"
+                    name="serialnumber"
+                    value={serialnumber}
+                    onChange={handleInputChange}
+                    className="w-full bg-white border border-black rounded-lg px-3 py-2 mb-4"
+                  />
                 </div>
               </div>
               <div className="flex justify-center">

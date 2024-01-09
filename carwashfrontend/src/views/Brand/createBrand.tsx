@@ -18,7 +18,7 @@ const CreateBrand = () => {
     setShowModal(true);
   };
 
-  const handleInputChange = ( e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBrandName(e.target.value);
   };
 
@@ -31,6 +31,7 @@ const CreateBrand = () => {
     try {
       await OnCreateBrand(brandName);
       closeModal();
+      toast.success("Marca creada exitosamente");
     } catch (error) {
       console.log("Error al crear marca: ", error);
       toast.error("Error al crear marca");
@@ -55,7 +56,10 @@ const CreateBrand = () => {
 
               <form>
                 <div className="mb-4">
-                  <label htmlFor="brand" className="block text-start font-normal">
+                  <label
+                    htmlFor="brand"
+                    className="block text-start font-normal"
+                  >
                     Nombre:
                   </label>
                   <input
@@ -68,6 +72,7 @@ const CreateBrand = () => {
 
                 <div className="flex justify-center mt-4">
                   <button
+                    type="button"
                     onClick={handleSubmit}
                     className="px-4 py-2 text-white bg-blue-600 rounded-full mr-4"
                   >

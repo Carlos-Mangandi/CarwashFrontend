@@ -6,7 +6,6 @@ import { GetLoginData } from "../types/auth.types";
 import { AxiosError } from "axios";
 import { SlLogout } from "react-icons/sl";
 
-
 function isAxiosError(error: unknown): error is AxiosError {
   return (error as AxiosError).isAxiosError !== undefined;
 }
@@ -50,15 +49,17 @@ export async function MakeLogin(data_send: GetLoginData) {
 function AuthComponent() {
   function MakeLogout() {
     DeleteToken();
-    
+
     window.location.href = "/login";
   }
 
   return (
     <>
       <div>
-      <SlLogout className="absolute mt-11" />
-        <button  className="ml-6 mt-10" onClick={MakeLogout}>Signin</button>
+        <SlLogout className="absolute mt-11" />
+        <button className="ml-6 mt-10" onClick={MakeLogout}>
+          Signin
+        </button>
       </div>
     </>
   );

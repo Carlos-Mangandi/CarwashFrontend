@@ -62,7 +62,7 @@ export default function TableCar() {
                     <th className="py-2 px-4">Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-300">
                   {cars &&
                     cars.map((car) => (
                       <tr className="bg-white" key={car.id}>

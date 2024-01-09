@@ -82,13 +82,11 @@ const UpdateCarWash = ({
         <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
             <span onClick={closeModal}></span>
-            <h3 className="text-xl font-semibold mb-4">
-              Actualizar Servicio
-            </h3>
+            <h3 className="text-xl font-semibold mb-4">Actualizar Servicio</h3>
             <form>
               <div className="mb-4">
-                <label 
-                  htmlFor="clientId" 
+                <label
+                  htmlFor="clientId"
                   className="text-start block font-normal mb-2"
                 >
                   Cliente
@@ -110,8 +108,8 @@ const UpdateCarWash = ({
                   ))}
                 </select>
 
-                <label 
-                  htmlFor="type" 
+                <label
+                  htmlFor="type"
                   className="text-start block font-normal mb-2"
                 >
                   Servicio
@@ -124,8 +122,8 @@ const UpdateCarWash = ({
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
 
-                <label 
-                  htmlFor="price" 
+                <label
+                  htmlFor="price"
                   className="text-start block font-normal mb-2"
                 >
                   Precio
@@ -138,8 +136,8 @@ const UpdateCarWash = ({
                   className="w-full border border-black rounded-lg px-3 py-2 mb-4 bg-white"
                 />
 
-                <label 
-                  htmlFor="amount" 
+                <label
+                  htmlFor="amount"
                   className="text-start block font-normal mb-2"
                 >
                   Cantidad

@@ -13,13 +13,8 @@ import ModelPage from "../views/Model/tableModel";
 import CarPage from "../views/Car/tableCar";
 import ClientPage from "../views/Client/tableClient";
 import Home from "../components/Home/Home";
-import CarWash from "../views/CarWash/tableCarWash"
+import CarWash from "../views/CarWash/tableCarWash";
 import { isAuthenticated } from "../utils/authData";
-// import ProtectedRoute from "./protect";
-
-// function ProtectedRoute({ element }: { element: React.ReactNode }) {
-//   return isAuthenticated() ? <>{element}</> : <Navigate to="/" replace />;
-// }
 
 const PrivateRoutes = () => {
   return isAuthenticated() ? <Outlet /> : <Navigate to="/login" replace />;
@@ -37,7 +32,7 @@ function RoutesRol() {
           <Route path="/car" element={<CarPage />} />
           <Route path="/model" element={<ModelPage />} />
           <Route path="/client" element={<ClientPage />} />
-          <Route path="/carwash" element={<CarWash/>} />
+          <Route path="/carwash" element={<CarWash />} />
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
       </Routes>

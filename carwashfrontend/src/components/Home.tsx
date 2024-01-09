@@ -1,20 +1,18 @@
 // import {useState} from 'react'
-import Layout from './Layout';
+import Layout from "./Layout";
 
-const HelloWorld = ()=> {
-
-    return(
+const HelloWorld = () => {
+  return (
+    <>
+      <Layout>
         <>
-            <Layout>
-                <>
-                    <div>
-                        <h1>Hola mundo</h1>
-                        
-                    </div>
-                </>
-            </Layout>
+          <div>
+            <h1>Hola mundo</h1>
+          </div>
         </>
-    )
-}
+      </Layout>
+    </>
+  );
+};
 
-export default HelloWorld
+export default HelloWorld;

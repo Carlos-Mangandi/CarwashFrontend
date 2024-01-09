@@ -67,11 +67,11 @@ function TableBrand() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-white divide-y divide-gray-300">
                 {brands.map((brand) => (
                   <tr className="bg-white" key={brand.id}>
-                    <td className="px-6 py-4 font-normal">{brand.id}</td>
-                    <td className="px-6 py-4 font-normal">{brand.type}</td>
+                    <td className="px-4 py-2 font-normal">{brand.id}</td>
+                    <td className="px-4 py-2 font-normal">{brand.type}</td>
                     <td className="flex items-center justify-center space-x-5">
                       <UpdateBrand
                         brandId={brand.id}
@@ -93,8 +93,7 @@ function TableBrand() {
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <p>
-                  ¿Estás seguro de eliminar la marca  : 
-                   {brandDelete.brandName} ?
+                  ¿Estás seguro de eliminar la marca :{brandDelete.brandName} ?
                 </p>
                 <div className="mt-4 flex justify-center">
                   <button

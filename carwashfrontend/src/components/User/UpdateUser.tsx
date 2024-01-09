@@ -4,16 +4,16 @@ import useRolStore from "../../store/rol.store";
 import { FaRegEdit } from "react-icons/fa";
 
 const UpdateUser = ({
-    id,
-    nameUser,
-    emailUser,
-    newRolId,
-  }: {
-    id: number;
-    nameUser: string;
-    emailUser: string;
-    newRolId: number;
-  }) => {
+  id,
+  nameUser,
+  emailUser,
+  newRolId,
+}: {
+  id: number;
+  nameUser: string;
+  emailUser: string;
+  newRolId: number;
+}) => {
   const { roles, OnGetRoles } = useRolStore();
   const { OnUpdateUser } = useUserStore();
   const [name, setName] = useState(nameUser);
@@ -23,7 +23,7 @@ const UpdateUser = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetRoles('');
+    OnGetRoles(1,5,"");
   }, []);
 
   const openModal = () => {
@@ -117,9 +117,9 @@ const UpdateUser = ({
               </div>
               <br />
               <div>
-                <label 
-                htmlFor="rolId" 
-                className="block font-normal text-start mb-2"
+                <label
+                  htmlFor="rolId"
+                  className="block font-normal text-start mb-2"
                 >
                   Selecciona un Rol:
                 </label>
