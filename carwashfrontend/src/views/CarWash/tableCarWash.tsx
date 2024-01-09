@@ -60,8 +60,8 @@ function TableCarWash() {
                     <th className="py-2 px-4">Id</th>
                     <th className="py-2 px-4">Cliente</th>
                     <th className="py-2 px-4">Servicio</th>
-                    <th className="py-2 px-4">Precio</th>
                     <th className="py-2 px-4">Cantidad</th>
+                    <th className="py-2 px-4">Precio</th>
                     <th className="py-2 px-4">Total</th>
                     <th className="py-2 px-4">Acciones</th>
                   </tr>
@@ -79,14 +79,13 @@ function TableCarWash() {
                         {carwash.type}
                       </td>
                       <td className="py-2 px-4 font-normal text-center">
-                        {carwash.price}
-                      </td>
-
-                      <td className="py-2 px-4 font-normal text-center">
                         {carwash.amount}
                       </td>
                       <td className="py-2 px-4 font-normal text-center">
-                        {carwash.total}
+                        $ {carwash.price}
+                      </td>
+                      <td className="py-2 px-4 font-normal text-center">
+                        $ {carwash.total}
                       </td>
 
                       <td className="py-2 px-4font-normal text-center">
@@ -95,8 +94,8 @@ function TableCarWash() {
                             id={carwash.id}
                             newClientId={carwash.clientId}
                             serviceType={carwash.type}
-                            priceService={carwash.price}
                             amountService={carwash.amount}
+                            priceService={carwash.price}
                           />
 
                           <button

@@ -3,6 +3,7 @@ import useCarWashStore from "../../store/carwash.store";
 import useClientStore from "../../store/client.store";
 import { ICreateCarWash } from "../../types/carwash.types";
 import { FaPlus } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 const CreateCarWash = () => {
   const { client, OnGetClient } = useClientStore();
@@ -25,6 +26,10 @@ const CreateCarWash = () => {
   };
 
   const closeModal = () => {
+    carwash.amount = 0,
+    carwash.price = 0,
+    carwash.type = "",
+    carwash.clientId = 0,
     setOpenModal(false);
   };
 
@@ -39,21 +44,18 @@ const CreateCarWash = () => {
   };
 
   const handleSubmit = async () => {
-    if (
-      !carwash.type ||
-      carwash.price === 0 ||
-      carwash.amount === 0 ||
-      carwash.clientId === 0
-    ) {
-      alert("error");
+    if (!carwash.type || carwash.price === 0 || carwash.amount === 0 || carwash.clientId === 0) {
+      toast.error("Todos los campos son requeridos")
       return;
     }
 
     try {
       await OnCreateCarWash(carwash);
       closeModal();
+      toast.success("El servicio se creo exitosamente")
     } catch (error) {
-      console.error("Error creating carwash: ", error);
+      console.error("Error al crear el servicio: ", error);
+      toast.error("Error al crear el servicio")
     }
   };
 
@@ -77,7 +79,9 @@ const CreateCarWash = () => {
               </h3>
               <form>
                 <div className="mb-3">
-                  <label className="text-black font-normal flex justify-start">
+                  <label 
+                    htmlFor="type"
+                    className="text-black font-normal flex justify-start">
                     Servicio
                   </label>
                   <input
@@ -89,6 +93,7 @@ const CreateCarWash = () => {
                   />
 
                   <label 
+                    htmlFor="price"
                     className="text-black font-normal flex justify-start"
                   >
                     Precio
@@ -99,9 +104,10 @@ const CreateCarWash = () => {
                     value={carwash.price}
                     onChange={handleInputChange}
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                  />
+                   />
 
                   <label 
+                    htmlFor="amount"
                     className="text-black font-normal flex justify-start"
                   >
                     Cantidad
@@ -115,6 +121,7 @@ const CreateCarWash = () => {
                   />
 
                   <label 
+                    htmlFor="clientId"
                     className="text-black font-normal flex justify-start"
                   >
                     Cliente
@@ -135,6 +142,8 @@ const CreateCarWash = () => {
                 </div>
                 <div className="flex justify-center">
                   <button
+                    type="button"
+                    title="ACEPTAR"
                     onClick={handleSubmit}
                     className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md"
                   >
@@ -144,6 +153,7 @@ const CreateCarWash = () => {
                   <button
                     onClick={closeModal}
                     type="button"
+                    title="CANCELAR"
                     className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2"
                   >
                     Cancelar
@@ -154,6 +164,8 @@ const CreateCarWash = () => {
           </div>
         )}
       </div>
+
+      <ToastContainer />
     </>
   );
 };

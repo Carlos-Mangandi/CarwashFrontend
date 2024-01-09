@@ -3,6 +3,8 @@ import { FaPlus } from "react-icons/fa";
 import useClientStore from "../../store/client.store";
 import useCarStore from "../../store/car.store";
 import { ICreateClient } from "../../types/client.types";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 const CreateClient = () => {
   const { cars, OnGetCar } = useCarStore();
@@ -39,15 +41,17 @@ const CreateClient = () => {
 
   const handleSubmit = async () => {
     if (!client.name || !client.phone || client.carId === 0) {
-      alert("error");
+      toast.error("Todos los campos son requeridos")
       return;
     }
 
     try {
       await OnCreateClient(client);
       closeModal();
+      toast.success("Cliente creado exitosamente")
     } catch (error) {
-      console.error("Error creating user: ", error);
+      console.error("Error al crear el cliente: ", error);
+      toast.error("Error al crear cliente")
     }
   };
 
@@ -64,8 +68,6 @@ const CreateClient = () => {
         {isOpenModal && (
           <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
-              <br />
-              <br />
               <span onClick={closeModal}></span>
               <h3 className="text-xl text-center font-semibold mb-8">
                 Nuevo Cliente
@@ -73,7 +75,9 @@ const CreateClient = () => {
 
               <form>
                 <div className="mb-3">
-                  <label className="text-black font-normal flex justify-start">
+                  <label 
+                    htmlFor="name"
+                    className="text-black font-normal flex justify-start">
                     Nombre
                   </label>
                   <input
@@ -83,7 +87,10 @@ const CreateClient = () => {
                     onChange={handleInputChange}
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
                   />
-                  <label className="text-black font-normal flex justify-start">
+
+                  <label 
+                    htmlFor="phone"
+                    className="text-black font-normal flex justify-start">
                     Teléfono
                   </label>
                   <input
@@ -94,7 +101,9 @@ const CreateClient = () => {
                     className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
                   />
 
-                  <label className="text-black font-normal flex justify-start">
+                  <label 
+                    htmlFor="carId"
+                    className="text-black font-normal flex justify-start">
                     Seleccionar un Carro
                   </label>
 
@@ -115,6 +124,8 @@ const CreateClient = () => {
                 </div>
                 <div className="flex justify-center">
                   <button
+                    type="button"
+                    title="GUARDAR"
                     onClick={handleSubmit}
                     className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md"
                   >
@@ -124,6 +135,7 @@ const CreateClient = () => {
                   <button
                     onClick={closeModal}
                     type="button"
+                    title="CANCELAR"
                     className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2"
                   >
                     CANCELAR
@@ -134,6 +146,8 @@ const CreateClient = () => {
           </div>
         )}
       </div>
+
+      <ToastContainer />
     </>
   );
 };

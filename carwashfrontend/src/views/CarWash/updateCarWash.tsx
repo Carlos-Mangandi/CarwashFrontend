@@ -81,9 +81,6 @@ const UpdateCarWash = ({
       {isOpenModal && (
         <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
-            <br />
-            <br />
-            <br />
             <span onClick={closeModal}></span>
             <h3 className="text-xl font-semibold mb-4">
               Actualizar Servicio
@@ -121,7 +118,6 @@ const UpdateCarWash = ({
                 </label>
                 <input
                   type="text"
-                  id="type"
                   name="type"
                   value={type}
                   onChange={handleInputChange}
@@ -136,7 +132,6 @@ const UpdateCarWash = ({
                 </label>
                 <input
                   type="number"
-                  id="price"
                   name="price"
                   value={price}
                   onChange={handleInputChangePrice}
@@ -151,7 +146,6 @@ const UpdateCarWash = ({
                 </label>
                 <input
                   type="number"
-                  id="amount"
                   name="amount"
                   value={amount}
                   onChange={handleInputChangeAmount}

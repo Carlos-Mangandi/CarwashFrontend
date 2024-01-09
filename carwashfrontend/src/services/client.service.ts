@@ -3,7 +3,6 @@ import axios from "axios";
 import { API_URL } from '../utils/constants';
 import { GetToken } from '../utils/authData';
 
-
 export const get_client = async (name="") => {
     const { data } = await axios.get<{ client: IGetClients[] }>(
         `${API_URL}/client?name=${name}`,

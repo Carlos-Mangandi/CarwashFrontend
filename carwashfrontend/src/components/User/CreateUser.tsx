@@ -70,18 +70,15 @@ const CreateUser = () => {
         {isOpenModal && (
           <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
-              <br />
-              <br />
               <span onClick={closeModal}></span>
               <h3 className="text-xl text-center font-semibold mb-8">
                 Nuevo Usuario
               </h3>
-
               <form>
-                <div>
+                <div className="mb-3">
                   <label
                     htmlFor="user"
-                    className="block font-normal text-start mb-2"
+                    className="text-black font-normal text-start"
                   >
                     Nombre de Usuario
                   </label>
@@ -93,7 +90,6 @@ const CreateUser = () => {
                     className="w-full font-normal border border-black rounded-lg px-3 py-2 mb-4"
                   />
                 </div>
-                <br />
                 <div>
                   <label htmlFor="email" className="block font-normal mb-2">
                     Email
@@ -107,7 +103,6 @@ const CreateUser = () => {
                     className="w-full font-normal border border-black rounded-lg px-3 py-2 mb-4"
                   />
                 </div>
-                <br />
                 <div>
                   <label htmlFor="password" className="block font-normal mb-2">
                     Contraseña
@@ -121,7 +116,6 @@ const CreateUser = () => {
                     className="w-full border font-normal border-black rounded-lg px-3 py-2 mb-4"
                   />
                 </div>
-                <br />
                 <div>
                   <label
                     htmlFor="rolId"

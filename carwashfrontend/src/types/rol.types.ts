@@ -24,3 +24,7 @@ export interface IRoleStore {
     OnUpdateRol: (id: number, type: IUpdateRol) => Promise<void>;
     OnDeleteRol: (id: number) => Promise<void>;
 }
+
+// export interface IGetRolPaginated extends IPagination{
+//     roles: IGetRoles[]
+// }

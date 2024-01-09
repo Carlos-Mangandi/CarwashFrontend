@@ -147,7 +147,6 @@ const UpdateUser = ({
                 >
                   Si
                 </button>
-                &nbsp;&nbsp;
                 <button
                   onClick={closeModal}
                   type="button"
