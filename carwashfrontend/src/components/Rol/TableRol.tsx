@@ -153,6 +153,7 @@ export default function TableRol() {
               </p>
               <div className="mt-4 flex justify-center">
                 <button
+                type="button"
                   onClick={confirmDelete}
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
                 >

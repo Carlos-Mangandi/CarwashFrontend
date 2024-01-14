@@ -1,53 +1,56 @@
-import axios from 'axios'
-import { ICreateUser, IGetUsers, IUpdateUser } from '../types/user.types'
-import { API_URL } from '../utils/constants'
-import { GetToken } from '../utils/authData'
+import axios from "axios";
+import {
+  ICreateUser,
+  IGetUserPaginated,
+  IUpdateUser,
+} from "../types/user.types";
+import { API_URL } from "../utils/constants";
+import { GetToken } from "../utils/authData";
 
-export const get_users = async (name="") => {
-    const { data } = await axios.get<{ user: IGetUsers[] }>(
-      `${API_URL}/user?name=${name}`,
-      {
-        headers: {
-            Authorization: "Bearer "  + GetToken()
-        } 
-      }
-    );
-    return data;
+export const get_users = async (page = 1, limit = 5, name = "") => {
+  return axios.get<IGetUserPaginated>(
+    `${API_URL}/user?page=${page}&limit=${limit}&name=${name}`,
+    {
+      headers: {
+        Authorization: "Bearer " + GetToken(),
+      },
+    }
+  );
 };
 
-export const create_user = async (user: ICreateUser) => {
-    const response = await axios.post(`${API_URL}/user`, user,
-        {
-            headers: 
-            {
-                Authorization: "Bearer "  + GetToken()
-            } 
-        }
-    )
-    return response.data;
-}
+export const create_users = async (user: ICreateUser) => {
+  return await axios.post<IGetUserPaginated>(`${API_URL}/user`, user, {
+    headers: {
+      Authorization: "Bearer " + GetToken(),
+    },
+  });
+};
 
-export const update_user = async (id: number, user: IUpdateUser) => {
-    const {data} = await axios.put<{ok: boolean, msg: string}>(
-        API_URL + '/user/' + id, user,
-        {
-            headers: 
-            {
-                Authorization: "Bearer "  + GetToken()
-            } 
-        }
-    );
-    return data;
-}
+export const update_users = async (id: number, user: IUpdateUser) => {
+  return await axios.put<IGetUserPaginated>(`${API_URL}/user/` + id, user, {
+    headers: {
+      Authorization: "Bearer " + GetToken(),
+    },
+  });
+};
 
-export const delete_user = async (id: number) => {
-    const response = await axios.delete(`${API_URL}/user/${id}`,
-        {
-            headers: 
-            {
-                Authorization: "Bearer "  + GetToken()
-            } 
-        }
-    )
-    return response.data
-}
+export const delete_users = async (id: number) => {
+  const { data } = await axios.delete<IGetUserPaginated>(
+    `${API_URL}/user/` + id,
+    {
+      headers: {
+        Authorization: "Bearer " + GetToken(),
+      },
+    }
+  );
+
+  return data;
+};
+
+export const get_users_list = async () => {
+  return await axios.get<IGetUserPaginated>(`${API_URL}/users`, {
+    headers: {
+      Authorization: "Bearer " + GetToken(),
+    },
+  });
+};

@@ -42,7 +42,7 @@ const CreateRol = () => {
 
   return (
     <>
-      <div className="bg-white p-2  opacity-100">
+      <div className="bg-white p-2 opacity-100">
         <button
           title="AGREGAR"
           onClick={openModal}

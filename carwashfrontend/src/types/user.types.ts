@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.types";
+
 export interface IGetUsers {
   id: number;
   name: string;
@@ -11,6 +13,11 @@ export interface IGetUsers {
     type: string;
     state: boolean;
   };
+}
+
+export interface IGetUser {
+  users: IGetUsers[],
+  ok: boolean;
 }
 
 export interface ICreateUser {
@@ -28,10 +35,6 @@ export interface IUpdateUser {
   rolId: number;
 }
 
-export interface IUserStore {
+export interface IGetUserPaginated extends IPagination {
   users: IGetUsers[];
-  OnGetUsers: (name: string) => Promise<void>;
-  OnCreateUser: (user: ICreateUser) => Promise<void>;
-  OnUpdateUser: (id: number, user: IUpdateUser) => Promise<void>;
-  OnDeleteUser: (id: number) => Promise<void>;
 }

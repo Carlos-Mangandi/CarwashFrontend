@@ -1,17 +1,25 @@
+import { IPagination } from "./pagination.types";
+
 export interface IGetBrands {
   id: number;
   type: string;
   state: boolean;
 }
 
-export interface BrandState {
-  brands: IGetBrands[];
-  OnGetBrands: (name: string) => Promise<void>;
-  OnCreateBrand: (type: string) => Promise<void>;
-  OnUpdateBrand: (type: IGetBrands) => Promise<void>;
-  OnDeleteBrand: (id: number) => Promise<void>;
-}
-export interface BasicResponse {
+export interface IGetBrand{
+  brands: IGetBrands[],
   ok: boolean;
-  msg: string;
+}
+
+export interface ICreateBrand {
+  type: string;
+}
+
+export interface IUpdateBrand {
+  id: number;
+  type: string;
+}
+
+export interface IGetBrandPaginated extends IPagination{
+  brands: IGetBrands[];
 }
