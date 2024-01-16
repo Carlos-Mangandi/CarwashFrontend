@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.types"
+
 export interface IGetCars {
   id: number;
   brandId: number;
@@ -34,8 +36,13 @@ export interface IUpdateCar {
 
 export interface CarState {
   cars: IGetCars[];
-  OnGetCar: (color: string) => Promise<void>;
+  pagination_car: IPagination
+  OnGetCar: (page:number, limit: number,color: string) => Promise<void>;
   OnCreateCar: (car: ICreateCar) => Promise<void>;
   OnUpdateCar: (id: number, car: IUpdateCar) => Promise<void>;
   OnDeleteCar: (id: number) => Promise<void>;
+}
+
+export interface IGetCarPaginated extends IPagination {
+  cars: IGetCars[]
 }

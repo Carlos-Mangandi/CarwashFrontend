@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
 
+
 export const get_brands = async (page = 1, limit = 5, name = "") => {
   return axios.get<IGetBrandPaginated>(
     `${API_URL}/brand?page=${page}&limit=${limit}&name=${name}`,

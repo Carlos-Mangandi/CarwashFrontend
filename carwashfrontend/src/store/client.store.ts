@@ -10,6 +10,7 @@ import { ClientState } from "../types/client.types";
 import { IPagination } from '../types/pagination.types';
 
 
+
 const useClientStore = create<ClientState>((set, get) => ({
   client: [],
   pagination_client: {} as IPagination,

@@ -7,6 +7,7 @@ import UpdateClient from "./updateClient";
 import { MdDelete } from "react-icons/md";
 import { TiMediaPlayReverse } from "react-icons/ti";
 import { TiMediaPlay } from "react-icons/ti";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
 
 
@@ -116,7 +117,7 @@ export default function TableUsers() {
             <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">
               <table className="min-w-full">
                 <thead className="text-xs text-black uppercase bg-gray-50  dark:text-white">
-                  <tr className="bg-[#9e9d9e] text-white">
+                  <tr className="bg-black text-white">
                     <th className="py-2 px-4">Id</th>
                     <th className="py-2 px-4">Nombre</th>
                     <th className="py-2 px-4">Teléfono</th>
@@ -169,26 +170,27 @@ export default function TableUsers() {
           {/* <ToastContainer /> */}
           {clientDelete && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-              <div className="bg-white p-4 rounded-lg shadow-lg">
-                <p>
-                  Esta seguro de eliminar el cliente {clientDelete.clientName}?
-                </p>
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={confirmDelete}
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
-                  >
-                    Eliminar
-                  </button>
-                  <button
-                    onClick={cancelDelete}
-                    className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full ml-4"
-                  >
-                    Cancelar
-                  </button>
-                </div>
+            <div className="bg-white rounded-xl shadow p-6 sm:p-4 lg:p-20 w-full max-w-md">
+            <RiDeleteBin6Line className="mx-auto text-red-500" size={90} />
+            <h3 className="text-2xl font-black text-center mb-4 ">Eliminar Registro?</h3>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-4">Esta seguro de eliminar el registro esta opción no se puede revertir.</p>
+              <div className="flex justify-center">
+                <button
+                  onClick={confirmDelete}
+                  className="bg-red-700 hover:bg-red-600 text-white  py-2 px-2 rounded-2xl"
+                >
+                  Eliminar
+                </button>
+                <button
+                  onClick={cancelDelete}
+                  className="bg-gray-900 hover:bg-black text-white font-bold py-2 px-2 rounded-2xl ml-4"
+                >
+                  Cancelar
+                </button>
               </div>
             </div>
+            
+          </div>
           )}
           <div className="pagination-controls flex items-center justify-center space-x-4">
 

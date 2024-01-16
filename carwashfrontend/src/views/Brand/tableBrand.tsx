@@ -3,6 +3,7 @@ import CreateBrand from "./createBrand";
 import Layout from "../../components/Layout";
 import UpdateBrand from "./updateBrand";
 import useBrandStore from "../../store/brand.store";
+import { FontAwesomeIcon } from "../../plugins/font-awesome";
 import { MdDelete } from "react-icons/md";
 import { TiMediaPlayReverse } from "react-icons/ti";
 import { TiMediaPlay } from "react-icons/ti";
@@ -81,31 +82,39 @@ function TableBrand() {
             <div className="w-full">
             <CreateBrand></CreateBrand>
 
-            <div className="flex justify-between p-5 items-center text-black ">
-              <input
-                className="pr-3 pl-10 py-2 font-normal placeholder-black   border-none ring-2 "
-                type="text"
-                placeholder="Buscar...."
-                onChange={(e) => {
-                  handleSearch(e.target.value);
-                }}
-              />
-              <div className="flex items-center">
-                <p className="text-sm font-semibold text-gray-800 mr-4">
-                  Cantidad a mostrar
-                </p>
-                <select
-                  className="py-2 text-sm font-semibold border outline-none rounded-xl"
-                  onChange={handleDisplayCountChange}
-                >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={15}>15</option>
-                  <option value={20}>20</option>
-                  <option value={25}>25</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                </select>
+            <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+              <div className="">
+              <FontAwesomeIcon
+                    icon="search"
+                    className="absolute text-sm ml-36 mt-1 text-black"
+                    scale="2"
+                  />
+                <p className="text-sm font-semibold text-gray-800">Buscar Por Nombre</p>
+               
+          <input className="w-72 py-5 pl-12 text-sm border outline-none rounded-xl"
+            type="text"
+            placeholder="Buscar...."
+            onChange={(e)=>{
+              handleSearch(e.target.value)
+            }}
+            />
+            </div>
+            <div className="flex flex-col w-full md:w-full">
+               <p className="text-sm font-semibold text-gray-800 ml-56">
+                Cantidad a mostrar
+              </p>
+              <select
+                className=" w-80 ml-56  p-5 mt-1 text-sm font-semibold border outline-none rounded-xl"
+                onChange={handleDisplayCountChange}
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+                <option value={20}>20</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
               </div>
             </div>
 

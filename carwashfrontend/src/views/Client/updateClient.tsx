@@ -64,9 +64,9 @@ const UpdateClient = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600"
+        className="flex justify-center py-2 px-2 text-green-600 border border-green-600 rounded-2xl"
       >
-        <FaMarker size={26}></FaMarker>
+        <FaMarker size={23}></FaMarker>
       </button>
 
       {isOpenModal && (
