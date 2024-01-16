@@ -4,6 +4,9 @@ import Layout from "../../components/Layout";
 import UpdateBrand from "./updateBrand";
 import useBrandStore from "../../store/brand.store";
 import { MdDelete } from "react-icons/md";
+import { TiMediaPlayReverse } from "react-icons/ti";
+import { TiMediaPlay } from "react-icons/ti";
+import { FaCircle } from "react-icons/fa";
 
 function TableBrand() {
   const { brands, OnGetBrands, OnDeleteBrand, pagination_brands } =
@@ -168,33 +171,35 @@ function TableBrand() {
             </div>
           )}
 
-          <div className="pagination-controls flex items-center justify-center space-x-4">
-            <button
-              className={`px-4 py-2 border rounded-full shadow-md transition-transform transform hover:scale-105 ${
-                pagination_brands.currentPage === 1
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-500 text-white hover:bg-blue-700"
-              }`}
-              onClick={handlePrev}
-              disabled={pagination_brands.currentPage === 1}
-            >
-              Atrás
-            </button>
-            <span className="text-xl font-semibold text-gray-700">
-              Página {pagination_brands.currentPage} de{" "}
-              {pagination_brands.totalPage}
-            </span>
-            <button
-              className={`px-4 py-2 border rounded-full shadow-md transition-transform transform hover:scale-105 ${
-                pagination_brands.currentPage === pagination_brands.totalPage
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-500 text-white hover:bg-blue-700"
-              }`}
-              onClick={handleNext}
-            >
-              Siguiente
-            </button>
-          </div>
+<div className="pagination-controls flex items-center justify-center space-x-4">
+
+<button
+  className={` border-none p-1 ${
+    pagination_brands.currentPage === 1
+  }`}
+  
+  onClick={handlePrev}
+  disabled={pagination_brands.currentPage === 1}
+>
+  <TiMediaPlayReverse className="text-black w-14 h-14" />
+
+</button>
+<div className="relative flex items-center">
+<span className="w-8 h-9 absolute ml-4 mt-2 text-white"> {pagination_brands.currentPage}</span>
+<FaCircle className="w-10 h-14 mr-1 text-black "/>
+</div>
+
+<button
+  className={` ${
+    pagination_brands.currentPage === pagination_brands.totalPage
+  }`}
+  onClick={handleNext}
+  disabled={pagination_brands.currentPage === pagination_brands.totalPage}
+>
+  <TiMediaPlay className="text-black w-14 h-14" />
+
+</button>
+</div>
         </>
       </Layout>
     </>
