@@ -15,6 +15,7 @@ export const get_client = async (page=1, limit =5 ,name:string) => {
           Authorization: "Bearer "  + GetToken()
       } 
     }
+    
   );
   return data;
 };

@@ -19,6 +19,7 @@ export default function TableUsers() {
   const { OnGetClient, OnDeleteClient, client, pagination_client } = useClientStore();
   const [displayCount, setDisplayCount] = useState(5);
 
+  
 
   useEffect(() => {
     OnGetClient(1,displayCount,"");
@@ -126,8 +127,7 @@ export default function TableUsers() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-300">
-                  {client &&
-                    client.map((client) => (
+                  {client && client   .map((client) => (
                       <tr key={client.id}>
                         <td className="py-2 px-4 font-semibold text-center">
                           {client.id}
@@ -154,7 +154,7 @@ export default function TableUsers() {
                               onClick={() =>
                                 handleDelete(client.id, client.name)
                               }
-                              className="text-red-500 border border-red-600 rounded-2xl"
+                              className="text-red-500 border border-red-600 rounded-3xl"
                             >
                               <MdDelete size={37}></MdDelete>
                             </button>

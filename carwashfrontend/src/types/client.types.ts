@@ -12,7 +12,16 @@ export interface IGetClients {
     modelId: number;
     color: string;
     serialNumber: string;
-  };
+
+    brand:{
+      id: number
+      type: string
+    },
+    model:{
+      id:number
+      typemodel: string
+    }
+  }
 }
 
 export interface ICreateClient {

@@ -152,9 +152,9 @@ export default function TableCar() {
                               onClick={() =>
                                 handleDelete(car.id, car.brand.type)
                               }
-                              className="text-red-500 border border-red-600 rounded-2xl"
+                              className="text-red-500 border border-red-600 rounded-3xl"
                             >
-                              <MdDelete size={34}></MdDelete>
+                              <MdDelete size={36}></MdDelete>
                             </button>
                           </div>
                         </td>

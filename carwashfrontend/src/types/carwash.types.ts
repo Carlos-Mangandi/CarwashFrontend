@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.types";
+
 export interface IGetCarWash {
   id: number;
   type: string;
@@ -30,9 +32,13 @@ export interface IUpdateCarWash {
 }
 
 export interface CarWashState {
-  carWash: IGetCarWash[];
-  OnGetCarWash: (carwash: string) => Promise<void>;
+  carwash: IGetCarWash[];
+  pagination_carwash: IPagination
+  OnGetCarWash: (age:number, limit: number,carwash: string) => Promise<void>;
   OnCreateCarWash: (carwash: ICreateCarWash) => Promise<void>;
   OnUpdateCarWash: (id: number, carwash: IUpdateCarWash) => Promise<void>;
   OnDeleteCarWash: (id: number) => Promise<void>;
+}
+export interface IGetCarWashPaginated extends IPagination {
+  carwash: IGetCarWash[]
 }

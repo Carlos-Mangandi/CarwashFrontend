@@ -26,7 +26,7 @@ export const create_car = async (car: ICreateCar) => {
 
 export const update_car = async (id: number, car: IUpdateCar) => {
   const { data } = await axios.put<{ ok: boolean }>(
-    API_URL + "/car" + id,
+    API_URL + "/car/" + id,
     car,
     {
       headers: {

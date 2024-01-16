@@ -27,8 +27,8 @@ const UpdateCar = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetBrands("");
-    OnGetModels("");
+    OnGetBrands(1,5,"");
+    OnGetModels(1,5,"");
   }, []);
 
   const openModal = () => {
@@ -73,9 +73,9 @@ const UpdateCar = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-1 px-1 text-green-600"
+        className="flex justify-center py-1 px-1 text-green-600 border border-green-600 rounded-3xl"
       >
-        <FaMarker size={26}></FaMarker>
+        <FaMarker size={28}></FaMarker>
       </button>
 
       {isOpenModal && (
