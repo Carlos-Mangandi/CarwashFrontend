@@ -76,7 +76,7 @@ const UpdateCar = ({
         className="flex justify-center py-2 px-2 text-green-600 rounded-full
          border border-green-600"
       >
-        <FaMarker size={27}></FaMarker>
+        <FaMarker size={23}></FaMarker>
       </button>
 
       {isOpenModal && (

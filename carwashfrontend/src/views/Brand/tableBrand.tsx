@@ -140,8 +140,8 @@ function TableBrand() {
                     <td className="px-4 py-2 font-normal">{brand.type}</td>
                     <td className="flex items-center justify-center space-x-5">
                       <UpdateBrand
-                        brandId={brand.id}
-                        brandNameUpdate={brand.type}
+                        id={brand.id}
+                      brandName={brand.type}
                       ></UpdateBrand>
                       <button
                         onClick={() => handleDelete(brand.id, brand.type)}

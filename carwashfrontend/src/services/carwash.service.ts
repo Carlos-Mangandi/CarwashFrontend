@@ -7,9 +7,9 @@ import {
 } from "../types/carwash.types";
 import { GetToken } from "../utils/authData";
 
-export const get_carwash = async (page=1, limit =5 ,carwash ="") => {
+export const get_carwash = async (page=1, limit =5 ,type ="") => {
   const { data } = await axios.get<IGetCarWashPaginated>(
-    `${API_URL}/carwash?page=${page}&limit=${limit}&carwash=${carwash}`,
+    `${API_URL}/carwash?page=${page}&limit=${limit}&type=${type}`,
     {
       headers: {
         Authorization: "Bearer " + GetToken(),

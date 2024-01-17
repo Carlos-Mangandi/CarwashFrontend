@@ -40,8 +40,8 @@ function TableCarWash() {
     setCarWashDelete(null);
   };
 
-  const handleSearch1 = (carwash = "") => {
-    OnGetCarWash(1, 5, carwash);
+  const handleSearch1 = (type = "") => {
+    OnGetCarWash(1, 5, type);
   };
   const handleDisplayCountChange = (event: { target: { value: string } }) => {
     const newDisplayCount = parseInt(event.target.value, 10);

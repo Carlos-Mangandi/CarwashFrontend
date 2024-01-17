@@ -84,54 +84,61 @@ export default function TableCar() {
         <>
           <div className=" p-10 w-full">
             <CreateCar />
-            <div className="flex justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
-            <div className="">
-              <FontAwesomeIcon
-                    icon="search"
-                    className="absolute text-sm ml-32 mt-1 text-black"
-                    scale="2"
-                  />
-                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Color</p>
-               
-          <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
-            type="text"
-            placeholder="Buscar...."
-           value={coolor}
-           onChange={handleSearchColor}
-            />
-            <div className="">
-              <FontAwesomeIcon
-                    icon="search"
-                    className="absolute text-sm ml-52 mt-1 text-black"
-                    scale="2"
-                  />
-                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Numero de Serie</p>
-               
-          <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
-            type="text"
-            placeholder="Buscar...."
-            value={serialnumber}
-            onChange={handleSearchNumber}
-            />
-            </div>
-            </div>
-            
-              <div className="flex flex-col w-full md:w-full">
-               <p className="text-sm font-semibold text-gray-800 ml-56">
-                Cantidad a mostrar
-              </p>
-              <select
-                className=" w-80 ml-56  p-5 mt-1 text-sm font-semibold border outline-none rounded-xl"
-                onChange={handleDisplayCountChange}
-              >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={15}>15</option>
-                <option value={20}>20</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
+            <div className="flex flex-col md:flex-row justify-start p-5 items-center text-gray-400 focus-within:text-gray-400">
+              <div className="mb-4 md:mb-0 md:mr-4">
+                <FontAwesomeIcon
+                  icon="search"
+                  className="absolute text-sm ml-3 mt-1 text-black"
+                  scale="2"
+                />
+                <p className="text-sm font-semibold text-gray-800 ml-8 md:ml-8">
+                  Buscar Por Nombre
+                </p>
+
+                <input
+                  className="w-full md:w-72 max-h-screen py-2 md:py-5 pl-12 text-sm border outline-none rounded-xl"
+                  type="text"
+                  placeholder="Buscar...."
+                  value={coolor}
+                  onChange={handleSearchColor}
+                />
+              </div>
+
+              <div className="mb-4 md:mb-0">
+                <FontAwesomeIcon
+                  icon="search"
+                  className="absolute text-sm ml-3 mt-1 text-black"
+                  scale="2"
+                />
+                <p className="text-sm font-semibold text-gray-800 ml-8 md:ml-8">
+                  Buscar Por Teléfono
+                </p>
+
+                <input
+                  className="w-full md:w-72 max-h-screen py-2 md:py-5 pl-12 text-sm border outline-none rounded-xl"
+                  type="text"
+                  placeholder="Buscar...."
+                  value={serialnumber}
+                  onChange={handleSearchNumber}
+                />
+              </div>
+
+              <div className="mb-4 md:mb-0 ml-6">
+                <p className="text-sm font-semibold text-gray-800 ml-0 md:ml-2">
+                  Cantidad a mostrar
+                </p>
+                <select
+                  className="w-full md:w-72 max-h-screen py-2 md:py-5 pl-12 text-sm border outline-none rounded-xl"
+                  onChange={handleDisplayCountChange}
+                >
+                  <option value={5}>5</option>
+                  <option value={10}>10</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
               </div>
             </div>
             <div className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-black">

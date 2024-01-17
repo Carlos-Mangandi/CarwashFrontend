@@ -27,8 +27,8 @@ const UpdateBrand = ({
   };
 
   const handleSubmit = async () => {
-    if (newBrandName.trim() !== "") {
-      await OnUpdateBrand({ id: brandId, type: newBrandName, state: true});
+    if (brandName.trim() !== "") {
+      await OnUpdateBrand({ id: id, type: brandName, state: true});
       closeModal();
     }
   };

@@ -25,7 +25,7 @@ const UpdateCarWash = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetClient(1,5,"");
+    OnGetClient(1,5,"","");
   }, [OnGetClient]);
 
   const openModal = () => {

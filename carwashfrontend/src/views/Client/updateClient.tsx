@@ -22,7 +22,7 @@ const UpdateClient = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetCar(1,5,"");
+    OnGetCar(1,5,"","");
   }, [OnGetCar]);
 
   const openModal = () => {

@@ -34,7 +34,7 @@ export interface IUpdateCarWash {
 export interface CarWashState {
   carwash: IGetCarWash[];
   pagination_carwash: IPagination
-  OnGetCarWash: (page:number, limit: number, carwash: string) => Promise<void>;
+  OnGetCarWash: (page:number, limit: number, type: string) => Promise<void>;
   OnCreateCarWash: (carwash: ICreateCarWash) => Promise<void>;
   OnUpdateCarWash: (id: number, carwash: IUpdateCarWash) => Promise<void>;
   OnDeleteCarWash: (id: number) => Promise<void>;

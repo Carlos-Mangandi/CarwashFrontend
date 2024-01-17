@@ -12,9 +12,9 @@ import { IPagination } from "../types/pagination.types";
 const useCarWashStore = create<CarWashState>((set, get) => ({
   carwash: [],
   pagination_carwash: {} as IPagination,
-  OnGetCarWash: async (page=1 , limit=5 , carwash="" ) => {
+  OnGetCarWash: async (page=1 , limit=5 , type="" ) => {
       try {
-       const data = await get_carwash(page, limit, carwash)
+       const data = await get_carwash(page, limit, type)
           set({
             carwash: data.carwash,
               pagination_carwash: {
