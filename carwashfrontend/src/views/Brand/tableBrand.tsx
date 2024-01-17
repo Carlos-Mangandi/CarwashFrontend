@@ -160,7 +160,7 @@ function TableBrand() {
           </div>
           {brandDelete && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-              <div className="bg-white rounded-xl shadow p-6 sm:p-4 lg:p-20 w-full max-w-md">
+              <div className="bg-white rounded-xl shadow p-6 sm:p-4 lg:p-10 w-full max-w-md">
                 <RiDeleteBin6Line className="mx-auto text-red-500" size={90} />
                 <h3 className="text-2xl font-black text-center mb-4 ">
                   Eliminar Registro?
@@ -172,13 +172,13 @@ function TableBrand() {
                 <div className="flex justify-center">
                   <button
                     onClick={confirmDelete}
-                    className="bg-red-700 hover:bg-red-600 text-white  py-2 px-2 rounded-2xl"
+                    className="bg-red-700 hover:bg-red-600 text-white  py-2 px-4 rounded-2xl"
                   >
                     Eliminar
                   </button>
                   <button
                     onClick={cancelDelete}
-                    className="bg-gray-900 hover:bg-black text-white font-bold py-2 px-2 rounded-2xl ml-4"
+                    className="bg-gray-900 hover:bg-black text-white font-bold py-2 px-4 rounded-2xl ml-4"
                   >
                     Cancelar
                   </button>
