@@ -98,8 +98,7 @@ export default function TableUsers() {
             value={name}
             onChange={handleSearchName}
             />
-            </div>
-            <div className="">
+             <div className="">
               <FontAwesomeIcon
                     icon="search"
                     className="absolute text-sm ml-36 mt-1 text-black"
@@ -114,6 +113,8 @@ export default function TableUsers() {
             onChange={handleSearchPhone}
             />
             </div>
+            </div>
+
               <div className="flex flex-col w-full md:w-full">
                <p className="text-sm font-semibold text-gray-800 ml-56">
                 Cantidad a mostrar
