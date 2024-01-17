@@ -14,9 +14,9 @@ const useCarStore = create<CarState>((set, get) => ({
   cars: [],
   pagination_car: {} as IPagination,
 
-  OnGetCar: async (page=1 , limit=5,color:string) => {
+  OnGetCar: async (page=1 , limit=5,color:string, serialnumber: string) => {
     try {
-      const data = await get_car(page,limit,color)
+      const data = await get_car(page,limit,color, serialnumber)
          set({
              cars: data.cars,
              pagination_car: {
@@ -49,7 +49,7 @@ const useCarStore = create<CarState>((set, get) => ({
     try {
       const data = await create_car(car);
       if (data.ok) {
-        get().OnGetCar(1,5,"");
+        get().OnGetCar(1,5,"","");
       }
     } catch (error) {
       console.log("error");
@@ -60,7 +60,7 @@ const useCarStore = create<CarState>((set, get) => ({
     try {
       const data = await update_car(id, car);
       if (data.ok) {
-        await get().OnGetCar(1,5,"");
+        await get().OnGetCar(1,5,"","");
       }
     } catch (error) {
       console.log("error");
@@ -71,7 +71,7 @@ const useCarStore = create<CarState>((set, get) => ({
     try {
       const data = await delete_car(id);
       if (data.ok) {
-        await get().OnGetCar(1,5,"");
+        await get().OnGetCar(1,5,"","");
       }
     } catch (error) {
       console.log("error");

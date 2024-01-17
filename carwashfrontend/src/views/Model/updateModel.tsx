@@ -62,21 +62,21 @@ const UpdateModel = ({
                   type="text"
                   value={newModelName}
                   onChange={handleInputChange}
-                  className="w-full h-10 p-4 border border-black bg-white rounded-xl"
+                  className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
                   placeholder="Ingrese el rol"
                 />
               </div>
               <div className="flex justify-end">
                 <button
                   onClick={handleSubmit}
-                  className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"
+                  className="px-4 py-2 bg-green-500 text-white font-medium rounded-md mr-2"
                 >
                   Guardar
                 </button>
                 <button
                   onClick={closeModal}
                   type="button"
-                  className="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md ml-2"
+                  className="px-4 py-2 bg-blue-500 text-white font-medium rounded-md mr-8"
                 >
                   Cancelar
                 </button>

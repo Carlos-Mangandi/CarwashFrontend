@@ -40,7 +40,7 @@ export interface IUpdateClient {
 export interface ClientState {
   client: IGetClients[];
   pagination_client: IPagination
-  OnGetClient: (page:number, limit: number,name:string) => Promise<void>;
+  OnGetClient: (page:number, limit: number,name:string,  phone:string) => Promise<void>;
   OnCreateClient: (client: ICreateClient) => Promise<void>;
   OnUpdateClient: (id: number, client: IUpdateClient) => Promise<void>;
   OnDeleteClient: (id: number) => Promise<void>;

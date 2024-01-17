@@ -37,7 +37,7 @@ export interface IUpdateCar {
 export interface CarState {
   cars: IGetCars[];
   pagination_car: IPagination
-  OnGetCar: (page:number, limit: number,color: string) => Promise<void>;
+  OnGetCar: (page:number, limit: number,color: string, serialnumber: string) => Promise<void>;
   OnCreateCar: (car: ICreateCar) => Promise<void>;
   OnUpdateCar: (id: number, car: IUpdateCar) => Promise<void>;
   OnDeleteCar: (id: number) => Promise<void>;

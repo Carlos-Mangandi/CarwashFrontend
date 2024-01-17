@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import useClientStore from "../../store/client.store";
 import CreateClient from "../Client/createClient";
 import Layout from "../../components/Layout";
@@ -18,12 +18,13 @@ export default function TableUsers() {
   } | null>(null);
   const { OnGetClient, OnDeleteClient, client, pagination_client } = useClientStore();
   const [displayCount, setDisplayCount] = useState(5);
-
+  const[name, SetName]= useState('')
+  const[phone, SetPhone]= useState('')
   
 
   useEffect(() => {
-    OnGetClient(1,displayCount,"");
-  }, [OnGetClient,displayCount]);
+    OnGetClient(1,displayCount,name,phone);
+  }, [OnGetClient,displayCount,name,phone]);
 
   const handleDelete = (id: number, clientName: string) => {
     setClientDelete({ id, clientName });
@@ -40,8 +41,11 @@ export default function TableUsers() {
   const cancelDelete = () => {
     setClientDelete(null);
   };
-  const handleSearch = (name = "") => {
-    OnGetClient(1,5,name);
+  const handleSearchName = (event: ChangeEvent<HTMLInputElement>) => {
+    SetName(event.target.value)
+  };
+  const handleSearchPhone = (event: ChangeEvent<HTMLInputElement>) => {
+    SetPhone(event.target.value)
   };
   const handleDisplayCountChange = (event: { target: { value: string } }) => {
     const newDisplayCount = parseInt(event.target.value, 10);
@@ -53,7 +57,7 @@ export default function TableUsers() {
     console.log("Total Pages:", pagination_client.totalPage);
 
     if (pagination_client.currentPage < pagination_client.totalPage) {
-      OnGetClient(pagination_client.currentPage + 1, displayCount, "");
+      OnGetClient(pagination_client.currentPage + 1, displayCount, "", "");
     }
   };
 
@@ -62,7 +66,7 @@ export default function TableUsers() {
     console.log("Total Pages:", pagination_client.totalPage);
 
     if (pagination_client.currentPage > 1) {
-      OnGetClient(pagination_client.currentPage - 1, displayCount, "");
+      OnGetClient(pagination_client.currentPage - 1, displayCount, "","");
     }
   };
 
@@ -91,9 +95,23 @@ export default function TableUsers() {
           <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
             type="text"
             placeholder="Buscar...."
-            onChange={(e)=>{
-              handleSearch(e.target.value)
-            }}
+            value={name}
+            onChange={handleSearchName}
+            />
+            </div>
+            <div className="">
+              <FontAwesomeIcon
+                    icon="search"
+                    className="absolute text-sm ml-36 mt-1 text-black"
+                    scale="2"
+                  />
+                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Teléfono</p>
+               
+          <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
+            type="text"
+            placeholder="Buscar...."
+            value={phone}
+            onChange={handleSearchPhone}
             />
             </div>
               <div className="flex flex-col w-full md:w-full">

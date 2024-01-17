@@ -11,7 +11,7 @@ const CreateCarWash = () => {
   const [isOpenModal, setOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetClient("");
+    OnGetClient(1,5,"");
   }, []);
 
   const [carwash, SetCarWash] = useState<ICreateCarWash>({
@@ -76,98 +76,75 @@ const CreateCarWash = () => {
         </button>
         {isOpenModal && (
           <div className="fixed inset-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
-            <div className="justify-middle bg-white rounded-lg shadow-lg p-6 h-full w-96 absolute right-0">
-              <br />
-              <br />
-              <h3 className="text-lg font-semibold mb-4 text-center">
-                Nuevo Servicio
-              </h3>
-              <form>
-                <div className="mb-3">
-                  <label
-                    htmlFor="type"
-                    className="text-black font-normal flex justify-start"
-                  >
-                    Servicio
-                  </label>
-                  <input
-                    type="text"
-                    name="type"
-                    value={carwash.type}
-                    onChange={handleInputChange}
-                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-4"
-                  />
-
-                  <label
-                    htmlFor="price"
-                    className="text-black font-normal flex justify-start"
-                  >
-                    Precio
-                  </label>
-                  <input
-                    type="number"
-                    name="price"
-                    value={carwash.price}
-                    onChange={handleInputChange}
-                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                  />
-
-                  <label
-                    htmlFor="amount"
-                    className="text-black font-normal flex justify-start"
-                  >
-                    Cantidad
-                  </label>
-                  <input
-                    type="number"
-                    name="amount"
-                    value={carwash.amount}
-                    onChange={handleInputChange}
-                    className="font-normal w-full text-black border border-black rounded-lg px-3 py-2 mb-8"
-                  />
-
-                  <label
-                    htmlFor="clientId"
-                    className="text-black font-normal flex justify-start"
-                  >
-                    Cliente
-                  </label>
-                  <select
-                    name="clientId"
-                    className="font-normal w-full border border-black rounded-lg px-3 py-2 mb-4"
-                    value={carwash.clientId}
-                    onChange={(e) => handleInputChange(e)}
-                  >
-                    <option value="">Seleccione un Cliente</option>
-                    {client.map((client) => (
-                      <option key={client.id} value={client.id}>
-                        {client.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex justify-center">
-                  <button
-                    type="button"
-                    title="ACEPTAR"
-                    onClick={handleSubmit}
-                    className="px-4 py-2 text-black bg-blue-600 font-medium rounded-md"
-                  >
-                    Guardar
-                  </button>
-
-                  <button
-                    onClick={closeModal}
-                    type="button"
-                    title="CANCELAR"
-                    className="px-4 py-2 text-black bg-red-600  font-medium rounded-md ml-2"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </form>
+          <div className="bg-white rounded-lg shadow-lg p-8 w-96">
+            <div className="flex justify-end">
+              <span className="cursor-pointer" onClick={closeModal}>
+                &#x2715;
+              </span>
             </div>
+            <h3 className="text-xl font-semibold mb-6 text-center">Nuevo CarWash</h3>
+            <form>
+              <div className="mb-4">
+              <label className="block text-gray-700 font-semibold mb-2">Tipo de Servicio.</label>
+                <input
+                  type="text"
+                  name="type"
+                  value={carwash.type}
+                  onChange={handleInputChange}
+                  className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
+                />  
+                 <label className="block text-gray-700 font-semibold mb-2">Precio</label>
+                <input
+                  type="number"
+                  name="price"
+                  value={carwash.price===0?"":carwash.price}
+                  onChange={handleInputChange}
+                  className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
+                />
+                 <label className="block text-gray-700 font-semibold mb-2">Cantidad</label>
+                <input
+                  type="number"
+                  name="amount"
+                  value={carwash.amount===0?"":carwash.amount}
+                  onChange={handleInputChange}
+                  className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
+                />
+                <label className="block text-gray-700 font-semibold mb-2">Seleccione un Cliente</label>
+                <select
+                  name="clientId"
+                  className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
+                  value={carwash.clientId}
+                  onChange={(e) => handleInputChange(e)}
+                                >
+                  <option value="">Todos los Clientes</option>
+                  {client&& client.map((client) => (
+                    <option key={client.id} value={client.id}>
+                      {client.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  title="GUARDAR"
+                  onClick={handleSubmit}
+                  className="px-4 py-2 bg-green-500 text-white font-medium rounded-md mr-2"
+                >
+                  Guardar
+                </button>
+                <button
+                  onClick={closeModal}
+                  type="button"
+                  title="CANCELAR"
+                  className="px-4 py-2 bg-blue-500 text-white font-medium rounded-md"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
           </div>
+        </div>
         )}
       </div>
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent} from "react";
 import useCarStore from "../../store/car.store";
 import Layout from "../../components/Layout";
 import CreateCar from "./createCar";
@@ -10,6 +10,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
 import { FontAwesomeIcon } from "../../plugins/font-awesome";
 
+
 export default function TableCar() {
   const [carDelete, SetCarDelete] = useState<{
     id: number;
@@ -17,11 +18,14 @@ export default function TableCar() {
   } | null>(null);
   const { OnGetCar, OnDeleteCar, cars, pagination_car} = useCarStore();
   const [displayCount, setDisplayCount] = useState(5);
+  const[serialnumber, SerialN]= useState('')
+  const[coolor, Colors]= useState('')
+
 
 
   useEffect(() => {
-    OnGetCar(1,displayCount,"");
-  }, [OnGetCar,displayCount]);
+    OnGetCar(1,displayCount,coolor, serialnumber);
+  }, [OnGetCar,displayCount,coolor,serialnumber]);
 
   const handleDelete = (id: number, colorCar: string) => {
     SetCarDelete({ id, colorCar });
@@ -37,9 +41,14 @@ export default function TableCar() {
   const cancelDelete = () => {
     SetCarDelete(null);
   };
-  const handleSearch = (color = "") => {
-    OnGetCar(1,5,color);
+ 
+  const handleSearchColor = (event: ChangeEvent<HTMLInputElement>) => {
+   Colors(event.target.value)
   };
+  const handleSearchNumber = (event: ChangeEvent<HTMLInputElement>) => {
+    SerialN(event.target.value)
+   };
+ 
   const handleDisplayCountChange = (event: { target: { value: string } }) => {
     const newDisplayCount = parseInt(event.target.value, 10);
     setDisplayCount(newDisplayCount);
@@ -50,7 +59,7 @@ export default function TableCar() {
     console.log("Total Pages:", pagination_car.totalPage);
 
     if (pagination_car.currentPage < pagination_car.totalPage) {
-      OnGetCar(pagination_car.currentPage + 1, displayCount, "");
+      OnGetCar(pagination_car.currentPage + 1, displayCount, "","");
     }
   };
 
@@ -59,7 +68,7 @@ export default function TableCar() {
     console.log("Total Pages:", pagination_car.totalPage);
 
     if (pagination_car.currentPage > 1) {
-      OnGetCar(pagination_car.currentPage - 1, displayCount, "");
+      OnGetCar(pagination_car.currentPage - 1, displayCount, "", "");
     }
   };
 
@@ -79,19 +88,34 @@ export default function TableCar() {
             <div className="">
               <FontAwesomeIcon
                     icon="search"
-                    className="absolute text-sm ml-36 mt-1 text-black"
+                    className="absolute text-sm ml-32 mt-1 text-black"
                     scale="2"
                   />
-                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Nombre</p>
+                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Color</p>
                
           <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
             type="text"
             placeholder="Buscar...."
-            onChange={(e)=>{
-              handleSearch(e.target.value)
-            }}
+           value={coolor}
+           onChange={handleSearchColor}
+            />
+            <div className="">
+              <FontAwesomeIcon
+                    icon="search"
+                    className="absolute text-sm ml-52 mt-1 text-black"
+                    scale="2"
+                  />
+                <p className="text-sm font-semibold text-gray-800 ml-2">Buscar Por Numero de Serie</p>
+               
+          <input className="w-72 max-h-screen py-5 pl-12 text-sm border outline-none rounded-xl"
+            type="text"
+            placeholder="Buscar...."
+            value={serialnumber}
+            onChange={handleSearchNumber}
             />
             </div>
+            </div>
+            
               <div className="flex flex-col w-full md:w-full">
                <p className="text-sm font-semibold text-gray-800 ml-56">
                 Cantidad a mostrar

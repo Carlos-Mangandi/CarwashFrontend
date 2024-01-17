@@ -15,9 +15,9 @@ const useClientStore = create<ClientState>((set, get) => ({
   client: [],
   pagination_client: {} as IPagination,
   
-  OnGetClient: async (page=1 , limit=5, name:string, ) => {
+  OnGetClient: async (page=1 , limit=5, name:string,phone:string ) => {
       try {
-       const data = await get_client(page,limit, name)
+       const data = await get_client(page,limit, name, phone)
           set({
               client: data.client,
               pagination_client: {
@@ -51,7 +51,7 @@ const useClientStore = create<ClientState>((set, get) => ({
     try {
       const data = await create_client(client);
       if (data.ok) {
-        get().OnGetClient(1,5,"");
+        get().OnGetClient(1,5,"","");
       }
     } catch (error) {
       console.log("error");
@@ -62,7 +62,7 @@ const useClientStore = create<ClientState>((set, get) => ({
     try {
       const data = await update_client(id, client);
       if (data.ok) {
-        await get().OnGetClient(1,5,"");
+        await get().OnGetClient(1,5,"","");
       }
     } catch (error) {
       console.log("error");
@@ -73,7 +73,7 @@ const useClientStore = create<ClientState>((set, get) => ({
     try {
       const data = await delete_client(id);
       if (data.ok) {
-        await get().OnGetClient(1,5,"");
+        await get().OnGetClient(1,5,"","");
       }
     } catch (error) {
       console.log("error");

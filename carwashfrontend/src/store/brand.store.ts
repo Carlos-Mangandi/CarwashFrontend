@@ -1,4 +1,4 @@
-import { ICreateBrand, IUpdateBrand } from "./../types/brand.types";
+import { ICreateBrand, IGetBrands } from "./../types/brand.types";
 import {
   create_brands,
   get_brands,
@@ -56,9 +56,9 @@ export const useBrandStore = create<IBrandStore>((set, get) => ({
   },
 
   //Modificar
-  async OnUpdateBrand(id: number, type: IUpdateBrand) {
+  async OnUpdateBrand( type: IGetBrands) {
     try {
-      const data = await update_brands(id, type);
+      const data = await update_brands(type);
       if (data) {
         await get().OnGetBrands(1, 5, "");
       }
