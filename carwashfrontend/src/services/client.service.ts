@@ -7,9 +7,9 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
 
-export const get_client = async (page=1, limit =5 ,name:string) => {
+export const get_client = async (page=1, limit =5 ,name:string, phone:string) => {
   const { data } = await axios.get<IGetClientPaginated>(
-      `${API_URL}/client?page=${page}&limit=${limit}&name=${name}`,
+      `${API_URL}/client?page=${page}&limit=${limit}&name=${name}&phone=${phone}`,
       {
       headers: {
           Authorization: "Bearer "  + GetToken()

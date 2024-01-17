@@ -12,7 +12,7 @@ import { IPagination } from "../types/pagination.types";
 const useModelStore = create<ModelState>((set, get) => ({
   models: [],
 pagination_model: {} as IPagination,
-OnGetModels: async (page=1 , limit=5, name:string) => {
+OnGetModels: async (page=1 , limit=5, name="") => {
   try {
    const data = await get_models(page,limit, name)
       set({

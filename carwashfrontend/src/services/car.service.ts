@@ -3,9 +3,9 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
 
-export const get_car = async (page = 1, limit = 5, color: string) => {
+export const get_car = async (page = 1, limit = 5, color: string, serialnumber: string) => {
   const { data } = await axios.get<IGetCarPaginated>(
-    `${API_URL}/car?page=${page}&limit=${limit}&color=${color}`,
+    `${API_URL}/car?page=${page}&limit=${limit}&color=${color}&serialnumber=${serialnumber}`,
     {
       headers: {
         Authorization: "Bearer " + GetToken(),

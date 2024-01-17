@@ -40,7 +40,7 @@ function TableCarWash() {
     setCarWashDelete(null);
   };
 
-  const handleSearch = (carwash = "") => {
+  const handleSearch1 = (carwash = "") => {
     OnGetCarWash(1, 5, carwash);
   };
   const handleDisplayCountChange = (event: { target: { value: string } }) => {
@@ -94,7 +94,7 @@ function TableCarWash() {
                   type="text"
                   placeholder="Buscar...."
                   onChange={(e) => {
-                    handleSearch(e.target.value);
+                    handleSearch1(e.target.value);
                   }}
                 />
               </div>
