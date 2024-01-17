@@ -121,7 +121,8 @@ const UpdateCarWash = ({
                 name="clientId"
                 className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
                 value={clients}
-                onChange={handleSelectChange}              >
+                onChange={handleSelectChange} 
+                disabled             >
                 <option value="" disabled>Todos los Clientes</option>
                 {client&& client.map((client) => (
                   <option key={client.id} value={client.id}>

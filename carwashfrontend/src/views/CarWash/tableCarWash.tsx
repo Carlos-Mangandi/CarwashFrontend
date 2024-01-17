@@ -5,10 +5,9 @@ import CreateCarWash from "./createCarWash";
 import { MdDelete } from "react-icons/md";
 import UpdateCarWash from "./updateCarWash";
 import { FontAwesomeIcon } from "../../plugins/font-awesome";
-import { TiMediaPlayReverse } from "react-icons/ti";
-import { TiMediaPlay } from "react-icons/ti";
+
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { FaCircle } from "react-icons/fa";
+import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa";
 
 function TableCarWash() {
   const [carwashDelete, setCarWashDelete] = useState<{
@@ -207,36 +206,49 @@ function TableCarWash() {
               </div>
             </div>
           )}
-          <div className="pagination-controls flex items-center justify-center space-x-4">
-            <button
-              className={` border-none p-1 ${
-                pagination_carwash.currentPage === 1
-              }`}
-              onClick={handlePrev}
-              disabled={pagination_carwash.currentPage === 1}
-            >
-              <TiMediaPlayReverse className="text-black w-14 h-14" />
-            </button>
-            <div className="relative flex items-center">
-              <span className="w-8 h-9 absolute ml-4 mt-2 text-white">
-                {" "}
+         <ul className="m justify-center w-full flex ">
+            <li>
+              <button
+                className={` border-none p-1 ${
+                  pagination_carwash.currentPage === 1
+                }`}
+                onClick={handlePrev}
+                disabled={pagination_carwash.currentPage === 1}
+              >
+                <FaHandPointLeft
+                  
+                  className=" text-2xl text-white bg-black rounded-full p-2 w-10 h-10"
+                />
+              </button>
+              </li>
+            
+            <li className="relative flex items-center">
+              <button
+                className={` mx-1 border font-extrabold border-black rounded-3xl
+     p-2 w-12 h-12 text-center text-white bg-black text-sm flex `}
+              >
+                <span className="text-center w-20 h-20 mt-1 ">
                 {pagination_carwash.currentPage}
-              </span>
-              <FaCircle className="w-10 h-14 mr-1 text-black " />
-            </div>
+                </span>
+              </button>
+            </li>
 
-            <button
-              className={` ${
-                pagination_carwash.currentPage === pagination_carwash.totalPage
-              }`}
-              onClick={handleNext}
-              disabled={
-                pagination_carwash.currentPage === pagination_carwash.totalPage
-              }
-            >
-              <TiMediaPlay className="text-black w-14 h-14" />
-            </button>
-          </div>
+            <li>
+              <button
+                className={`border-none p-1 ${
+                  pagination_carwash.currentPage === pagination_carwash.totalPage
+                }`}
+                onClick={handleNext}
+                disabled={
+                  pagination_carwash.currentPage === pagination_carwash.totalPage
+                }
+              >
+                <FaHandPointRight 
+                  className=" text-3xl text-white bg-black rounded-full p-2 w-10 h-10"
+                />
+              </button>
+              </li>
+          </ul>
         </>
       </Layout>
     </>

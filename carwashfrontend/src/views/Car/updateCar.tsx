@@ -97,6 +97,7 @@ const UpdateCar = ({
                 className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
                 value={brand} 
                 onChange={handleSelectChangeB}
+                disabled
               >
                 <option value="">Todas las Marcas</option>
                 {brands&&brands.map((brand) => (
@@ -112,6 +113,7 @@ const UpdateCar = ({
                 name="modelId"
                 className="relative flex-1 flex-grow flex-shrink w-full px-3 py-4 text-base text-gray-500 border border-gray-200 rounded shadow-sm shadow-gray-100 focus:outline-none"
                 value={model}
+                disabled
 
                 onChange={handleSelectChangeM}              >
                 <option value="">Todos los modelos</option>

@@ -14,7 +14,6 @@ import { IPagination } from '../types/pagination.types';
 const useClientStore = create<ClientState>((set, get) => ({
   client: [],
   pagination_client: {} as IPagination,
-  
   OnGetClient: async (page=1 , limit=5, name:string,phone:string ) => {
       try {
        const data = await get_client(page,limit, name, phone)
