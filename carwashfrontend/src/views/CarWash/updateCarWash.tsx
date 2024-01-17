@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useCarWashStore from "../../store/carwash.store";
 import useClientStore from "../../store/client.store";
-import { FaRegEdit } from "react-icons/fa";
+import { FaMarker } from "react-icons/fa6";
 
 const UpdateCarWash = ({
   id,
@@ -25,8 +25,8 @@ const UpdateCarWash = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   React.useEffect(() => {
-    OnGetClient("");
-  }, []);
+    OnGetClient(1,5,"");
+  }, [OnGetClient]);
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -73,9 +73,9 @@ const UpdateCarWash = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-500"
+        className="flex justify-center py-2 px-2 text-green-500 border border-green-600 rounded-3xl"
       >
-        <FaRegEdit size={26}></FaRegEdit>
+        <FaMarker size={22}></FaMarker>
       </button>
 
       {isOpenModal && (

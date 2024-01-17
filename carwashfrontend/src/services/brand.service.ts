@@ -1,7 +1,8 @@
-import { IGetBrandPaginated, ICreateBrand, IUpdateBrand } from "./../types/brand.types";
+import { IGetBrandPaginated, ICreateBrand,  IGetBrands } from "./../types/brand.types";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
+
 
 export const get_brands = async (page = 1, limit = 5, name = "") => {
   return axios.get<IGetBrandPaginated>(
@@ -24,8 +25,8 @@ export const create_brands = async (type: ICreateBrand) => {
   );
 };
 
-export const update_brands = async (id: number, brand: IUpdateBrand) => {
-  return await axios.put<IGetBrandPaginated>(`${API_URL}/brand/` + id, brand,
+export const update_brands = async (type:IGetBrands) => {
+  return await axios.put<{ ok: boolean; msg: string }>(`${API_URL}/brand/` +  type.id, type,
     {
       headers: {
         Authorization: "Bearer " + GetToken(),

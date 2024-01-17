@@ -1,11 +1,11 @@
 import axios from "axios";
 import { API_URL } from "../utils/constants";
-import { IGetModels, BasicResponse } from "../types/model.types";
+import { IGetModelPaginated, IGetModels, BasicResponse } from "../types/model.types";
 import { GetToken } from "../utils/authData";
 
-export const get_models = async (typemodel = "") => {
-  const { data } = await axios.get<{ models: IGetModels[] }>(
-    `${API_URL}/model?name=${typemodel}`,
+export const get_models = async (page = 1, limit = 5,typemodel ="") => {
+  const { data } = await axios.get<IGetModelPaginated>(
+    `${API_URL}/model?page=${page}&limit=${limit}&typemodel=${typemodel}`,
     {
       headers: {
         Authorization: "Bearer " + GetToken(),

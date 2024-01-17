@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.types";
+
 export interface IGetModels {
   id: number;
   typemodel: string;
@@ -6,7 +8,8 @@ export interface IGetModels {
 
 export interface ModelState {
   models: IGetModels[];
-  OnGetModels: (typemodel: string) => Promise<void>;
+  pagination_model: IPagination
+  OnGetModels: (page: number, limit: number,typemodel: string) => Promise<void>;
   OnCreateModel: (typemodel: string) => Promise<void>;
   OnUpdateModel: (typemodel: IGetModels) => Promise<void>;
   OnDeleteModel: (id: number) => Promise<void>;
@@ -19,4 +22,7 @@ export interface IGetModelsResponse extends BasicResponse {
 export interface BasicResponse {
   ok: boolean;
   msg: string;
+}
+export interface IGetModelPaginated extends IPagination{
+  models: IGetModels[];
 }

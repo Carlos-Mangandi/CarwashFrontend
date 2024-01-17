@@ -27,12 +27,8 @@ const UpdateBrand = ({
   };
 
   const handleSubmit = async () => {
-    if (type.trim() !== "") {
-      const updateBrand = {
-        id: id,
-        type: type,
-      };
-      await OnUpdateBrand(id, updateBrand );
+    if (newBrandName.trim() !== "") {
+      await OnUpdateBrand({ id: brandId, type: newBrandName, state: true});
       closeModal();
     }
   };
@@ -40,7 +36,7 @@ const UpdateBrand = ({
     <div>
       <button
         onClick={openModal}
-        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-2xl"
+        className="flex justify-center py-2 px-2 text-green-600 bg-white border border-green-500 rounded-3xl"
       >
         <FaMarker size={22}></FaMarker>
       </button>

@@ -1,15 +1,15 @@
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 import {
-  IGetCarWash,
   ICreateCarWash,
   IUpdateCarWash,
+  IGetCarWashPaginated
 } from "../types/carwash.types";
 import { GetToken } from "../utils/authData";
 
-export const get_carwash = async (carwash = "") => {
-  const { data } = await axios.get<{ carwash: IGetCarWash[] }>(
-    `${API_URL}/carwash?type=${carwash}`,
+export const get_carwash = async (page=1, limit =5 ,carwash: string) => {
+  const { data } = await axios.get<IGetCarWashPaginated>(
+    `${API_URL}/carwash?page=${page}&limit=${limit}&carwash=${carwash}`,
     {
       headers: {
         Authorization: "Bearer " + GetToken(),

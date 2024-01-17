@@ -1,5 +1,5 @@
 import {
-  IGetClients,
+  IGetClientPaginated,
   IUpdateClient,
   ICreateClient,
 } from "../types/client.types";
@@ -7,14 +7,15 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { GetToken } from "../utils/authData";
 
-export const get_client = async (name = "") => {
-  const { data } = await axios.get<{ client: IGetClients[] }>(
-    `${API_URL}/client?name=${name}`,
-    {
+export const get_client = async (page=1, limit =5 ,name:string) => {
+  const { data } = await axios.get<IGetClientPaginated>(
+      `${API_URL}/client?page=${page}&limit=${limit}&name=${name}`,
+      {
       headers: {
-        Authorization: "Bearer " + GetToken(),
-      },
+          Authorization: "Bearer "  + GetToken()
+      } 
     }
+    
   );
   return data;
 };

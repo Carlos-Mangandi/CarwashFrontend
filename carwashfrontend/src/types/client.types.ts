@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination.types"
+
 export interface IGetClients {
   id: number;
   name: string;
@@ -10,7 +12,16 @@ export interface IGetClients {
     modelId: number;
     color: string;
     serialNumber: string;
-  };
+
+    brand:{
+      id: number
+      type: string
+    },
+    model:{
+      id:number
+      typemodel: string
+    }
+  }
 }
 
 export interface ICreateClient {
@@ -28,8 +39,13 @@ export interface IUpdateClient {
 
 export interface ClientState {
   client: IGetClients[];
-  OnGetClient: (name: string) => Promise<void>;
+  pagination_client: IPagination
+  OnGetClient: (page:number, limit: number,name:string) => Promise<void>;
   OnCreateClient: (client: ICreateClient) => Promise<void>;
   OnUpdateClient: (id: number, client: IUpdateClient) => Promise<void>;
   OnDeleteClient: (id: number) => Promise<void>;
+}
+
+export interface IGetClientPaginated extends IPagination {
+  client: IGetClients[]
 }
