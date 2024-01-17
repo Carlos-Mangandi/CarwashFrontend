@@ -3,19 +3,19 @@ import useBrandStore from "../../store/brand.store";
 import { FaMarker } from "react-icons/fa6";
 
 const UpdateBrand = ({
-  brandId,
-  brandNameUpdate,
+  id,
+  brandName,
 }: {
-  brandId: number;
-  brandNameUpdate: string;
+  id: number,
+  brandName: string
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [newBrandName, setNewBrandName] = useState(brandNameUpdate);
+  const [type, setType] = useState(brandName);
   const { OnUpdateBrand } = useBrandStore();
 
   const closeModal = () => {
     setShowModal(false);
-    setNewBrandName(brandNameUpdate);
+    setType(brandName);
   };
 
   const openModal = () => {
@@ -23,12 +23,16 @@ const UpdateBrand = ({
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBrandName(e.target.value);
+    setType(e.target.value);
   };
 
   const handleSubmit = async () => {
-    if (newBrandName.trim() !== "") {
-      await OnUpdateBrand({ id: brandId, type: newBrandName, state: true });
+    if (type.trim() !== "") {
+      const updateBrand = {
+        id: id,
+        type: type,
+      };
+      await OnUpdateBrand(id, updateBrand );
       closeModal();
     }
   };
@@ -58,7 +62,7 @@ const UpdateBrand = ({
                 </label>
                 <input
                   type="text"
-                  value={newBrandName}
+                  value={type}
                   onChange={handleInputChange}
                   className="font-normal w-full h-10 p-4 border border-black rounded-xl bg-white"
                 />

@@ -66,7 +66,7 @@ const UpdateRol = ({ id, nameRol }: { id: number; nameRol: string }) => {
                   title="button"
                   onClick={handleSubmit}
                   className="px-4 py-2 text-black bg-blue-600 text-sm font-medium rounded-md"
-                >
+                >Ñ
                   Guardar
                 </button>
                 <button

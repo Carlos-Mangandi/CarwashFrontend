@@ -19,7 +19,7 @@ export default function TableRol() {
 
   const handleDelete = (id: number, rolName: string) => {
     setRoleToDelete({ id, rolName });
-  };
+  }
 
   const confirmDelete = () => {
     if (roleToDelete) {
